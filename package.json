@@ -41,7 +41,7 @@
     "expo-splash-screen": "~0.30.8",
     "expo-status-bar": "~2.2.3",
     "expo-store-review": "~8.1.5",
-    "expo-updates": "~0.28.15",
+    "expo-updates": "~0.28.17",
     "lodash": "^4.17.21",
     "react": "19.0.0",
     "react-dom": "19.0.0",
