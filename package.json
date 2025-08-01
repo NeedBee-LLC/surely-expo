@@ -29,7 +29,7 @@
     "@react-navigation/drawer": "^6.7.2",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/native-stack": "^6.11.0",
-    "axios": "^1.9.0",
+    "axios": "^1.11.0",
     "crypto-browserify": "^3.12.0",
     "date-fns": "4.1.0",
     "eslint-plugin-prettier": "^5.5.3",
