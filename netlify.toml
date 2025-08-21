@@ -2,4 +2,4 @@
   command = "yarn build:web"
 
 [context.production]
-  publish = "web-build/"
+  publish = "dist/"
