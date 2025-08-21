@@ -29,7 +29,8 @@
     "web": {
       "name": "Surely",
       "themeColor": "#4caf50",
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "description": "A focused todo app giving you only what you need to get your todos done.",
     "githubUrl": "https://github.com/CodingItWrong/surely-expo/",
