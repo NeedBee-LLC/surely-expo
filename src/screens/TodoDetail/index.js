@@ -11,7 +11,7 @@ import useIsMounted from '../../utils/useIsMounted';
 import DetailDisplay from './DetailDisplay';
 import DetailForm from './DetailForm';
 
-export default function TodoDetail({navigation, route, parentRouteName}) {
+export default function TodoDetail({navigation, route}) {
   const isMounted = useIsMounted();
 
   const todoClient = useTodos();
@@ -115,7 +115,3 @@ export default function TodoDetail({navigation, route, parentRouteName}) {
     </ScreenBackground>
   );
 }
-
-export const createTodoDetail = parentRouteName => props => (
-  <TodoDetail {...props} parentRouteName={parentRouteName} />
-);

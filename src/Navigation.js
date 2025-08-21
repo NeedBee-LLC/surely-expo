@@ -13,7 +13,7 @@ import CategoryDetail from './screens/CategoryDetail';
 import CategoryList from './screens/CategoryList';
 import SignInForm from './screens/Login/SignInForm';
 import SignUpForm from './screens/Login/SignUpForm';
-import {createTodoDetail} from './screens/TodoDetail';
+import TodoDetail from './screens/TodoDetail';
 import AvailableTodos from './screens/TodoList/Available';
 import CompletedTodos from './screens/TodoList/Completed';
 import DeletedTodos from './screens/TodoList/Deleted';
@@ -112,7 +112,7 @@ const Available = () => (
     />
     <AvailableStack.Screen
       name="AvailableTodoDetail"
-      component={createTodoDetail('AvailableTodos')}
+      component={TodoDetail}
       options={{title: 'Todo'}}
     />
   </AvailableStack.Navigator>
@@ -132,7 +132,7 @@ const Tomorrow = () => (
     />
     <TomorrowStack.Screen
       name="TomorrowTodoDetail"
-      component={createTodoDetail('TomorrowTodos')}
+      component={TodoDetail}
       options={{title: 'Todo'}}
     />
   </TomorrowStack.Navigator>
@@ -152,7 +152,7 @@ const Future = () => (
     />
     <FutureStack.Screen
       name="FutureTodoDetail"
-      component={createTodoDetail('FutureTodos')}
+      component={TodoDetail}
       options={{title: 'Todo'}}
     />
   </FutureStack.Navigator>
@@ -172,7 +172,7 @@ const Completed = () => (
     />
     <CompletedStack.Screen
       name="CompletedTodoDetail"
-      component={createTodoDetail('CompletedTodos')}
+      component={TodoDetail}
       options={{title: 'Todo'}}
     />
   </CompletedStack.Navigator>
@@ -192,7 +192,7 @@ const Deleted = () => (
     />
     <DeletedStack.Screen
       name="DeletedTodoDetail"
-      component={createTodoDetail('DeletedTodos')}
+      component={TodoDetail}
       options={{title: 'Todo'}}
     />
   </DeletedStack.Navigator>
