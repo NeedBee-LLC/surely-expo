@@ -70,7 +70,7 @@ export default function TodoDetail({navigation, route, parentRouteName}) {
         }
       });
 
-  const goBack = () => navigation.navigate(parentRouteName);
+  const goBack = () => navigation.goBack();
 
   function contents() {
     if (errorMessage) {
