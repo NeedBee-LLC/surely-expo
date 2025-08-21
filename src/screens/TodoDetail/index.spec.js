@@ -6,11 +6,9 @@ import {
 } from '@testing-library/react-native';
 import nock from 'nock';
 import {TokenProvider} from '../../data/token';
-import {createTodoDetail} from './index';
+import TodoDetail from './index';
 
 describe('TodoDetail', () => {
-  const parentRouteName = 'AvailableTodos';
-  const AvailableTodoDetail = createTodoDetail(parentRouteName);
 
   function providers(children) {
     return <TokenProvider loadToken={false}>{children}</TokenProvider>;
@@ -44,7 +42,7 @@ describe('TodoDetail', () => {
         .reply(500, {});
 
       const route = {params: {id: todoId}};
-      render(providers(<AvailableTodoDetail route={route} />));
+      render(providers(<TodoDetail route={route} />));
 
       await screen.findByText('An error occurred loading the todo.');
     });
@@ -57,7 +55,7 @@ describe('TodoDetail', () => {
         .reply(200, {data: todo});
 
       const route = {params: {id: todoId}};
-      render(providers(<AvailableTodoDetail route={route} />));
+      render(providers(<TodoDetail route={route} />));
 
       await screen.findByText('An error occurred loading the todo.');
 
@@ -104,7 +102,7 @@ describe('TodoDetail', () => {
       const route = {params: {id: todo.id}};
       render(
         providers(
-          <AvailableTodoDetail route={route} navigation={navigation} />,
+          <TodoDetail route={route} navigation={navigation} />,
         ),
       );
 
@@ -251,7 +249,7 @@ describe('TodoDetail', () => {
       const route = {params: {id: todo.id}};
       render(
         providers(
-          <AvailableTodoDetail route={route} navigation={navigation} />,
+          <TodoDetail route={route} navigation={navigation} />,
         ),
       );
 
@@ -330,7 +328,7 @@ describe('TodoDetail', () => {
       const route = {params: {id: todo.id}};
       render(
         providers(
-          <AvailableTodoDetail route={route} navigation={navigation} />,
+          <TodoDetail route={route} navigation={navigation} />,
         ),
       );
 
