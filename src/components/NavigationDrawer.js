@@ -31,7 +31,19 @@ function CustomNavigationDrawer({theme, iconByRoute, ...navProps}) {
 
   const getCurrentPath = () => {
     // Simple way to detect current path - in a real app you'd use usePathname or similar
-    return typeof window !== 'undefined' ? window.location.pathname : '/';
+    try {
+      if (
+        typeof window !== 'undefined' &&
+        window &&
+        window.location &&
+        window.location.pathname
+      ) {
+        return window.location.pathname;
+      }
+    } catch (e) {
+      // ignore and fall through to default
+    }
+    return '/';
   };
 
   const currentPath = getCurrentPath();

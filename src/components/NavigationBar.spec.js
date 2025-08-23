@@ -2,8 +2,10 @@ import {fireEvent, render, screen} from '@testing-library/react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {large, medium, useBreakpoint} from '../breakpoints';
 import NavigationBar from './NavigationBar';
+import {useRouter} from 'expo-router';
 
 jest.mock('../breakpoints');
+jest.mock('expo-router', () => ({useRouter: jest.fn()}));
 
 describe('NavigationBar', () => {
   function wrapper(children) {
@@ -23,9 +25,9 @@ describe('NavigationBar', () => {
     describe('when React Nav provides a truthy back prop', () => {
       it('renders a button that allows you to go back', () => {
         const options = {};
-        const navigation = {
-          goBack: jest.fn().mockName('navigation.goBack'),
-        };
+        const navigation = {};
+        const router = {back: jest.fn()};
+        useRouter.mockReturnValue(router);
 
         render(
           wrapper(
@@ -35,7 +37,7 @@ describe('NavigationBar', () => {
 
         fireEvent.press(screen.getByLabelText('Back'));
 
-        expect(navigation.goBack).toHaveBeenCalledWith();
+        expect(router.back).toHaveBeenCalledWith();
       });
     });
 
