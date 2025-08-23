@@ -7,7 +7,7 @@ import DownloadOnTheAppStoreButton from './DownloadOnTheAppStoreButton';
 
 const IS_WEB = Platform.OS === 'web';
 
-function CustomNavigationDrawer({theme, iconByRoute, ...navProps}) {
+function CustomNavigationDrawer({theme, ...navProps}) {
   const {isLoggedIn, clearToken} = useToken();
   const router = useRouter();
 

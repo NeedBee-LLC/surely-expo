@@ -38,19 +38,10 @@ if (Platform.OS === 'web') {
 
 registerTranslation('en', en);
 
-const ICON_BY_ROUTE = {
-  todos: 'clock-outline',
-  categories: 'tag',
-  signin: 'account',
-  signup: 'account-plus',
-  about: 'information',
-};
-
 const getDrawerTypeForBreakpoint = breakpoint =>
   breakpoint === large ? 'permanent' : 'back';
 
 function DrawerLayout() {
-  const {isLoggedIn} = useToken();
   const breakpoint = useBreakpoint();
   const drawerType = getDrawerTypeForBreakpoint(breakpoint);
 
@@ -61,9 +52,7 @@ function DrawerLayout() {
         drawerType,
         drawerStyle: {width: 250},
       }}
-      drawerContent={props => (
-        <CustomNavigationDrawer iconByRoute={ICON_BY_ROUTE} {...props} />
-      )}
+      drawerContent={props => <CustomNavigationDrawer {...props} />}
     />
   );
 }
