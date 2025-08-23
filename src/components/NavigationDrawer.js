@@ -104,6 +104,7 @@ function CustomNavigationDrawer({theme, iconByRoute, ...navProps}) {
         <Drawer.Item
           testID="sign-out-button"
           label="Sign out"
+          icon="logout"
           onPress={signOut}
         />
       )}
