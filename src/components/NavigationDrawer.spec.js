@@ -4,11 +4,11 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
+import {useRouter} from 'expo-router';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useToken} from '../data/token';
 import {safeAreaMetrics} from '../testUtils';
 import NavigationDrawer from './NavigationDrawer';
-import {useRouter} from 'expo-router';
 
 jest.mock('../data/token', () => ({useToken: jest.fn()}));
 jest.mock('expo-router', () => ({useRouter: jest.fn()}));

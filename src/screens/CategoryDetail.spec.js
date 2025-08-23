@@ -1,10 +1,10 @@
-import {useLocalSearchParams, useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
   screen,
   waitFor,
 } from '@testing-library/react-native';
+import {useLocalSearchParams, useRouter} from 'expo-router';
 import nock from 'nock';
 import {TokenProvider} from '../data/token';
 import CategoryDetail from './CategoryDetail';

@@ -4,10 +4,10 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
+import {useLocalSearchParams, useRouter} from 'expo-router';
 import nock from 'nock';
 import {TokenProvider} from '../../data/token';
 import TodoDetail from './index';
-import {useLocalSearchParams, useRouter} from 'expo-router';
 
 jest.mock('expo-router', () => ({
   useLocalSearchParams: jest.fn(),

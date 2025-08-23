@@ -1,8 +1,8 @@
 import {fireEvent, render, screen} from '@testing-library/react-native';
+import {useRouter} from 'expo-router';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {large, medium, useBreakpoint} from '../breakpoints';
 import NavigationBar from './NavigationBar';
-import {useRouter} from 'expo-router';
 
 jest.mock('../breakpoints');
 jest.mock('expo-router', () => ({useRouter: jest.fn()}));

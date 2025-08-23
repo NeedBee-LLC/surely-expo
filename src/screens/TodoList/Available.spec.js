@@ -1,10 +1,10 @@
-import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
   screen,
   waitFor,
 } from '@testing-library/react-native';
+import {useRouter} from 'expo-router';
 import nock from 'nock';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {TokenProvider} from '../../data/token';
