@@ -26,3 +26,5 @@ Surely.app
 # native project directories
 android
 ios
+
+.playwright-mcp

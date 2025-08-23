@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {Button, Text, TextInput} from 'react-native-paper';
@@ -19,7 +19,7 @@ export default function SignUpForm({onSignUpSuccess}) {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-  const linkTo = useLinkTo();
+  const router = useRouter();
 
   function validate() {
     if (!email) {
@@ -77,7 +77,7 @@ export default function SignUpForm({onSignUpSuccess}) {
             <Button
               mode="contained"
               testID="go-to-sign-in-button"
-              onPress={() => linkTo('/signin')}
+              onPress={() => router.push('/signin')}
               style={responsiveStyles.button}
             >
               Go to sign in
@@ -122,7 +122,7 @@ export default function SignUpForm({onSignUpSuccess}) {
             <Button
               mode="outlined"
               testID="cancel-button"
-              onPress={() => linkTo('/signin')}
+              onPress={() => router.push('/signin')}
               style={responsiveStyles.button}
               accessibilityLabel="Cancel"
             >

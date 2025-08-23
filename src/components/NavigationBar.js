@@ -1,3 +1,4 @@
+import {useRouter} from 'expo-router';
 import {useColorScheme} from 'react-native';
 import {Appbar} from 'react-native-paper';
 import {large, useBreakpoint} from '../breakpoints';
@@ -9,6 +10,7 @@ export default function NavigationBar({navigation, options, back}) {
   const breakpoint = useBreakpoint();
   const showDrawerToggle = showDrawerToggleForBreakpoint(breakpoint);
   const colorScheme = useColorScheme() ?? 'light';
+  const router = useRouter();
 
   const lightHeaderStyle = {
     backgroundColor: SURELY_GREEN,
@@ -20,7 +22,7 @@ export default function NavigationBar({navigation, options, back}) {
       {back ? (
         <Appbar.BackAction
           testID="back-button"
-          onPress={navigation.goBack}
+          onPress={() => router.back()}
           accessibilityLabel="Back"
         />
       ) : null}
@@ -30,7 +32,7 @@ export default function NavigationBar({navigation, options, back}) {
           testID="toggle-navigation-button"
           accessibilityLabel="Menu"
           icon="menu"
-          onPress={navigation.toggleDrawer}
+          onPress={navigation?.toggleDrawer || (() => {})}
         />
       )}
     </Appbar.Header>
