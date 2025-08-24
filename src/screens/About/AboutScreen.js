@@ -19,7 +19,7 @@ export default function AboutScreen() {
         <SafeAreaView edges={['left', 'right', 'bottom']}>
           <CenterColumn>
             <Title style={styles.title}>
-              Surely {Constants.manifest.version}{' '}
+              Surely {Constants.manifest?.version}{' '}
               {Constants.platform?.ios
                 ? `(${Constants.platform.ios.buildNumber})`
                 : ''}
