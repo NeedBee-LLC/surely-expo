@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useLocalSearchParams, useRouter} from 'expo-router';
 import {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, TextInput} from 'react-native-paper';
@@ -14,7 +14,7 @@ import sharedStyleQueries from '../sharedStyleQueries';
 import sharedStyles from '../sharedStyles';
 import useIsMounted from '../utils/useIsMounted';
 
-export default function CategoryDetail({route}) {
+export default function CategoryDetail() {
   const responsiveStyles = useStyleQueries(sharedStyleQueries);
   const isMounted = useIsMounted();
 
@@ -23,11 +23,10 @@ export default function CategoryDetail({route}) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const categoryClient = useCategories();
-  const linkTo = useLinkTo();
+  const router = useRouter();
+  const params = useLocalSearchParams();
 
-  const {
-    params: {id},
-  } = route;
+  const {id} = params;
   const isNewCategory = id === 'new';
 
   useEffect(() => {
@@ -45,7 +44,7 @@ export default function CategoryDetail({route}) {
     }
   }, [id, isNewCategory, categoryClient, isMounted]);
 
-  const goBack = () => linkTo('/categories');
+  const goBack = () => router.push('/categories');
 
   async function handleSave() {
     try {

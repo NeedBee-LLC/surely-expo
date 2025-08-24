@@ -4,30 +4,30 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
+import {usePathname, useRouter} from 'expo-router';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useToken} from '../data/token';
 import {safeAreaMetrics} from '../testUtils';
 import NavigationDrawer from './NavigationDrawer';
 
 jest.mock('../data/token', () => ({useToken: jest.fn()}));
+jest.mock('expo-router', () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+}));
 
 describe('NavigationDrawer', () => {
   const ICON_BY_ROUTE = {};
 
-  it('allows navigating to the passed-in routes', () => {
+  it('navigates via router when unauthenticated links are pressed', () => {
     const navigation = {
       navigate: jest.fn().mockName('navigation.navigate'),
     };
-    const route = {
-      name: 'Available',
-      key: '123',
-    };
-    const state = {
-      routes: [route],
-    };
-    useToken.mockReturnValue({
-      isLoggedIn: false,
-    });
+    const state = {routes: []};
+    useToken.mockReturnValue({isLoggedIn: false});
+    const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
+    useRouter.mockReturnValue(mockRouter);
+    usePathname.mockReturnValue('/signin');
 
     render(
       <SafeAreaProvider initialMetrics={safeAreaMetrics}>
@@ -39,9 +39,9 @@ describe('NavigationDrawer', () => {
       </SafeAreaProvider>,
     );
 
-    fireEvent.press(screen.getByText(route.name));
+    fireEvent.press(screen.getByText('About'));
 
-    expect(navigation.navigate).toHaveBeenCalledWith(route.name);
+    expect(mockRouter.push).toHaveBeenCalledWith('/about');
   });
 
   describe('when signed in', () => {
@@ -57,6 +57,9 @@ describe('NavigationDrawer', () => {
         isLoggedIn: true,
         clearToken,
       });
+      const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
+      useRouter.mockReturnValue(mockRouter);
+      usePathname.mockReturnValue('/todos/available');
 
       render(
         <SafeAreaProvider initialMetrics={safeAreaMetrics}>
@@ -71,9 +74,8 @@ describe('NavigationDrawer', () => {
       fireEvent.press(screen.getByText('Sign out'));
 
       expect(clearToken).toHaveBeenCalledWith();
-
       await waitFor(() =>
-        expect(navigation.navigate).toHaveBeenCalledWith('Sign in'),
+        expect(mockRouter.replace).toHaveBeenCalledWith('/signin'),
       );
     });
   });

@@ -1,4 +1,4 @@
-import {useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect} from 'expo-router';
 import {useCallback, useRef, useState} from 'react';
 import {Platform, StyleSheet} from 'react-native';
 import {Button} from 'react-native-paper';

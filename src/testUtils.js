@@ -1,4 +1,4 @@
-import {useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect} from 'expo-router';
 
 export const safeAreaMetrics = {
   frame: {
@@ -19,7 +19,7 @@ export const safeAreaMetrics = {
 //
 // requires running this in the test file:
 //
-//  jest.mock('@react-navigation/native', () => ({
+//  jest.mock('expo-router', () => ({
 //    useFocusEffect: jest.fn(),
 //    // ...
 //  }));

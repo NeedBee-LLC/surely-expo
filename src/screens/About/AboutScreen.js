@@ -1,5 +1,5 @@
-import {useLinkTo} from '@react-navigation/native';
 import Constants from 'expo-constants';
+import {useRouter} from 'expo-router';
 import {Linking, Platform, ScrollView, StyleSheet} from 'react-native';
 import {Button, Divider, Text, Title} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -12,14 +12,14 @@ const SURELY_URL = 'https://surelytodo.com';
 const IS_WEB = Platform.OS === 'web';
 
 export default function AboutScreen() {
-  const linkTo = useLinkTo();
+  const router = useRouter();
   return (
     <ScreenBackground>
       <ScrollView contentContainerStyle={sharedStyles.bodyPadding}>
         <SafeAreaView edges={['left', 'right', 'bottom']}>
           <CenterColumn>
             <Title style={styles.title}>
-              Surely {Constants.manifest.version}{' '}
+              Surely {Constants.manifest?.version}{' '}
               {Constants.platform?.ios
                 ? `(${Constants.platform.ios.buildNumber})`
                 : ''}
@@ -35,7 +35,7 @@ export default function AboutScreen() {
                 testID="support-button"
                 mode="contained"
                 style={styles.button}
-                onPress={() => linkTo('/about/support')}
+                onPress={() => router.push('/about/support')}
               >
                 Get Support
               </Button>
@@ -43,7 +43,7 @@ export default function AboutScreen() {
                 testID="thanks-button"
                 mode="contained"
                 style={styles.button}
-                onPress={() => linkTo('/about/say-thanks')}
+                onPress={() => router.push('/about/say-thanks')}
               >
                 Ways to Say Thanks
               </Button>
@@ -58,7 +58,7 @@ export default function AboutScreen() {
               <Button
                 testID="privacy-button"
                 style={styles.button}
-                onPress={() => linkTo('/about/privacy')}
+                onPress={() => router.push('/about/privacy')}
               >
                 Privacy Policy
               </Button>
