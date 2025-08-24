@@ -1,5 +1,5 @@
 import {DrawerContentScrollView} from '@react-navigation/drawer';
-import {useRouter} from 'expo-router';
+import {usePathname, useRouter} from 'expo-router';
 import {Platform, StyleSheet, View} from 'react-native';
 import {Drawer, withTheme} from 'react-native-paper';
 import {useToken} from '../data/token';
@@ -10,6 +10,7 @@ const IS_WEB = Platform.OS === 'web';
 function CustomNavigationDrawer({theme, ...navProps}) {
   const {isLoggedIn, clearToken} = useToken();
   const router = useRouter();
+  const currentPath = usePathname();
 
   const scrollViewStyle = {
     backgroundColor: theme.colors.background,
@@ -28,25 +29,6 @@ function CustomNavigationDrawer({theme, ...navProps}) {
     {name: 'Completed', path: '/todos/completed', icon: 'checkbox-marked'},
     {name: 'Deleted', path: '/todos/deleted', icon: 'delete'},
   ];
-
-  const getCurrentPath = () => {
-    // Simple way to detect current path - in a real app you'd use usePathname or similar
-    try {
-      if (
-        typeof window !== 'undefined' &&
-        window &&
-        window.location &&
-        window.location.pathname
-      ) {
-        return window.location.pathname;
-      }
-    } catch (e) {
-      // ignore and fall through to default
-    }
-    return '/';
-  };
-
-  const currentPath = getCurrentPath();
 
   return (
     <DrawerContentScrollView style={scrollViewStyle} {...navProps}>
