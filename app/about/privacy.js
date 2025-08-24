@@ -8,6 +8,7 @@ export default function Privacy() {
       <Stack.Screen
         options={{
           title: 'Privacy Policy',
+          headerShown: true,
           header: props => <CustomNavigationBar {...props} />,
         }}
       />

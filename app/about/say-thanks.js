@@ -8,6 +8,7 @@ export default function SayThanks() {
       <Stack.Screen
         options={{
           title: 'Ways to Say Thanks',
+          headerShown: true,
           header: props => <CustomNavigationBar {...props} />,
         }}
       />

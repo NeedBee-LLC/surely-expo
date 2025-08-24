@@ -8,6 +8,7 @@ export default function About() {
       <Stack.Screen
         options={{
           title: 'About',
+          headerShown: true,
           header: props => <CustomNavigationBar {...props} />,
         }}
       />

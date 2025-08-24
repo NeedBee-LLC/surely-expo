@@ -13,6 +13,7 @@ export default function SignInScreen() {
       <Stack.Screen
         options={{
           title: 'Sign in',
+          headerShown: true,
           header: props => <CustomNavigationBar {...props} />,
         }}
       />

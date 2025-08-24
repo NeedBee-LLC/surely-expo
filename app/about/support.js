@@ -8,6 +8,7 @@ export default function Support() {
       <Stack.Screen
         options={{
           title: 'Support',
+          headerShown: true,
           header: props => <CustomNavigationBar {...props} />,
         }}
       />
