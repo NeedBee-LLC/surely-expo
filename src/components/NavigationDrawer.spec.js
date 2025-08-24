@@ -4,14 +4,17 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react-native';
-import {useRouter} from 'expo-router';
+import {usePathname, useRouter} from 'expo-router';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useToken} from '../data/token';
 import {safeAreaMetrics} from '../testUtils';
 import NavigationDrawer from './NavigationDrawer';
 
 jest.mock('../data/token', () => ({useToken: jest.fn()}));
-jest.mock('expo-router', () => ({useRouter: jest.fn()}));
+jest.mock('expo-router', () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+}));
 
 describe('NavigationDrawer', () => {
   const ICON_BY_ROUTE = {};
@@ -24,6 +27,7 @@ describe('NavigationDrawer', () => {
     useToken.mockReturnValue({isLoggedIn: false});
     const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
     useRouter.mockReturnValue(mockRouter);
+    usePathname.mockReturnValue('/signin');
 
     render(
       <SafeAreaProvider initialMetrics={safeAreaMetrics}>
@@ -55,6 +59,7 @@ describe('NavigationDrawer', () => {
       });
       const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
       useRouter.mockReturnValue(mockRouter);
+      usePathname.mockReturnValue('/todos/available');
 
       render(
         <SafeAreaProvider initialMetrics={safeAreaMetrics}>
