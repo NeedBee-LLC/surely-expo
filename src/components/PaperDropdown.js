@@ -22,6 +22,7 @@ export default function PaperDropdown({
   return (
     <Menu
       visible={isMenuShown}
+      key={isMenuShown ? 'visible' : 'hidden'} // see https://github.com/callstack/react-native-paper/issues/4807#issuecomment-3371208430
       onDismiss={() => setIsMenuShown(false)}
       anchor={
         <Button
