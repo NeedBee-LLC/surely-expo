@@ -18,7 +18,7 @@ import {relativeDate} from '../../utils/time';
 export default function DetailForm({todo, onSave, onCancel}) {
   const responsiveStyles = useStyleQueries(sharedStyleQueries);
   const categoryClient = useCategories();
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState(null);
   const [name, setName] = useState(todo.attributes.name ?? '');
   const [categoryId, setCategoryId] = useState(
     todo.relationships.category.data?.id,
@@ -79,11 +79,12 @@ export default function DetailForm({todo, onSave, onCancel}) {
         />
         <PaperDropdown
           testID="choose-category-field"
-          fieldLabel="Category"
-          emptyLabel="none"
+          fieldLabel={categories ? 'Category' : 'Loading categories...'}
+          emptyLabel={categories ? 'none' : null}
           value={category}
           onValueChange={setCategory}
-          options={categories}
+          options={categories ?? []}
+          disabled={!categories}
           style={styles.chooser}
           keyExtractor={option => option.id}
           labelExtractor={option => option.attributes.name}
