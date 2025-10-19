@@ -2300,37 +2300,37 @@
     use-latest-callback "^0.2.4"
     use-sync-external-store "^1.5.0"
 
-"@react-navigation/drawer@^7.5.8":
-  version "7.5.8"
-  resolved "https://registry.yarnpkg.com/@react-navigation/drawer/-/drawer-7.5.8.tgz#d52346813274d7c40fc88b77438f597c7be8126c"
-  integrity sha512-x3yWHxNxEv1e3w0e72WpEVUq1g8DYQOfZnbdCcuYbLZtp6Glyk0r2rkPzpddFOby3tp05KDgwZfAZKpr3j6+6w==
+"@react-navigation/drawer@^7.5.10":
+  version "7.5.10"
+  resolved "https://registry.yarnpkg.com/@react-navigation/drawer/-/drawer-7.5.10.tgz#2ca54711672177d2c0253a7d0b3693c6744df3ba"
+  integrity sha512-NDoEXygkCcgzS4/WloajXG0K78XtXi+TpxZWnaJJUsDEF2zvUxxo7c0gIfec7iBkULeO1ig0yRlQGjsZWQMb1w==
   dependencies:
-    "@react-navigation/elements" "^2.6.4"
+    "@react-navigation/elements" "^2.6.5"
     color "^4.2.3"
     react-native-drawer-layout "^4.1.13"
     use-latest-callback "^0.2.4"
 
-"@react-navigation/elements@^2.6.4":
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-2.6.4.tgz#f1dc8548b1289588fabcd2f0342c1391c689a49f"
-  integrity sha512-O3X9vWXOEhAO56zkQS7KaDzL8BvjlwZ0LGSteKpt1/k6w6HONG+2Wkblrb057iKmehTkEkQMzMLkXiuLmN5x9Q==
+"@react-navigation/elements@^2.6.5":
+  version "2.6.5"
+  resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-2.6.5.tgz#e9038e96044e47f43f7f432edc798d6b0185fc01"
+  integrity sha512-HOaekvFeoqKyaSKP2hakL7OUnw0jIhk/1wMjcovUKblT76LMTumZpriqsc30m/Vnyy1a8zgp4VsuA1xftcalgQ==
   dependencies:
     color "^4.2.3"
     use-latest-callback "^0.2.4"
     use-sync-external-store "^1.5.0"
 
-"@react-navigation/native-stack@^7.3.26":
-  version "7.3.26"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-7.3.26.tgz#a08ee0626e49428a808da9d810f24db5b08deae9"
-  integrity sha512-EjaBWzLZ76HJGOOcWCFf+h/M+Zg7M1RalYioDOb6ZdXHz7AwYNidruT3OUAQgSzg3gVLqvu5OYO0jFsNDPCZxQ==
+"@react-navigation/native-stack@^7.3.28":
+  version "7.3.28"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-7.3.28.tgz#b4b6e93a398b071fb2bb6a69e37f9447e450447a"
+  integrity sha512-G3+BP3HgEjf3nx08JMopLDtwaMG4oNTr1EmkTBLe+Qh1+LKfPUVoDBg8kJVf50aauQdRxwlGReHBz9b0HXBuOg==
   dependencies:
-    "@react-navigation/elements" "^2.6.4"
+    "@react-navigation/elements" "^2.6.5"
     warn-once "^0.1.1"
 
-"@react-navigation/native@^7.1.17":
-  version "7.1.17"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-7.1.17.tgz#88d557c0f5000aa2741e4368c59719526f1394c4"
-  integrity sha512-uEcYWi1NV+2Qe1oELfp9b5hTYekqWATv2cuwcOAg5EvsIsUPtzFrKIasgUXLBRGb9P7yR5ifoJ+ug4u6jdqSTQ==
+"@react-navigation/native@^7.1.18":
+  version "7.1.18"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-7.1.18.tgz#dc768403c5dfef13b0791fd546eaa213e0d879a5"
+  integrity sha512-DZgd6860dxcq3YX7UzIXeBr6m3UgXvo9acxp5jiJyIZXdR00Br9JwVkO7e0bUeTA2d3Z8dsmtAR84Y86NnH64Q==
   dependencies:
     "@react-navigation/core" "^7.12.4"
     escape-string-regexp "^4.0.0"
