@@ -1,3 +1,4 @@
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {StatusBar} from 'expo-status-bar';
 // for some reason PaperProvider errors without the React import
 // eslint-disable-next-line no-unused-vars
@@ -12,6 +13,8 @@ import ScreenBackground from './src/components/ScreenBackground';
 import TokenLoadBuffer from './src/components/TokenLoadBuffer';
 import {TokenProvider} from './src/data/token';
 import useTheme from './src/useTheme';
+
+const queryClient = new QueryClient();
 
 if (Platform.OS === 'web') {
   // hook up font for web
@@ -43,17 +46,19 @@ registerTranslation('en', en);
 export default function App() {
   const theme = useTheme();
   return (
-    <TokenProvider>
-      <TokenLoadBuffer>
-        <PaperProvider theme={theme}>
-          <StatusBar style="auto" />
-          <SafeAreaProvider>
-            <ScreenBackground>
-              <Navigation />
-            </ScreenBackground>
-          </SafeAreaProvider>
-        </PaperProvider>
-      </TokenLoadBuffer>
-    </TokenProvider>
+    <QueryClientProvider client={queryClient}>
+      <TokenProvider>
+        <TokenLoadBuffer>
+          <PaperProvider theme={theme}>
+            <StatusBar style="auto" />
+            <SafeAreaProvider>
+              <ScreenBackground>
+                <Navigation />
+              </ScreenBackground>
+            </SafeAreaProvider>
+          </PaperProvider>
+        </TokenLoadBuffer>
+      </TokenProvider>
+    </QueryClientProvider>
   );
 }
