@@ -1,6 +1,7 @@
+import {useQuery} from '@tanstack/react-query';
 import pick from 'lodash/pick';
 import sortBy from 'lodash/sortBy';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {Button, TextInput} from 'react-native-paper';
@@ -18,7 +19,15 @@ import {relativeDate} from '../../utils/time';
 export default function DetailForm({todo, onSave, onCancel}) {
   const responsiveStyles = useStyleQueries(sharedStyleQueries);
   const categoryClient = useCategories();
-  const [categories, setCategories] = useState(null);
+
+  const {data: categories, isLoading: isCategoriesLoading} = useQuery({
+    queryKey: ['categories'],
+    queryFn: async () => {
+      const {data} = await categoryClient.all();
+      return sortBy(data, 'attributes.sort-order');
+    },
+  });
+
   const [name, setName] = useState(todo.attributes.name ?? '');
   const [categoryId, setCategoryId] = useState(
     todo.relationships.category.data?.id,
@@ -32,13 +41,6 @@ export default function DetailForm({todo, onSave, onCancel}) {
 
   const category = categories?.find(c => c.id === categoryId);
   const setCategory = c => setCategoryId(c?.id);
-
-  useEffect(() => {
-    categoryClient
-      .all()
-      .then(({data}) => setCategories(sortBy(data, 'attributes.sort-order')))
-      .catch(logError);
-  }, [categoryClient]);
 
   const [isDeferredUntilModalOpen, setIsDeferredUntilModalOpen] =
     useState(false);
@@ -79,12 +81,14 @@ export default function DetailForm({todo, onSave, onCancel}) {
         />
         <PaperDropdown
           testID="choose-category-field"
-          fieldLabel={categories ? 'Category' : 'Loading categories...'}
-          emptyLabel={categories ? 'none' : null}
+          fieldLabel={
+            isCategoriesLoading ? 'Loading categories...' : 'Category'
+          }
+          emptyLabel={isCategoriesLoading ? null : 'none'}
           value={category}
           onValueChange={setCategory}
           options={categories ?? []}
-          disabled={!categories}
+          disabled={isCategoriesLoading}
           style={styles.chooser}
           keyExtractor={option => option.id}
           labelExtractor={option => option.attributes.name}
