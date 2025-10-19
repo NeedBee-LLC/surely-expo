@@ -8,6 +8,7 @@ export default function PaperDropdown({
   onValueChange,
   options,
   style,
+  disabled,
   keyExtractor,
   labelExtractor,
   testID,
@@ -30,9 +31,12 @@ export default function PaperDropdown({
           mode="outlined"
           accessibilityLabel={fieldLabel}
           style={style}
+          disabled={disabled}
           onPress={() => setIsMenuShown(true)}
         >
-          {fieldLabel}: {value ? labelExtractor(value) : emptyLabel}
+          {fieldLabel}
+          {value || emptyLabel ? ': ' : ''}
+          {value ? labelExtractor(value) : emptyLabel}
         </Button>
       }
     >
