@@ -275,12 +275,12 @@ The expo app creates three React hooks that instantiate ResourceClient instances
 
 **Actions**:
 
-1. Review the JSON:API specification at https://jsonapi.org/format/
-2. Document standard query parameters and their syntax
-3. Understand resource object structure (type, id, attributes, relationships)
-4. Note request/response document structure
-5. Understand the role of Content-Type header (`application/vnd.api+json`)
-6. Identify which conventions are standardized vs implementation-specific
+- [ ] Review the JSON:API specification at https://jsonapi.org/format/
+- [ ] Document standard query parameters and their syntax
+- [ ] Understand resource object structure (type, id, attributes, relationships)
+- [ ] Note request/response document structure
+- [ ] Understand the role of Content-Type header (`application/vnd.api+json`)
+- [ ] Identify which conventions are standardized vs implementation-specific
 
 **Key Takeaways to Apply**:
 
@@ -300,27 +300,27 @@ Based on grep results, these files use the resource clients:
 
 1. **Todo-Related Screens**:
 
-   - `/expo/src/screens/TodoList/Available.js`
-   - `/expo/src/screens/TodoList/Tomorrow.js`
-   - `/expo/src/screens/TodoList/Future.js`
-   - `/expo/src/screens/TodoList/Completed.js`
-   - `/expo/src/screens/TodoList/Deleted.js`
-   - `/expo/src/screens/TodoDetail/index.js`
-   - `/expo/src/screens/TodoDetail/DetailForm.js`
-   - `/expo/src/screens/TodoDetail/DetailDisplay/Actions/Default.js`
-   - `/expo/src/screens/TodoDetail/DetailDisplay/Actions/Defer.js`
+   - [ ] `/expo/src/screens/TodoList/Available.js`
+   - [ ] `/expo/src/screens/TodoList/Tomorrow.js`
+   - [ ] `/expo/src/screens/TodoList/Future.js`
+   - [ ] `/expo/src/screens/TodoList/Completed.js`
+   - [ ] `/expo/src/screens/TodoList/Deleted.js`
+   - [ ] `/expo/src/screens/TodoDetail/index.js`
+   - [ ] `/expo/src/screens/TodoDetail/DetailForm.js`
+   - [ ] `/expo/src/screens/TodoDetail/DetailDisplay/Actions/Default.js`
+   - [ ] `/expo/src/screens/TodoDetail/DetailDisplay/Actions/Defer.js`
 
 2. **Category-Related Screens**:
 
-   - `/expo/src/screens/CategoryList.js`
-   - `/expo/src/screens/CategoryDetail.js`
+   - [ ] `/expo/src/screens/CategoryList.js`
+   - [ ] `/expo/src/screens/CategoryDetail.js`
 
 3. **User-Related Screens**:
 
-   - `/expo/src/screens/Login/SignUpForm.js`
+   - [ ] `/expo/src/screens/Login/SignUpForm.js`
 
 4. **Authentication**:
-   - `/expo/src/screens/Login/SignInForm.js` (uses oauthLogin)
+   - [ ] `/expo/src/screens/Login/SignInForm.js` (uses oauthLogin)
 
 ### Phase 2: Extract Method Calls
 
@@ -340,12 +340,12 @@ For each file identified in Phase 1, extract:
 
 **JSON:API Integration Points to Note**:
 
-- Which standard query parameters are used (`filter`, `sort`, `include`, `page`, `fields`)
-- How filter syntax is implemented (e.g., `filter[status]=active`)
-- Whether sorting uses standard syntax (e.g., `sort=-createdAt`)
-- Whether includes are used to load related resources
-- Whether pagination is implemented and what style (offset/limit or number/size)
-- How `response.data` and `response.included` are accessed in the code
+- [ ] Which standard query parameters are used (`filter`, `sort`, `include`, `page`, `fields`)
+- [ ] How filter syntax is implemented (e.g., `filter[status]=active`)
+- [ ] Whether sorting uses standard syntax (e.g., `sort=-createdAt`)
+- [ ] Whether includes are used to load related resources
+- [ ] Whether pagination is implemented and what style (offset/limit or number/size)
+- [ ] How `response.data` and `response.included` are accessed in the code
 
 ### Phase 3: Document Data Structures
 
@@ -372,10 +372,10 @@ For each resource type (todos, categories, users), document:
 
 Cross-reference with the Rails API to understand:
 
-1. **Backend routes** (`/api/config/routes.rb`)
-2. **Controller actions** (`/api/app/controllers/`)
-3. **Resource serialization** (`/api/app/resources/`)
-4. **Model structure** (`/api/app/models/`)
+- [ ] **Backend routes** (`/api/config/routes.rb`)
+- [ ] **Controller actions** (`/api/app/controllers/`)
+- [ ] **Resource serialization** (`/api/app/resources/`)
+- [ ] **Model structure** (`/api/app/models/`)
 
 This will help validate that the analysis is complete and accurate.
 
@@ -383,13 +383,13 @@ This will help validate that the analysis is complete and accurate.
 
 Produce a final document that lists:
 
-1. **Every unique API endpoint called**
-2. **HTTP method** (GET, POST, PATCH, DELETE)
-3. **Full URL pattern** (including query params)
-4. **Request body structure** (for POST/PATCH)
-5. **Expected response structure**
-6. **Where in the app** it's used
-7. **User action** that triggers it
+- [ ] **Every unique API endpoint called**
+- [ ] **HTTP method** (GET, POST, PATCH, DELETE)
+- [ ] **Full URL pattern** (including query params)
+- [ ] **Request body structure** (for POST/PATCH)
+- [ ] **Expected response structure**
+- [ ] **Where in the app** it's used
+- [ ] **User action** that triggers it
 
 ## Analysis Tools and Techniques
 
@@ -568,64 +568,63 @@ Complete documentation of the data structures for each resource:
 
 ### Step 0: Review JSON:API Specification
 
-Review the JSON:API specification at https://jsonapi.org/format/ to understand:
-
-- Standard document structure (`data`, `included`, `meta`, `links`, `errors`)
-- Resource object format (`type`, `id`, `attributes`, `relationships`)
-- Standard query parameters (`filter`, `sort`, `include`, `page`, `fields`)
-- Request/response patterns for CRUD operations
-- Content-Type requirements (`application/vnd.api+json`)
-- Error response format
+- [ ] Review the JSON:API specification at https://jsonapi.org/format/ to understand:
+  - [ ] Standard document structure (`data`, `included`, `meta`, `links`, `errors`)
+  - [ ] Resource object format (`type`, `id`, `attributes`, `relationships`)
+  - [ ] Standard query parameters (`filter`, `sort`, `include`, `page`, `fields`)
+  - [ ] Request/response patterns for CRUD operations
+  - [ ] Content-Type requirements (`application/vnd.api+json`)
+  - [ ] Error response format
 
 This provides the foundation for understanding how the jsonapi-client library and expo app work.
 
 ### Step 1: Read all screen files
 
-Read all 12 screen files identified in Phase 1
+- [ ] Read all 12 screen files identified in Phase 1
 
 ### Step 2: Extract method calls
 
 For each file, document:
 
-- Method name
-- Line numbers
-- Parameters (literal values or variable references)
-- Context (event handler, useEffect, etc.)
+- [ ] Method name
+- [ ] Line numbers
+- [ ] Parameters (literal values or variable references)
+- [ ] Context (event handler, useEffect, etc.)
 
 ### Step 3: Trace parameter construction
 
 For dynamic parameters, trace back to understand:
 
-- Where values come from (state, props, form inputs)
-- What transformations are applied
+- [ ] Where values come from (state, props, form inputs)
+- [ ] What transformations are applied
 
 ### Step 4: Read backend API files
 
-Read Rails controllers, routes, and resources to validate understanding
+- [ ] Read Rails controllers, routes, and resources to validate understanding
 
 ### Step 5: Compile inventory
 
-Create the three deliverable documents
+- [ ] Create the three deliverable documents
 
 ### Step 6: Review and validate
 
 Check for:
 
-- Missing endpoints
-- Incorrect parameter documentation
-- Incomplete data model documentation
+- [ ] Missing endpoints
+- [ ] Incorrect parameter documentation
+- [ ] Incomplete data model documentation
 
 ## Timeline Estimates
 
 This is a complex analysis requiring careful code reading:
 
-- **Phase 0** (JSON:API spec review): Understanding the foundation
-- **Phase 1** (Map usage sites): Already complete via grep
-- **Phase 2** (Extract method calls): Reading and analyzing 12 files
-- **Phase 3** (Document data structures): Synthesizing from Phase 2
-- **Phase 4** (Map to backend): Reading Rails API files
-- **Phase 5** (Create inventory): Compiling all findings
-- **Phase 6** (Review): Final validation
+- [ ] **Phase 0** (JSON:API spec review): Understanding the foundation
+- [ ] **Phase 1** (Map usage sites): Already complete via grep
+- [ ] **Phase 2** (Extract method calls): Reading and analyzing 12 files
+- [ ] **Phase 3** (Document data structures): Synthesizing from Phase 2
+- [ ] **Phase 4** (Map to backend): Reading Rails API files
+- [ ] **Phase 5** (Create inventory): Compiling all findings
+- [ ] **Phase 6** (Review): Final validation
 
 **Total effort**: JSON:API spec review, thorough analysis of 12+ frontend files, backend validation, and comprehensive documentation
 
@@ -656,10 +655,10 @@ The analysis is complete when:
 
 After creating this plan:
 
-1. Execute the analysis following the steps outlined above
-2. Create the three deliverable documents in `/expo/docs/`
-3. Review with stakeholders
-4. Maintain documentation as the codebase evolves
+- [ ] Execute the analysis following the steps outlined above
+- [ ] Create the three deliverable documents in `/expo/docs/`
+- [ ] Review with stakeholders
+- [ ] Maintain documentation as the codebase evolves
 
 ---
 
