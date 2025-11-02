@@ -1,11 +1,10 @@
 {
-  "data":
-    {
-      "id": "cat1",
-      "type": "categories",
-      "attributes": {
-        "name": "Category C",
-        "sort-order": 3
-      }
+  "data": {
+    "id": "cat1",
+    "type": "categories",
+    "attributes": {
+      "name": "Category C",
+      "sort-order": 3
     }
+  }
 }

@@ -9,7 +9,6 @@ import {TokenProvider} from '../../data/token';
 import TodoDetail from './index';
 
 describe('TodoDetail', () => {
-
   function providers(children) {
     return <TokenProvider loadToken={false}>{children}</TokenProvider>;
   }
@@ -100,11 +99,7 @@ describe('TodoDetail', () => {
       };
 
       const route = {params: {id: todo.id}};
-      render(
-        providers(
-          <TodoDetail route={route} navigation={navigation} />,
-        ),
-      );
+      render(providers(<TodoDetail route={route} navigation={navigation} />));
 
       return {
         mockServer,
@@ -247,11 +242,7 @@ describe('TodoDetail', () => {
       };
 
       const route = {params: {id: todo.id}};
-      render(
-        providers(
-          <TodoDetail route={route} navigation={navigation} />,
-        ),
-      );
+      render(providers(<TodoDetail route={route} navigation={navigation} />));
 
       return {
         mockServer,
@@ -326,11 +317,7 @@ describe('TodoDetail', () => {
       };
 
       const route = {params: {id: todo.id}};
-      render(
-        providers(
-          <TodoDetail route={route} navigation={navigation} />,
-        ),
-      );
+      render(providers(<TodoDetail route={route} navigation={navigation} />));
 
       return {
         mockServer,
