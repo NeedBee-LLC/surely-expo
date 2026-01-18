@@ -5,9 +5,12 @@ export default function DownloadOnTheAppStoreButton() {
   return (
     <Pressable
       accessibilityLabel="Download on the App Store"
+      accessibilityHint="Opens the App Store listing"
+      accessibilityRole="button"
       onPress={() => Linking.openURL(APP_STORE_URL)}
     >
       <Image
+        accessible={false}
         source={require('./Download_on_the_App_Store_Badge.png')}
         style={styles.image}
       />
