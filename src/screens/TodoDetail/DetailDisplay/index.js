@@ -19,7 +19,13 @@ export default function DetailDisplay({
     >
       <ScrollView contentContainerStyle={sharedStyles.bodyPadding}>
         <View style={styles.titleRow}>
-          <Pressable onPress={onEdit} style={styles.title}>
+          <Pressable
+            accessibilityLabel={`Edit ${todo.attributes.name}`}
+            accessibilityHint="Opens the todo editor"
+            accessibilityRole="button"
+            onPress={onEdit}
+            style={styles.title}
+          >
             <Title>{todo.attributes.name}</Title>
           </Pressable>
           <IconButton
@@ -29,7 +35,12 @@ export default function DetailDisplay({
             onPress={onEdit}
           />
         </View>
-        <Pressable onPress={onEdit}>
+        <Pressable
+          accessibilityLabel="Edit todo details"
+          accessibilityHint="Opens the todo editor"
+          accessibilityRole="button"
+          onPress={onEdit}
+        >
           {todo.attributes.notes ? (
             <Text style={styles.sectionSpacing}>{todo.attributes.notes}</Text>
           ) : null}
