@@ -19,7 +19,12 @@ export default function DetailDisplay({
     >
       <ScrollView contentContainerStyle={sharedStyles.bodyPadding}>
         <View style={styles.titleRow}>
-          <Pressable onPress={onEdit} style={styles.title}>
+          <Pressable
+            onPress={onEdit}
+            accessibilityRole="button"
+            accessibilityLabel={`Edit ${todo.attributes.name}`}
+            style={styles.title}
+          >
             <Title>{todo.attributes.name}</Title>
           </Pressable>
           <IconButton
@@ -29,7 +34,11 @@ export default function DetailDisplay({
             onPress={onEdit}
           />
         </View>
-        <Pressable onPress={onEdit}>
+        <Pressable
+          onPress={onEdit}
+          accessibilityRole="button"
+          accessibilityLabel="Edit todo details"
+        >
           {todo.attributes.notes ? (
             <Text style={styles.sectionSpacing}>{todo.attributes.notes}</Text>
           ) : null}
