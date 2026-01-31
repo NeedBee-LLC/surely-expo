@@ -96,7 +96,7 @@ $ yarn test
 
 ### iOS
 
-- Increment the `ios.buildNumber` in `app.config.js`
+- Increment the `ios.buildNumber` in `app.json`
 - Run `yarn build:ios`
 - Once the build completes, upload the `.ipa` file it created to TestFlight using the Apple [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12) app.
 
