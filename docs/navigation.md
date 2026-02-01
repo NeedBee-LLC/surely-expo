@@ -57,16 +57,16 @@ The drawer content is conditional on auth state (`useToken().isLoggedIn`):
 - **Sign in flow**: `SignInForm` triggers `setToken` on success; the drawer
   switches to the logged-in routes.
 - **Sign out**: Drawer includes a "Sign out" item when logged in. It calls
-  `clearToken()` and then navigates via `useLinkTo('/signin')`.
+  `clearToken()` and then navigates to `/signin`.
 
 ## Deep linking and URL mapping
 
 The root `NavigationContainer` is configured with a `linking` map. Paths are
-used directly by `useLinkTo()` for forward navigation across screens.
+used directly for forward navigation across screens.
 
 The drawer uses its own `ROUTE_PATH_MAP` to translate drawer route names to
-paths before calling `useLinkTo()`. Keep this mapping aligned with the linking
-config and stack screen definitions.
+paths before navigating to those URLs. Keep this mapping aligned with the
+linking config and stack screen definitions.
 
 ### Todos
 
@@ -123,14 +123,14 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
 `src/components/NavigationDrawer.js`:
 
 - Renders a drawer item for each route in the current drawer state.
-  - Each item calls `linkTo(ROUTE_PATH_MAP[route.name])`.
+  - Each item navigates to `ROUTE_PATH_MAP[route.name]`.
   - Route name-to-path mappings live in `ROUTE_PATH_MAP`.
   - Test ID format: `${route.name.toLowerCase()}-nav-button`.
 - Because drawer items always link to list-level paths, switching to another
   section and then back returns to the list screen (not the previously opened
   detail screen). Verified by `cypress/e2e/navigation.cy.js`.
 - When logged in, renders a "Sign out" item.
-  - Calls `clearToken()` and then `linkTo('/signin')`.
+  - Calls `clearToken()` and then navigates to `/signin`.
   - Test ID: `sign-out-button`.
 - On web, displays the App Store download button in the drawer footer.
 
@@ -138,7 +138,7 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
 
 `src/screens/TodoList/*.js`:
 
-- Each list screen uses `useLinkTo()` to navigate to the detail route.
+- Each list screen navigates to the detail route using URL paths.
   - Example: Available list uses `/todos/available/:id`.
 - `TodoListScreen` uses `useFocusEffect()` to reload when the screen gains
   focus (list reloads after returning from detail).
@@ -155,20 +155,20 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
 
 `src/screens/CategoryList.js`:
 
-- Uses `useLinkTo()` to navigate to `/categories/:id` on list item tap.
-- Uses `useLinkTo()` to navigate to `/categories/new` for adding a category.
+- Navigates to `/categories/:id` on list item tap.
+- Navigates to `/categories/new` for adding a category.
 - Uses `useFocusEffect()` to reload when focused.
 
 `src/screens/CategoryDetail.js`:
 
-- Uses `useLinkTo('/categories')` for Cancel, Save, and Delete flows.
+- Navigates to `/categories` for Cancel, Save, and Delete flows.
 - Uses `route.params.id === 'new'` to determine creation mode.
 
 ### About
 
 `src/screens/About/AboutScreen.js`:
 
-- Uses `useLinkTo()` to navigate to:
+- Navigates to:
   - `/about/support`
   - `/about/say-thanks`
   - `/about/privacy`
@@ -177,11 +177,11 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
 
 `src/screens/Login/SignInForm.js`:
 
-- Uses `useLinkTo('/signup')` to move from Sign in to Sign up.
+- Navigates to `/signup` to move from Sign in to Sign up.
 
 `src/screens/Login/SignUpForm.js`:
 
-- Uses `useLinkTo('/signin')` on cancel and after successful sign-up.
+- Navigates to `/signin` on cancel and after successful sign-up.
 
 ## React Navigation touchpoints (reference list)
 
@@ -189,23 +189,23 @@ Production code:
 
 - `src/Navigation.js` (NavigationContainer, drawer, stacks, linking config)
 - `src/components/NavigationBar.js` (goBack, toggleDrawer)
-- `src/components/NavigationDrawer.js` (useLinkTo, route path map)
-- `src/screens/TodoList/*.js` (useLinkTo)
+- `src/components/NavigationDrawer.js` (route path map, URL navigation)
+- `src/screens/TodoList/*.js` (URL navigation)
 - `src/screens/TodoList/TodoListScreen.js` (useFocusEffect)
 - `src/screens/TodoDetail/index.js` (navigation.goBack)
-- `src/screens/CategoryList.js` / `CategoryDetail.js` (useLinkTo)
-- `src/screens/About/AboutScreen.js` (useLinkTo)
-- `src/screens/Login/SignInForm.js` / `SignUpForm.js` (useLinkTo)
+- `src/screens/CategoryList.js` / `CategoryDetail.js` (URL navigation)
+- `src/screens/About/AboutScreen.js` (URL navigation)
+- `src/screens/Login/SignInForm.js` / `SignUpForm.js` (URL navigation)
 
 Test utilities and unit tests:
 
 - `src/testUtils.js` mocks `useFocusEffect`.
 - `src/components/NavigationBar.spec.js` exercises back/toggle behavior.
-- `src/components/NavigationDrawer.spec.js` asserts `useLinkTo` and sign-out.
-- `src/screens/TodoList/*.spec.js` verifies `useLinkTo` paths.
+- `src/components/NavigationDrawer.spec.js` asserts URL navigation and sign-out.
+- `src/screens/TodoList/*.spec.js` verifies URL paths.
 - `src/screens/CategoryList.spec.js`, `CategoryDetail.spec.js`,
   `src/screens/Login/SignUpForm.spec.js`, `SignInForm.spec.js` verify
-  `useLinkTo` usage.
+  URL navigation.
 - `src/screens/TodoDetail/index.spec.js` asserts `navigation.goBack()` is called
   after complete/delete/defer flows.
 
