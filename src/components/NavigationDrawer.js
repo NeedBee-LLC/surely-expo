@@ -1,4 +1,5 @@
 import {DrawerContentScrollView} from '@react-navigation/drawer';
+import {useLinkTo} from '@react-navigation/native';
 import {Platform, StyleSheet, View} from 'react-native';
 import {Drawer, withTheme} from 'react-native-paper';
 import {useToken} from '../data/token';
@@ -6,9 +7,23 @@ import DownloadOnTheAppStoreButton from './DownloadOnTheAppStoreButton';
 
 const IS_WEB = Platform.OS === 'web';
 
+// Map drawer route names to their URL paths
+const ROUTE_PATH_MAP = {
+  Available: '/todos/available',
+  Tomorrow: '/todos/tomorrow',
+  Future: '/todos/future',
+  Completed: '/todos/completed',
+  Deleted: '/todos/deleted',
+  Categories: '/categories',
+  About: '/about',
+  'Sign in': '/signin',
+  'Sign up': '/signup',
+};
+
 function CustomNavigationDrawer({theme, iconByRoute, ...navProps}) {
-  const {state, navigation} = navProps;
+  const {state} = navProps;
   const {isLoggedIn, clearToken} = useToken();
+  const linkTo = useLinkTo();
 
   const isSelected = index => index === state.index;
 
@@ -18,7 +33,7 @@ function CustomNavigationDrawer({theme, iconByRoute, ...navProps}) {
 
   async function signOut() {
     await clearToken();
-    navigation.navigate('Sign in');
+    linkTo('/signin');
   }
 
   return (
@@ -31,7 +46,7 @@ function CustomNavigationDrawer({theme, iconByRoute, ...navProps}) {
           accessibilityLabel={route.name}
           icon={iconByRoute[route.name]}
           active={isSelected(index)}
-          onPress={() => navigation.navigate(route.name)}
+          onPress={() => linkTo(ROUTE_PATH_MAP[route.name])}
         />
       ))}
       {isLoggedIn && (
