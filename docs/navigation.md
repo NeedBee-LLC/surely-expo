@@ -126,6 +126,9 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
   - Each item calls `linkTo(ROUTE_PATH_MAP[route.name])`.
   - Route name-to-path mappings live in `ROUTE_PATH_MAP`.
   - Test ID format: `${route.name.toLowerCase()}-nav-button`.
+- Because drawer items always link to list-level paths, switching to another
+  section and then back returns to the list screen (not the previously opened
+  detail screen). Verified by `cypress/e2e/navigation.cy.js`.
 - When logged in, renders a "Sign out" item.
   - Calls `clearToken()` and then `linkTo('/signin')`.
   - Test ID: `sign-out-button`.

@@ -18,6 +18,11 @@ describe('navigation', () => {
       );
       cy.intercept(
         'GET',
+        'http://localhost:3000/todos?filter[status]=tomorrow&include=category',
+        {fixture: 'todos/none.json'},
+      );
+      cy.intercept(
+        'GET',
         'http://localhost:3000/todos/abc123?include=category',
         {fixture: 'todo/available.json'},
       );
@@ -54,6 +59,21 @@ describe('navigation', () => {
 
       cy.location('pathname').should('eq', '/categories');
       cy.contains('Category C');
+    });
+
+    it('returns to the list when switching away from detail via the drawer', () => {
+      cy.visit('/todos/available');
+
+      cy.contains('Todo 1').click();
+      cy.location('pathname').should('eq', '/todos/available/abc123');
+
+      cy.getTestId('tomorrow-nav-button').click();
+      cy.location('pathname').should('eq', '/todos/tomorrow');
+
+      cy.getTestId('available-nav-button').click();
+
+      cy.location('pathname').should('eq', '/todos/available');
+      cy.contains('Todo 1');
     });
   });
 
