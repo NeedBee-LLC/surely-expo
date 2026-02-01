@@ -55,12 +55,16 @@ The drawer content is conditional on auth state (`useToken().isLoggedIn`):
 - **Sign in flow**: `SignInForm` triggers `setToken` on success; the drawer
   switches to the logged-in routes.
 - **Sign out**: Drawer includes a "Sign out" item when logged in. It calls
-  `clearToken()` and then navigates to the `Sign in` drawer route.
+  `clearToken()` and then navigates via `useLinkTo('/signin')`.
 
 ## Deep linking and URL mapping
 
 The root `NavigationContainer` is configured with a `linking` map. Paths are
-used directly by `useLinkTo()` throughout the app.
+used directly by `useLinkTo()` for forward navigation across screens.
+
+The drawer uses its own `ROUTE_PATH_MAP` to translate drawer route names to
+paths before calling `useLinkTo()`. Keep this mapping aligned with the linking
+config and stack screen definitions.
 
 ### Todos
 
@@ -117,10 +121,11 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
 `src/components/NavigationDrawer.js`:
 
 - Renders a drawer item for each route in the current drawer state.
-  - Each item calls `navigation.navigate(route.name)`.
+  - Each item calls `linkTo(ROUTE_PATH_MAP[route.name])`.
+  - Route name-to-path mappings live in `ROUTE_PATH_MAP`.
   - Test ID format: `${route.name.toLowerCase()}-nav-button`.
 - When logged in, renders a "Sign out" item.
-  - Calls `clearToken()` and then `navigation.navigate('Sign in')`.
+  - Calls `clearToken()` and then `linkTo('/signin')`.
   - Test ID: `sign-out-button`.
 - On web, displays the App Store download button in the drawer footer.
 
@@ -167,7 +172,7 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
 
 `src/screens/Login/SignInForm.js`:
 
-- Uses `navigation.navigate('Sign up')` to move from Sign in to Sign up.
+- Uses `useLinkTo('/signup')` to move from Sign in to Sign up.
 
 `src/screens/Login/SignUpForm.js`:
 
@@ -179,22 +184,23 @@ Production code:
 
 - `src/Navigation.js` (NavigationContainer, drawer, stacks, linking config)
 - `src/components/NavigationBar.js` (goBack, toggleDrawer)
-- `src/components/NavigationDrawer.js` (navigate, drawer content)
+- `src/components/NavigationDrawer.js` (useLinkTo, route path map)
 - `src/screens/TodoList/*.js` (useLinkTo)
 - `src/screens/TodoList/TodoListScreen.js` (useFocusEffect)
 - `src/screens/TodoDetail/index.js` (navigation.goBack)
 - `src/screens/CategoryList.js` / `CategoryDetail.js` (useLinkTo)
 - `src/screens/About/AboutScreen.js` (useLinkTo)
-- `src/screens/Login/SignInForm.js` / `SignUpForm.js` (navigate, useLinkTo)
+- `src/screens/Login/SignInForm.js` / `SignUpForm.js` (useLinkTo)
 
 Test utilities and unit tests:
 
 - `src/testUtils.js` mocks `useFocusEffect`.
 - `src/components/NavigationBar.spec.js` exercises back/toggle behavior.
-- `src/components/NavigationDrawer.spec.js` asserts `navigate` and sign-out.
+- `src/components/NavigationDrawer.spec.js` asserts `useLinkTo` and sign-out.
 - `src/screens/TodoList/*.spec.js` verifies `useLinkTo` paths.
 - `src/screens/CategoryList.spec.js`, `CategoryDetail.spec.js`,
-  `src/screens/Login/SignUpForm.spec.js` verify `useLinkTo` usage.
+  `src/screens/Login/SignUpForm.spec.js`, `SignInForm.spec.js` verify
+  `useLinkTo` usage.
 - `src/screens/TodoDetail/index.spec.js` asserts `navigation.goBack()` is called
   after complete/delete/defer flows.
 
