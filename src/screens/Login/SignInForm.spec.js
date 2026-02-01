@@ -1,3 +1,4 @@
+import {useLinkTo} from '@react-navigation/native';
 import {
   fireEvent,
   render,
@@ -9,6 +10,10 @@ import {useToken} from '../../data/token';
 import SignInForm from './SignInForm';
 
 jest.mock('../../data/token', () => ({useToken: jest.fn()}));
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useLinkTo: jest.fn(),
+}));
 
 describe('SignInForm', () => {
   const email = 'example@example.com';
@@ -23,6 +28,9 @@ describe('SignInForm', () => {
         password,
       })
       .reply(200, {access_token: testToken});
+
+    const linkTo = jest.fn().mockName('linkTo');
+    useLinkTo.mockReturnValue(linkTo);
 
     const setToken = jest.fn();
     useToken.mockReturnValue({setToken});

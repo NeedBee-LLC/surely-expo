@@ -1,3 +1,4 @@
+import {useLinkTo} from '@react-navigation/native';
 import {StyleSheet} from 'react-native';
 import {Button, TextInput, Title} from 'react-native-paper';
 import {useStyleQueries} from 'react-native-style-queries';
@@ -12,8 +13,9 @@ import {useToken} from '../../data/token';
 import sharedStyleQueries from '../../sharedStyleQueries';
 import sharedStyles from '../../sharedStyles';
 
-export default function SignInForm({navigation}) {
+export default function SignInForm() {
   const {setToken} = useToken();
+  const linkTo = useLinkTo();
   const responsiveStyles = useStyleQueries(sharedStyleQueries);
   const onLogIn = ({username, password}) =>
     oauthLogin({
@@ -56,7 +58,7 @@ export default function SignInForm({navigation}) {
           <Button
             mode="outlined"
             testID="sign-up-button"
-            onPress={() => navigation.navigate('Sign up')}
+            onPress={() => linkTo('/signup')}
             style={responsiveStyles.button}
             accessibilityLabel="Sign up"
           >

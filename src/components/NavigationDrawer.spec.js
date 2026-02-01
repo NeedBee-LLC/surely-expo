@@ -1,3 +1,4 @@
+import {useLinkTo} from '@react-navigation/native';
 import {
   fireEvent,
   render,
@@ -10,14 +11,18 @@ import {safeAreaMetrics} from '../testUtils';
 import NavigationDrawer from './NavigationDrawer';
 
 jest.mock('../data/token', () => ({useToken: jest.fn()}));
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useLinkTo: jest.fn(),
+}));
 
 describe('NavigationDrawer', () => {
   const ICON_BY_ROUTE = {};
 
   it('allows navigating to the passed-in routes', () => {
-    const navigation = {
-      navigate: jest.fn().mockName('navigation.navigate'),
-    };
+    const linkTo = jest.fn().mockName('linkTo');
+    useLinkTo.mockReturnValue(linkTo);
+    
     const route = {
       name: 'Available',
       key: '123',
@@ -33,7 +38,6 @@ describe('NavigationDrawer', () => {
       <SafeAreaProvider initialMetrics={safeAreaMetrics}>
         <NavigationDrawer
           iconByRoute={ICON_BY_ROUTE}
-          navigation={navigation}
           state={state}
         />
       </SafeAreaProvider>,
@@ -41,14 +45,14 @@ describe('NavigationDrawer', () => {
 
     fireEvent.press(screen.getByText(route.name));
 
-    expect(navigation.navigate).toHaveBeenCalledWith(route.name);
+    expect(linkTo).toHaveBeenCalledWith('/todos/available');
   });
 
   describe('when signed in', () => {
     it('allows signing out', async () => {
-      const navigation = {
-        navigate: jest.fn().mockName('navigation.navigate'),
-      };
+      const linkTo = jest.fn().mockName('linkTo');
+      useLinkTo.mockReturnValue(linkTo);
+      
       const state = {
         routes: [],
       };
@@ -62,7 +66,6 @@ describe('NavigationDrawer', () => {
         <SafeAreaProvider initialMetrics={safeAreaMetrics}>
           <NavigationDrawer
             iconByRoute={ICON_BY_ROUTE}
-            navigation={navigation}
             state={state}
           />
         </SafeAreaProvider>,
@@ -73,7 +76,7 @@ describe('NavigationDrawer', () => {
       expect(clearToken).toHaveBeenCalledWith();
 
       await waitFor(() =>
-        expect(navigation.navigate).toHaveBeenCalledWith('Sign in'),
+        expect(linkTo).toHaveBeenCalledWith('/signin'),
       );
     });
   });
