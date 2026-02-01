@@ -111,6 +111,11 @@ detail screen treats `route.params.id === 'new'` as the creation mode.
 `src/components/NavigationBar.js`:
 
 - Shows a **back button** when React Navigation provides a truthy `back` prop.
+  - The `back` prop comes from the stack header render in
+    `src/Navigation.js`, where each stack sets
+    `screenOptions={{header: props => <CustomNavigationBar {...props} />}}`.
+    React Navigation supplies `back` when the current screen is not the
+    stack's initial route (e.g., detail screens).
   - Calls `navigation.goBack()`.
   - Test ID: `back-button`.
 - Shows a **drawer toggle** only on non-large breakpoints.
