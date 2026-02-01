@@ -461,7 +461,32 @@ Verify all URL paths work correctly:
 
 ---
 
-## Phase 11: Manual Verification
+## Phase 11: Cleanup
+
+### Remove Old Navigation Code
+
+- [ ] Delete `src/Navigation.js` (after migration complete)
+- [ ] Remove unused imports from migrated files
+- [ ] Remove React Navigation dependencies from `package.json`:
+  - `@react-navigation/drawer`
+  - `@react-navigation/native`
+  - `@react-navigation/native-stack`
+
+### Update Documentation
+
+- [ ] Update `CLAUDE.md` navigation section
+- [ ] Update `docs/navigation.md` to reflect Expo Router architecture
+- [ ] Update `README.md` if navigation instructions exist
+
+### Code Quality
+
+- [ ] Run `yarn lint` and fix any issues
+- [ ] Run `yarn test` and ensure all tests pass
+- [ ] Run `yarn test:coverage` to check test coverage
+
+---
+
+## Phase 12: Manual Verification
 
 ### Web Browser Testing
 
@@ -531,31 +556,6 @@ Verify all URL paths work correctly:
 
 ---
 
-## Phase 12: Cleanup
-
-### Remove Old Navigation Code
-
-- [ ] Delete `src/Navigation.js` (after migration complete)
-- [ ] Remove unused imports from migrated files
-- [ ] Remove React Navigation dependencies from `package.json`:
-  - `@react-navigation/drawer`
-  - `@react-navigation/native`
-  - `@react-navigation/native-stack`
-
-### Update Documentation
-
-- [ ] Update `CLAUDE.md` navigation section
-- [ ] Update `docs/navigation.md` to reflect Expo Router architecture
-- [ ] Update `README.md` if navigation instructions exist
-
-### Code Quality
-
-- [ ] Run `yarn lint` and fix any issues
-- [ ] Run `yarn test` and ensure all tests pass
-- [ ] Run `yarn test:coverage` to check test coverage
-
----
-
 ## Known Considerations
 
 ### Safari/Firefox History API Limits
@@ -598,7 +598,7 @@ The following test IDs are used in Cypress and Detox tests and must be preserved
 7. Update test utilities (Phase 8)
 8. Update unit tests incrementally as files are migrated (Phase 9)
 9. Run Cypress tests continuously throughout migration (Phase 10)
-10. Perform manual verification (Phase 11)
-11. Clean up and finalize (Phase 12)
+10. Clean up and finalize (Phase 11)
+11. Perform manual verification (Phase 12)
 
 Consider migrating one section at a time (e.g., Available todos first) and verifying it works before moving to the next section.
