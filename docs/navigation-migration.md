@@ -13,7 +13,14 @@ setup with Expo Router while preserving the behavior documented in
 - [ ] Verify test IDs relied on by tests (drawer toggle, back button, etc.)
   are still present to avoid breaking tests during refactors.
 
-## 2) Expo Router structure and layouts
+## 2) Dependencies and package updates
+
+- [ ] Add Expo Router and any required supporting dependencies per Expo docs.
+- [ ] Update `package.json` and lockfile to reflect new dependencies.
+- [ ] Remove React Navigation packages and other now-unused dependencies after
+  the Expo Router migration is complete.
+
+## 3) Expo Router structure and layouts
 
 - [ ] Create the Expo Router route tree matching current URL paths:
   - [ ] `/todos/available` (list)
@@ -40,7 +47,7 @@ setup with Expo Router while preserving the behavior documented in
 - [ ] Ensure the navigation container (Expo Router root) stays stable and
   does not rerender unnecessarily, to avoid Safari/Firefox history API limits.
 
-## 3) Auth-driven routing and drawer contents
+## 4) Auth-driven routing and drawer contents
 
 - [ ] Implement auth-aware routing groups or redirects so that:
   - [ ] Logged-in users see the main todo/category routes in the drawer.
@@ -54,7 +61,7 @@ setup with Expo Router while preserving the behavior documented in
   detail screen), matching current behavior.
 - [ ] Preserve the App Store download button in the drawer footer on web.
 
-## 4) Custom header and navigation controls
+## 5) Custom header and navigation controls
 
 - [ ] Recreate the custom header (NavigationBar) in Expo Router:
   - [ ] Back button appears only when the screen is not the initial route.
@@ -64,7 +71,7 @@ setup with Expo Router while preserving the behavior documented in
   - [ ] Drawer toggle keeps `toggle-navigation-button` test ID.
 - [ ] Ensure the header titles match current behavior for each stack screen.
 
-## 5) Screen navigation updates
+## 6) Screen navigation updates
 
 - [ ] Update list screens to navigate to detail routes via Expo Router APIs.
 - [ ] Update detail screens to navigate back after actions (complete/delete/
@@ -76,7 +83,7 @@ setup with Expo Router while preserving the behavior documented in
 - [ ] Keep category creation behavior using `/categories/new` and sentinel
   handling in the detail screen.
 
-## 6) URL and deep link parity
+## 7) URL and deep link parity
 
 - [ ] Validate the Expo Router path structure exactly matches existing URL
   paths (no breaking changes for web deep links).
@@ -85,7 +92,7 @@ setup with Expo Router while preserving the behavior documented in
 - [ ] Verify the `ROUTE_PATH_MAP` behavior is replaced or reimplemented so that
   drawer navigation uses explicit URL paths.
 
-## 7) Tests, verification, and regression checks
+## 8) Tests, verification, and regression checks
 
 - [ ] Update unit tests to use Expo Router navigation primitives:
   - [ ] NavigationBar and NavigationDrawer specs.
@@ -101,7 +108,7 @@ setup with Expo Router while preserving the behavior documented in
   - [ ] `cypress/e2e/todo-detail-available.cy.js`
 - [ ] Verify Detox tests still pass or update them if needed.
 
-## 8) Manual verification checklist
+## 9) Manual verification checklist
 
 - [ ] Manual: Sign in, navigate via drawer to each todo list, open a detail,
   go back, and confirm list refreshes.
@@ -112,7 +119,7 @@ setup with Expo Router while preserving the behavior documented in
 - [ ] Manual: Verify category creation with `/categories/new` still works.
 - [ ] Manual: Navigate About -> Support/Privacy/Thanks links.
 
-## 9) Cleanup and documentation
+## 10) Cleanup and documentation
 
 - [ ] Remove unused React Navigation configuration and route maps that are no
   longer needed after Expo Router adoption.
