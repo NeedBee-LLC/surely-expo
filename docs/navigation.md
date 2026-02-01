@@ -15,6 +15,8 @@ Navigation is defined in `src/Navigation.js` and uses a drawer + stack pattern:
 - **Drawer navigator** (root navigator):
   - `drawerType` is `permanent` on large breakpoints and `back` on smaller
     screens (`getDrawerTypeForBreakpoint`).
+    - Per React Navigation docs: `permanent` renders an always-visible sidebar,
+      while `back` reveals the drawer behind the screen when it opens.
   - `drawerStyle` width is `220`.
   - `headerShown` is `false` at the drawer level.
   - Custom drawer content is rendered via `CustomNavigationDrawer`.
