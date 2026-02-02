@@ -1,5 +1,5 @@
 import {Drawer} from 'expo-router/drawer';
-import {Redirect} from 'expo-router';
+import {Redirect, useRouter} from 'expo-router';
 import {Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {Drawer as PaperDrawer, withTheme} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -12,6 +12,7 @@ const IS_WEB = Platform.OS === 'web';
 
 function CustomDrawerContent(props) {
   const {theme, state, navigation} = props;
+  const router = useRouter();
 
   const containerStyle = {
     backgroundColor: theme.colors.background,
@@ -24,15 +25,11 @@ function CustomDrawerContent(props) {
         {state.routes.map((route, index) => {
           const routeName = route.name;
           let label = routeName;
-          let icon;
           
           if (routeName === 'signin') {
             label = 'Sign in';
           } else if (routeName === 'signup') {
             label = 'Sign up';
-          } else if (routeName === 'about') {
-            label = 'About';
-            icon = 'information';
           }
           
           const isActive = index === state.index;
@@ -43,7 +40,6 @@ function CustomDrawerContent(props) {
               key={route.key}
               label={label}
               accessibilityLabel={label}
-              icon={icon}
               active={isActive}
               onPress={() => {
                 navigation.navigate(routeName);
@@ -51,6 +47,13 @@ function CustomDrawerContent(props) {
             />
           );
         })}
+        <PaperDrawer.Item
+          testID="about-nav-button"
+          label="About"
+          accessibilityLabel="About"
+          icon="information"
+          onPress={() => router.push('/about')}
+        />
         {IS_WEB && (
           <View style={styles.appStoreButtonContainer}>
             <DownloadOnTheAppStoreButton />
@@ -99,13 +102,6 @@ export default function AuthLayout() {
         options={{
           title: 'Sign up',
           drawerLabel: 'Sign up',
-        }}
-      />
-      <Drawer.Screen
-        name="about"
-        options={{
-          title: 'About',
-          drawerLabel: 'About',
         }}
       />
     </Drawer>

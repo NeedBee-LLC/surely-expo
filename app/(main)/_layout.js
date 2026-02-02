@@ -1,5 +1,5 @@
 import {Drawer} from 'expo-router/drawer';
-import {Redirect} from 'expo-router';
+import {Redirect, useRouter} from 'expo-router';
 import {Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {Drawer as PaperDrawer, withTheme} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -30,6 +30,7 @@ const ROUTE_LABELS = {
 function CustomDrawerContent(props) {
   const {theme, state, navigation} = props;
   const {clearToken} = useToken();
+  const router = useRouter();
 
   const containerStyle = {
     backgroundColor: theme.colors.background,
@@ -67,6 +68,13 @@ function CustomDrawerContent(props) {
             />
           );
         })}
+        <PaperDrawer.Item
+          testID="about-nav-button"
+          label="About"
+          accessibilityLabel="About"
+          icon="information"
+          onPress={() => router.push('/about')}
+        />
         <PaperDrawer.Item
           testID="sign-out-button"
           label="Sign out"
