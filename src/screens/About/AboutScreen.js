@@ -1,5 +1,5 @@
-import {useRouter} from 'expo-router';
 import Constants from 'expo-constants';
+import {useRouter} from 'expo-router';
 import {Linking, Platform, ScrollView, StyleSheet} from 'react-native';
 import {Button, Divider, Text, Title} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
