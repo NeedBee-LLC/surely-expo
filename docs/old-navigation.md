@@ -1,3 +1,6 @@
+> **Note:** This document is out of date. It describes the old React Navigation
+> approach that was used before the migration to Expo Router.
+
 # Navigation behavior (React Navigation)
 
 This document captures the current navigation behavior to support a future
