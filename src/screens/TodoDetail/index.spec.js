@@ -1,3 +1,4 @@
+import {useLocalSearchParams, useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -7,6 +8,11 @@ import {
 import nock from 'nock';
 import {TokenProvider} from '../../data/token';
 import TodoDetail from './index';
+
+jest.mock('expo-router', () => ({
+  useRouter: jest.fn(),
+  useLocalSearchParams: jest.fn(),
+}));
 
 describe('TodoDetail', () => {
   function providers(children) {
@@ -36,25 +42,29 @@ describe('TodoDetail', () => {
     };
 
     it('shows an error message', async () => {
+      useRouter.mockReturnValue({back: jest.fn(), canGoBack: jest.fn()});
+      useLocalSearchParams.mockReturnValue({id: todoId});
+
       nock('http://localhost:3000')
         .get(`/todos/${todoId}?include=category`)
         .reply(500, {});
 
-      const route = {params: {id: todoId}};
-      render(providers(<TodoDetail route={route} />));
+      render(providers(<TodoDetail />));
 
       await screen.findByText('An error occurred loading the todo.');
     });
 
     it('clears the error upon successful retry', async () => {
+      useRouter.mockReturnValue({back: jest.fn(), canGoBack: jest.fn()});
+      useLocalSearchParams.mockReturnValue({id: todoId});
+
       nock('http://localhost:3000')
         .get(`/todos/${todoId}?include=category`)
         .reply(500, {})
         .get(`/todos/${todoId}?include=category`)
         .reply(200, {data: todo});
 
-      const route = {params: {id: todoId}};
-      render(providers(<TodoDetail route={route} />));
+      render(providers(<TodoDetail />));
 
       await screen.findByText('An error occurred loading the todo.');
 
@@ -98,8 +108,8 @@ describe('TodoDetail', () => {
         goBack: jest.fn(),
       };
 
-      const route = {params: {id: todo.id}};
-      render(providers(<TodoDetail route={route} navigation={navigation} />));
+      
+      render(providers(<TodoDetail />));
 
       return {
         mockServer,
@@ -131,7 +141,7 @@ describe('TodoDetail', () => {
 
         fireEvent.press(await screen.findByRole('button', {name: 'Complete'}));
 
-        await waitFor(() => expect(navigation.goBack).toHaveBeenCalled());
+        await waitFor(() => expect(back).toHaveBeenCalled());
         mockServer.done();
       });
 
@@ -143,7 +153,7 @@ describe('TodoDetail', () => {
         fireEvent.press(await screen.findByRole('button', {name: 'Complete'}));
 
         await screen.findByText('An error occurred marking the todo complete.');
-        expect(navigation.goBack).not.toHaveBeenCalled();
+        expect(back).not.toHaveBeenCalled();
       });
     });
 
@@ -162,7 +172,7 @@ describe('TodoDetail', () => {
 
         fireEvent.press(await screen.findByRole('button', {name: 'Delete'}));
 
-        await waitFor(() => expect(navigation.goBack).toHaveBeenCalled());
+        await waitFor(() => expect(back).toHaveBeenCalled());
       });
 
       it('shows a message when there is an error deleting the todo', async () => {
@@ -173,7 +183,7 @@ describe('TodoDetail', () => {
         fireEvent.press(await screen.findByRole('button', {name: 'Delete'}));
 
         await screen.findByText('An error occurred deleting the todo.');
-        expect(navigation.goBack).not.toHaveBeenCalled();
+        expect(back).not.toHaveBeenCalled();
       });
     });
 
@@ -193,7 +203,7 @@ describe('TodoDetail', () => {
         fireEvent.press(await screen.findByRole('button', {name: 'Defer'}));
         fireEvent.press(await screen.findByRole('button', {name: /1 Day/i}));
 
-        await waitFor(() => expect(navigation.goBack).toHaveBeenCalled());
+        await waitFor(() => expect(back).toHaveBeenCalled());
       });
 
       it('shows a message when an error occurs deferring the todo', async () => {
@@ -205,7 +215,7 @@ describe('TodoDetail', () => {
         fireEvent.press(await screen.findByRole('button', {name: /1 Day/i}));
 
         await screen.findByText('An error occurred deferring the todo.');
-        expect(navigation.goBack).not.toHaveBeenCalled();
+        expect(back).not.toHaveBeenCalled();
       });
     });
   });
@@ -241,8 +251,8 @@ describe('TodoDetail', () => {
         goBack: jest.fn(),
       };
 
-      const route = {params: {id: todo.id}};
-      render(providers(<TodoDetail route={route} navigation={navigation} />));
+      
+      render(providers(<TodoDetail />));
 
       return {
         mockServer,
@@ -271,7 +281,7 @@ describe('TodoDetail', () => {
       fireEvent.press(await screen.findByRole('button', {name: 'Uncomplete'}));
 
       await waitFor(() => expect(mockServer.isDone()).toBe(true));
-      expect(navigation.goBack).not.toHaveBeenCalled();
+      expect(back).not.toHaveBeenCalled();
     });
 
     it('shows a message when there is an error uncompleting the todo', async () => {
@@ -316,8 +326,8 @@ describe('TodoDetail', () => {
         goBack: jest.fn(),
       };
 
-      const route = {params: {id: todo.id}};
-      render(providers(<TodoDetail route={route} navigation={navigation} />));
+      
+      render(providers(<TodoDetail />));
 
       return {
         mockServer,
@@ -347,7 +357,7 @@ describe('TodoDetail', () => {
       fireEvent.press(await screen.findByRole('button', {name: 'Undelete'}));
 
       await waitFor(() => expect(mockServer.isDone()).toBe(true));
-      expect(navigation.goBack).not.toHaveBeenCalled();
+      expect(back).not.toHaveBeenCalled();
     });
 
     it('shows a message when there is an error undeleting the todo', async () => {

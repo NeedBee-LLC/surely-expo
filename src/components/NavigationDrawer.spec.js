@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -11,17 +11,16 @@ import {safeAreaMetrics} from '../testUtils';
 import NavigationDrawer from './NavigationDrawer';
 
 jest.mock('../data/token', () => ({useToken: jest.fn()}));
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useLinkTo: jest.fn(),
+jest.mock('expo-router', () => ({
+  useRouter: jest.fn(),
 }));
 
 describe('NavigationDrawer', () => {
   const ICON_BY_ROUTE = {};
 
   it('allows navigating to the passed-in routes', () => {
-    const linkTo = jest.fn().mockName('linkTo');
-    useLinkTo.mockReturnValue(linkTo);
+    const push = jest.fn().mockName('push');
+    useRouter.mockReturnValue(push);
     
     const route = {
       name: 'Available',
@@ -45,13 +44,13 @@ describe('NavigationDrawer', () => {
 
     fireEvent.press(screen.getByText(route.name));
 
-    expect(linkTo).toHaveBeenCalledWith('/todos/available');
+    expect(push).toHaveBeenCalledWith('/todos/available');
   });
 
   describe('when signed in', () => {
     it('allows signing out', async () => {
-      const linkTo = jest.fn().mockName('linkTo');
-      useLinkTo.mockReturnValue(linkTo);
+      const push = jest.fn().mockName('push');
+      useRouter.mockReturnValue(push);
       
       const state = {
         routes: [],
@@ -76,7 +75,7 @@ describe('NavigationDrawer', () => {
       expect(clearToken).toHaveBeenCalledWith();
 
       await waitFor(() =>
-        expect(linkTo).toHaveBeenCalledWith('/signin'),
+        expect(push).toHaveBeenCalledWith('/signin'),
       );
     });
   });
