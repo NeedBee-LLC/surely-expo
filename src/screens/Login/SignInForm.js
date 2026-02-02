@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {StyleSheet} from 'react-native';
 import {Button, TextInput, Title} from 'react-native-paper';
 import {useStyleQueries} from 'react-native-style-queries';
@@ -15,7 +15,7 @@ import sharedStyles from '../../sharedStyles';
 
 export default function SignInForm() {
   const {setToken} = useToken();
-  const linkTo = useLinkTo();
+  const router = useRouter();
   const responsiveStyles = useStyleQueries(sharedStyleQueries);
   const onLogIn = ({username, password}) =>
     oauthLogin({
@@ -58,7 +58,7 @@ export default function SignInForm() {
           <Button
             mode="outlined"
             testID="sign-up-button"
-            onPress={() => linkTo('/signup')}
+            onPress={() => router.push('/signup')}
             style={responsiveStyles.button}
             accessibilityLabel="Sign up"
           >

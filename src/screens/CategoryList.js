@@ -1,4 +1,5 @@
-import {useFocusEffect, useLinkTo} from '@react-navigation/native';
+import {useFocusEffect} from 'expo-router';
+import {useRouter} from 'expo-router';
 import sortBy from 'lodash/sortBy';
 import {useCallback, useRef, useState} from 'react';
 import {FlatList, Platform, StyleSheet, View} from 'react-native';
@@ -23,13 +24,13 @@ export default function CategoryList() {
   const [showLoadingIndicator, setShowLoadingIndicator] = useState(true);
   const [categories, setCategories] = useState(null);
   const categoryClient = useCategories();
-  const linkTo = useLinkTo();
+  const router = useRouter();
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const onPressCategory = category => linkTo(`/categories/${category.id}`);
+  const onPressCategory = category => router.push(`/categories/${category.id}`);
 
-  const handleAdd = () => linkTo('/categories/new');
+  const handleAdd = () => router.push('/categories/new');
 
   const loadFromServer = useCallback(async () => {
     setErrorMessage(null);
