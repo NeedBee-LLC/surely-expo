@@ -13,16 +13,19 @@ const IS_WEB = Platform.OS === 'web';
 
 export default function AboutScreen() {
   const router = useRouter();
+  const version = Constants.expoConfig?.version || Constants.manifest?.version || '1.0.0';
+  const buildNumber = Constants.expoConfig?.ios?.buildNumber || 
+                      Constants.manifest?.ios?.buildNumber || 
+                      Constants.platform?.ios?.buildNumber;
+  
   return (
     <ScreenBackground>
       <ScrollView contentContainerStyle={sharedStyles.bodyPadding}>
         <SafeAreaView edges={['left', 'right', 'bottom']}>
           <CenterColumn>
             <Title style={styles.title}>
-              Surely {Constants.manifest.version}{' '}
-              {Constants.platform?.ios
-                ? `(${Constants.platform.ios.buildNumber})`
-                : ''}
+              Surely {version}{' '}
+              {buildNumber ? `(${buildNumber})` : ''}
             </Title>
             <VerticalButtonGroup>
               <Button
