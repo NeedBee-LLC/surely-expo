@@ -475,7 +475,7 @@ Verify all URL paths work correctly:
 ### Update Documentation
 
 - [ ] Update `CLAUDE.md` navigation section
-- [ ] Update `docs/navigation.md` to reflect Expo Router architecture
+- [ ] Rename `docs/navigation.md` to `docs/old-navigation.md` and add a note that it documents the old approach
 - [ ] Update `README.md` if navigation instructions exist
 
 ### Code Quality
