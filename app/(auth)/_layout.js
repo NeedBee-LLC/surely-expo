@@ -24,8 +24,16 @@ function CustomDrawerContent(props) {
         {state.routes.map((route, index) => {
           const routeName = route.name;
           let label = routeName;
-          if (routeName === 'signin') label = 'Sign in';
-          if (routeName === 'signup') label = 'Sign up';
+          let icon;
+          
+          if (routeName === 'signin') {
+            label = 'Sign in';
+          } else if (routeName === 'signup') {
+            label = 'Sign up';
+          } else if (routeName === 'about') {
+            label = 'About';
+            icon = 'information';
+          }
           
           const isActive = index === state.index;
 
@@ -35,6 +43,7 @@ function CustomDrawerContent(props) {
               key={route.key}
               label={label}
               accessibilityLabel={label}
+              icon={icon}
               active={isActive}
               onPress={() => {
                 navigation.navigate(routeName);
@@ -90,6 +99,13 @@ export default function AuthLayout() {
         options={{
           title: 'Sign up',
           drawerLabel: 'Sign up',
+        }}
+      />
+      <Drawer.Screen
+        name="about"
+        options={{
+          title: 'About',
+          drawerLabel: 'About',
         }}
       />
     </Drawer>
