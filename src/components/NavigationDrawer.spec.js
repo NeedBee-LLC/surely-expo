@@ -20,7 +20,7 @@ describe('NavigationDrawer', () => {
 
   it('allows navigating to the passed-in routes', () => {
     const push = jest.fn().mockName('push');
-    useRouter.mockReturnValue(push);
+    useRouter.mockReturnValue({push});
     
     const route = {
       name: 'Available',
@@ -50,7 +50,7 @@ describe('NavigationDrawer', () => {
   describe('when signed in', () => {
     it('allows signing out', async () => {
       const push = jest.fn().mockName('push');
-      useRouter.mockReturnValue(push);
+      useRouter.mockReturnValue({push});
       
       const state = {
         routes: [],

@@ -16,7 +16,7 @@ jest.mock('expo-router', () => ({
 describe('SignUpForm', () => {
   function setUp() {
     const push = jest.fn();
-    useRouter.mockReturnValue(push);
+    useRouter.mockReturnValue({push});
 
     render(
       <TokenProvider loadToken={false}>
