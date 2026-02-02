@@ -1,7 +1,8 @@
 import {Drawer} from 'expo-router/drawer';
 import {Redirect} from 'expo-router';
-import {Platform, StyleSheet, View} from 'react-native';
+import {Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {Drawer as PaperDrawer, withTheme} from 'react-native-paper';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import {large, useBreakpoint} from '../../src/breakpoints';
 import {useToken} from '../../src/data/token';
 import DownloadOnTheAppStoreButton from '../../src/components/DownloadOnTheAppStoreButton';
@@ -30,7 +31,7 @@ function CustomDrawerContent(props) {
   const {theme, state, navigation} = props;
   const {clearToken} = useToken();
 
-  const scrollViewStyle = {
+  const containerStyle = {
     backgroundColor: theme.colors.background,
     flex: 1,
   };
@@ -44,38 +45,40 @@ function CustomDrawerContent(props) {
   const activeRouteName = state.routeNames[state.index];
 
   return (
-    <View style={scrollViewStyle}>
-      {state.routes.map((route, index) => {
-        const routeName = route.name;
-        const label = ROUTE_LABELS[routeName] || routeName;
-        const icon = ICON_BY_ROUTE[routeName];
-        const isActive = index === state.index;
+    <SafeAreaView style={containerStyle} edges={['top', 'left', 'right']}>
+      <ScrollView>
+        {state.routes.map((route, index) => {
+          const routeName = route.name;
+          const label = ROUTE_LABELS[routeName] || routeName;
+          const icon = ICON_BY_ROUTE[routeName];
+          const isActive = index === state.index;
 
-        return (
-          <PaperDrawer.Item
-            testID={`${label.toLowerCase()}-nav-button`}
-            key={route.key}
-            label={label}
-            accessibilityLabel={label}
-            icon={icon}
-            active={isActive}
-            onPress={() => {
-              navigation.navigate(routeName);
-            }}
-          />
-        );
-      })}
-      <PaperDrawer.Item
-        testID="sign-out-button"
-        label="Sign out"
-        onPress={signOut}
-      />
-      {IS_WEB && (
-        <View style={styles.appStoreButtonContainer}>
-          <DownloadOnTheAppStoreButton />
-        </View>
-      )}
-    </View>
+          return (
+            <PaperDrawer.Item
+              testID={`${label.toLowerCase()}-nav-button`}
+              key={route.key}
+              label={label}
+              accessibilityLabel={label}
+              icon={icon}
+              active={isActive}
+              onPress={() => {
+                navigation.navigate(routeName);
+              }}
+            />
+          );
+        })}
+        <PaperDrawer.Item
+          testID="sign-out-button"
+          label="Sign out"
+          onPress={signOut}
+        />
+        {IS_WEB && (
+          <View style={styles.appStoreButtonContainer}>
+            <DownloadOnTheAppStoreButton />
+          </View>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
