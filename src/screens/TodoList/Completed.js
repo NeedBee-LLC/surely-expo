@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {useCallback} from 'react';
 import {useTodos} from '../../data/todos';
 import {groupByDate} from '../../utils/grouping';
@@ -6,7 +6,7 @@ import TodoListScreen from './TodoListScreen';
 
 export default function CompletedTodos() {
   const todoClient = useTodos();
-  const linkTo = useLinkTo();
+  const router = useRouter();
 
   const loadCompletedTodos = useCallback(
     ({searchText, pageNumber}) =>
@@ -28,7 +28,7 @@ export default function CompletedTodos() {
     [todoClient],
   );
 
-  const goToCompletedTodo = todo => linkTo(`/todos/completed/${todo.id}`);
+  const goToCompletedTodo = todo => router.push(`/todos/completed/${todo.id}`);
 
   return (
     <TodoListScreen

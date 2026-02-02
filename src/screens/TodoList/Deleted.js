@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {useCallback} from 'react';
 import {useTodos} from '../../data/todos';
 import {groupByDate} from '../../utils/grouping';
@@ -6,7 +6,7 @@ import TodoListScreen from './TodoListScreen';
 
 export default function DeletedTodos() {
   const todoClient = useTodos();
-  const linkTo = useLinkTo();
+  const router = useRouter();
 
   const loadDeletedTodos = useCallback(
     ({searchText, pageNumber}) =>
@@ -26,7 +26,7 @@ export default function DeletedTodos() {
     [todoClient],
   );
 
-  const goToDeletedTodo = todo => linkTo(`/todos/deleted/${todo.id}`);
+  const goToDeletedTodo = todo => router.push(`/todos/deleted/${todo.id}`);
 
   return (
     <TodoListScreen

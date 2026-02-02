@@ -1,5 +1,5 @@
-import {useLinkTo} from '@react-navigation/native';
 import {addDays, startOfDay} from 'date-fns';
+import {useRouter} from 'expo-router';
 import {useCallback} from 'react';
 import {useTodos} from '../../data/todos';
 import {groupByCategory} from '../../utils/grouping';
@@ -10,7 +10,7 @@ const tomorrow = now => addDays(today(now), 1);
 
 export default function AvailableTodos() {
   const todoClient = useTodos();
-  const linkTo = useLinkTo();
+  const router = useRouter();
 
   const loadTomorrowTodos = useCallback(
     () =>
@@ -27,7 +27,7 @@ export default function AvailableTodos() {
       attributes: {name, 'deferred-until': tomorrow(new Date())},
     });
 
-  const goToTomorrowTodo = todo => linkTo(`/todos/tomorrow/${todo.id}`);
+  const goToTomorrowTodo = todo => router.push(`/todos/tomorrow/${todo.id}`);
 
   return (
     <TodoListScreen
