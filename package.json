@@ -33,7 +33,7 @@
     "axios": "^1.13.4",
     "date-fns": "4.1.0",
     "eslint-plugin-prettier": "^5.5.5",
-    "expo": "54.0.29",
+    "expo": "54.0.33",
     "expo-constants": "~18.0.12",
     "expo-dev-client": "~6.0.20",
     "expo-linking": "~8.0.10",
