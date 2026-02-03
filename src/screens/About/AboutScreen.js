@@ -19,9 +19,9 @@ export default function AboutScreen() {
         <SafeAreaView edges={['left', 'right', 'bottom']}>
           <CenterColumn>
             <Title style={styles.title}>
-              Surely {Constants.manifest.version}{' '}
-              {Constants.platform?.ios
-                ? `(${Constants.platform.ios.buildNumber})`
+              Surely {Constants.expoConfig?.version}{' '}
+              {Constants.expoConfig?.ios
+                ? `(${Constants.expoConfig.ios.buildNumber})`
                 : ''}
             </Title>
             <VerticalButtonGroup>
