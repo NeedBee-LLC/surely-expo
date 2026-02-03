@@ -109,14 +109,31 @@ We will use the Maestro MCP server to automate screenshot capture and documentat
 
 ### Phase 1: Setup and Configuration
 
-- [ ] **List available Maestro MCP tools** to understand capabilities
-- [ ] **Configure iOS Simulator devices**:
-  - iPad Pro 11" for large breakpoint testing
-  - iPhone 17 for medium breakpoint testing
-- [ ] **Ensure Surely app is installed on simulator**:
+- [x] **List available Maestro MCP tools** to understand capabilities
+  - **Available tools:**
+    - `list_devices` - List all available iOS simulators and Android emulators
+    - `start_device` - Start a device by ID or platform (ios/android)
+    - `launch_app` - Launch an application by bundle ID on a device
+    - `take_screenshot` - Capture screenshot from current device screen
+    - `tap_on` - Tap on UI elements by text, id, or other selectors
+    - `input_text` - Input text into the currently focused text field
+    - `inspect_view_hierarchy` - Get nested view hierarchy in CSV format with element bounds and properties
+    - `back` - Press the back button on the device
+    - `stop_app` - Stop a running application
+    - `run_flow` - Execute Maestro flow files
+    - `run_flow_files` - Execute multiple Maestro flow files
+    - `check_flow_syntax` - Validate Maestro flow syntax
+    - `query_docs` - Query Maestro documentation
+    - `cheat_sheet` - Get Maestro command reference
+- [x] **Configure iOS Simulator devices**:
+  - **iPad Pro 11-inch (M5)** - iOS 26.2 for large breakpoint testing
+    - Device ID: `C194FDF9-2F37-4E56-99E6-A3D8161E1A30`
+  - **iPhone 17** - iOS 26.2 for medium breakpoint testing
+    - Device ID: `E24A7189-E769-4EE2-9B00-18E1D66014BF`
+- [x] **Ensure Surely app is installed on simulator**:
   - Check if the app is installed on the simulator
   - If not installed, run `yarn ios` while the simulator is running to build and install it
-- [ ] **Confirm test data**:
+- [x] **Confirm test data**:
   - Test account: `example@example.com` (password: `password`)
   - Verify account has variety of data (available todos, completed todos, future todos, categories, etc.)
   - Ensure data is suitable for comprehensive screenshot documentation
