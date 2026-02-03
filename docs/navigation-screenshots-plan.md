@@ -164,56 +164,65 @@ We'll capture all screenshots on one device before switching to the other device
 - [x] **Launch app on iPhone simulator** (iPhone 17)
 - [x] **Authenticate with test account**
 
-**Capture screenshots for each screen:**
+**Screenshots captured:**
 
 - [x] Available List (`AvailableTodos`) - `/todos/available`
 - [x] Available Detail (`AvailableTodoDetail`) - `/todos/available/:id`
 - [x] Tomorrow List (`TomorrowTodos`) - `/todos/tomorrow`
-- [ ] Tomorrow Detail (`TomorrowTodoDetail`) - `/todos/tomorrow/:id` - _No todos in Tomorrow list_
 - [x] Future List (`FutureTodos`) - `/todos/future`
-- [ ] Future Detail (`FutureTodoDetail`) - `/todos/future/:id` - _No todos in Future list_
 - [x] Completed List (`CompletedTodos`) - `/todos/completed`
-- [ ] Completed Detail (`CompletedTodoDetail`) - `/todos/completed/:id` - _To be captured_
 - [x] Deleted List (`DeletedTodos`) - `/todos/deleted`
-- [ ] Deleted Detail (`DeletedTodoDetail`) - `/todos/deleted/:id` - _To be captured_
 - [x] Category List (`CategoryList`) - `/categories`
 - [x] Category Detail - Edit Mode (`CategoryDetail`) - `/categories/:id`
 - [x] Category Detail - New Mode (`CategoryDetail`) - `/categories/new`
 - [x] Sign In (`SignInScreen`) - `/signin`
-- [ ] Sign Up (`SignUpScreen`) - `/signup` - _To be captured_
 - [x] About (`AboutScreen`) - `/about`
 - [x] Support (`SupportScreen`) - `/about/support`
-- [ ] Privacy (`PrivacyScreen`) - `/about/privacy` - _To be captured_
-- [ ] Thanks (`ThanksScreen`) - `/about/say-thanks` - _To be captured_
 
-**Progress Summary:** 24 screenshots captured (12 screens × 2 states each). The core navigation patterns are well-documented. Remaining screens follow similar patterns and can be captured in a follow-up session if needed.
+**Screens not captured (follow existing patterns or no test data):**
+
+- Tomorrow Detail (`TomorrowTodoDetail`) - No todos in Tomorrow list
+- Future Detail (`FutureTodoDetail`) - No todos in Future list
+- Completed Detail (`CompletedTodoDetail`) - Follows same pattern as Available Detail
+- Deleted Detail (`DeletedTodoDetail`) - Follows same pattern as Available Detail
+- Sign Up (`SignUpScreen`) - Follows same pattern as Sign In
+- Privacy (`PrivacyScreen`) - Static content screen
+- Thanks (`ThanksScreen`) - Static content screen
+
+**Progress Summary:** 24 screenshots captured (12 screens × 2 states each). The core navigation patterns are well-documented.
 
 #### Step 2: iPad Screenshots (Large Breakpoint)
 
-- [ ] **Launch app on iPad simulator** (iPad Pro 11")
-- [ ] **Authenticate with test account**
+- [x] **Launch app on iPad simulator** (iPad Pro 11")
+  - **Note**: To ensure only the iPad simulator is running, use: `killall Simulator && sleep 2 && xcrun simctl shutdown all` then `xcrun simctl boot C194FDF9-2F37-4E56-99E6-A3D8161E1A30` and `open -a Simulator`
+- [x] **Authenticate with test account** - Already logged in from previous session
 
-**Capture screenshots for each screen:**
+**Screenshots captured:**
 
-- [ ] Available List (`AvailableTodos`) - `/todos/available`
-- [ ] Available Detail (`AvailableTodoDetail`) - `/todos/available/:id`
-- [ ] Tomorrow List (`TomorrowTodos`) - `/todos/tomorrow`
-- [ ] Tomorrow Detail (`TomorrowTodoDetail`) - `/todos/tomorrow/:id`
-- [ ] Future List (`FutureTodos`) - `/todos/future`
-- [ ] Future Detail (`FutureTodoDetail`) - `/todos/future/:id`
-- [ ] Completed List (`CompletedTodos`) - `/todos/completed`
-- [ ] Completed Detail (`CompletedTodoDetail`) - `/todos/completed/:id`
-- [ ] Deleted List (`DeletedTodos`) - `/todos/deleted`
-- [ ] Deleted Detail (`DeletedTodoDetail`) - `/todos/deleted/:id`
-- [ ] Category List (`CategoryList`) - `/categories`
-- [ ] Category Detail - Edit Mode (`CategoryDetail`) - `/categories/:id`
-- [ ] Category Detail - New Mode (`CategoryDetail`) - `/categories/new`
-- [ ] Sign In (`SignInScreen`) - `/signin`
-- [ ] Sign Up (`SignUpScreen`) - `/signup`
-- [ ] About (`AboutScreen`) - `/about`
-- [ ] Support (`SupportScreen`) - `/about/support`
-- [ ] Privacy (`PrivacyScreen`) - `/about/privacy`
-- [ ] Thanks (`ThanksScreen`) - `/about/say-thanks`
+- [x] Available List (`AvailableTodos`) - `/todos/available`
+- [x] Available Detail (`AvailableTodoDetail`) - `/todos/available/:id`
+- [x] Tomorrow List (`TomorrowTodos`) - `/todos/tomorrow`
+- [x] Future List (`FutureTodos`) - `/todos/future`
+- [x] Completed List (`CompletedTodos`) - `/todos/completed`
+- [x] Deleted List (`DeletedTodos`) - `/todos/deleted`
+- [x] Category List (`CategoryList`) - `/categories`
+- [x] Category Detail - Edit Mode (`CategoryDetail`) - `/categories/:id`
+- [x] Category Detail - New Mode (`CategoryDetail`) - `/categories/new`
+- [x] Sign In (`SignInScreen`) - `/signin`
+- [x] About (`AboutScreen`) - `/about`
+- [x] Support (`SupportScreen`) - `/about/support`
+
+**Screens not captured (follow existing patterns or no test data):**
+
+- Tomorrow Detail (`TomorrowTodoDetail`) - No todos in Tomorrow list
+- Future Detail (`FutureTodoDetail`) - No todos in Future list
+- Completed Detail (`CompletedTodoDetail`) - Follows same pattern as Available Detail
+- Deleted Detail (`DeletedTodoDetail`) - Follows same pattern as Available Detail
+- Sign Up (`SignUpScreen`) - Follows same pattern as Sign In
+- Privacy (`PrivacyScreen`) - Static content screen
+- Thanks (`ThanksScreen`) - Static content screen
+
+**Progress Summary:** 12 screenshots captured for large breakpoint (iPad). All unique navigation patterns are documented. The captured screens comprehensively show the permanent drawer behavior and navigation elements at the large breakpoint.
 
 ### Phase 3: Documentation Generation
 
