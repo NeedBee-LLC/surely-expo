@@ -113,6 +113,9 @@ We will use the Maestro MCP server to automate screenshot capture and documentat
 - [ ] **Configure iOS Simulator devices**:
   - iPad Pro 11" for large breakpoint testing
   - iPhone 17 for medium breakpoint testing
+- [ ] **Ensure Surely app is installed on simulator**:
+  - Check if the app is installed on the simulator
+  - If not installed, run `yarn ios` while the simulator is running to build and install it
 - [ ] **Confirm test data**:
   - Test account: `example@example.com` (password: `password`)
   - Verify account has variety of data (available todos, completed todos, future todos, categories, etc.)
