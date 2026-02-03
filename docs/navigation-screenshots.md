@@ -54,6 +54,17 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 - Sign up
 - About
 
+### Drawer Behavior (Universal)
+
+The drawer behavior is consistent across all screens in the app:
+
+| Breakpoint | Type        | Behavior                  |
+| ---------- | ----------- | ------------------------- |
+| Large      | Permanent   | Always visible as sidebar |
+| Medium     | Collapsible | Toggle via hamburger menu |
+
+**Note:** The drawer items shown depend on authentication state (see "Drawer Items" section above).
+
 ### Screenshot Devices
 
 - **Large Breakpoint**: iPad Pro 11-inch (M5) - iOS 18.2
@@ -76,13 +87,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Available | No          | No             |
 | Medium     | Available | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -91,13 +95,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Available List - Medium Closed](./navigation-screenshots/medium/available-list-medium-closed.png)
-
-**Drawer Open:**
-
-![Available List - Medium Open](./navigation-screenshots/medium/available-list-medium-open.png)
+| Drawer Closed                                                                                       | Drawer Open                                                                                     |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| ![Available List - Medium Closed](./navigation-screenshots/medium/available-list-medium-closed.png) | ![Available List - Medium Open](./navigation-screenshots/medium/available-list-medium-open.png) |
 
 #### Navigation Elements
 
@@ -128,13 +128,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Todo title | Yes         | No             |
 | Medium     | Todo title | Yes         | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -143,13 +136,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Available Detail - Medium Closed](./navigation-screenshots/medium/available-detail-medium-closed.png)
-
-**Drawer Open:**
-
-![Available Detail - Medium Open](./navigation-screenshots/medium/available-detail-medium-open.png)
+| Drawer Closed                                                                                           | Drawer Open                                                                                         |
+| ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| ![Available Detail - Medium Closed](./navigation-screenshots/medium/available-detail-medium-closed.png) | ![Available Detail - Medium Open](./navigation-screenshots/medium/available-detail-medium-open.png) |
 
 #### Navigation Elements
 
@@ -182,13 +171,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Tomorrow | No          | No             |
 | Medium     | Tomorrow | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -197,13 +179,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Tomorrow List - Medium Closed](./navigation-screenshots/medium/tomorrow-list-medium-closed.png)
-
-**Drawer Open:**
-
-![Tomorrow List - Medium Open](./navigation-screenshots/medium/tomorrow-list-medium-open.png)
+| Drawer Closed                                                                                     | Drawer Open                                                                                   |
+| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| ![Tomorrow List - Medium Closed](./navigation-screenshots/medium/tomorrow-list-medium-closed.png) | ![Tomorrow List - Medium Open](./navigation-screenshots/medium/tomorrow-list-medium-open.png) |
 
 #### Navigation Elements
 
@@ -235,13 +213,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Future | No          | No             |
 | Medium     | Future | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -250,13 +221,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Future List - Medium Closed](./navigation-screenshots/medium/future-list-medium-closed.png)
-
-**Drawer Open:**
-
-![Future List - Medium Open](./navigation-screenshots/medium/future-list-medium-open.png)
+| Drawer Closed                                                                                 | Drawer Open                                                                               |
+| --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| ![Future List - Medium Closed](./navigation-screenshots/medium/future-list-medium-closed.png) | ![Future List - Medium Open](./navigation-screenshots/medium/future-list-medium-open.png) |
 
 #### Navigation Elements
 
@@ -288,13 +255,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Completed | No          | No             |
 | Medium     | Completed | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -303,13 +263,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Completed List - Medium Closed](./navigation-screenshots/medium/completed-list-medium-closed.png)
-
-**Drawer Open:**
-
-![Completed List - Medium Open](./navigation-screenshots/medium/completed-list-medium-open.png)
+| Drawer Closed                                                                                       | Drawer Open                                                                                     |
+| --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| ![Completed List - Medium Closed](./navigation-screenshots/medium/completed-list-medium-closed.png) | ![Completed List - Medium Open](./navigation-screenshots/medium/completed-list-medium-open.png) |
 
 #### Navigation Elements
 
@@ -340,13 +296,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Deleted | No          | No             |
 | Medium     | Deleted | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -355,13 +304,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Deleted List - Medium Closed](./navigation-screenshots/medium/deleted-list-medium-closed.png)
-
-**Drawer Open:**
-
-![Deleted List - Medium Open](./navigation-screenshots/medium/deleted-list-medium-open.png)
+| Drawer Closed                                                                                   | Drawer Open                                                                                 |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| ![Deleted List - Medium Closed](./navigation-screenshots/medium/deleted-list-medium-closed.png) | ![Deleted List - Medium Open](./navigation-screenshots/medium/deleted-list-medium-open.png) |
 
 #### Navigation Elements
 
@@ -392,13 +337,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Categories | No          | No             |
 | Medium     | Categories | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -407,13 +345,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Category List - Medium Closed](./navigation-screenshots/medium/category-list-medium-closed.png)
-
-**Drawer Open:**
-
-![Category List - Medium Open](./navigation-screenshots/medium/category-list-medium-open.png)
+| Drawer Closed                                                                                     | Drawer Open                                                                                   |
+| ------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| ![Category List - Medium Closed](./navigation-screenshots/medium/category-list-medium-closed.png) | ![Category List - Medium Open](./navigation-screenshots/medium/category-list-medium-open.png) |
 
 #### Navigation Elements
 
@@ -443,13 +377,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Edit Category | Yes         | No             |
 | Medium     | Edit Category | Yes         | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -458,13 +385,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Category Detail Edit - Medium Closed](./navigation-screenshots/medium/category-detail-edit-medium-closed.png)
-
-**Drawer Open:**
-
-![Category Detail Edit - Medium Open](./navigation-screenshots/medium/category-detail-edit-medium-open.png)
+| Drawer Closed                                                                                                   | Drawer Open                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| ![Category Detail Edit - Medium Closed](./navigation-screenshots/medium/category-detail-edit-medium-closed.png) | ![Category Detail Edit - Medium Open](./navigation-screenshots/medium/category-detail-edit-medium-open.png) |
 
 #### Navigation Elements
 
@@ -497,13 +420,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | New Category | Yes         | No             |
 | Medium     | New Category | Yes         | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                  |
-| ---------- | ----------- | ------------------------- |
-| Large      | Permanent   | Always visible as sidebar |
-| Medium     | Collapsible | Toggle via hamburger menu |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -512,13 +428,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Category Detail New - Medium Closed](./navigation-screenshots/medium/category-detail-new-medium-closed.png)
-
-**Drawer Open:**
-
-![Category Detail New - Medium Open](./navigation-screenshots/medium/category-detail-new-medium-open.png)
+| Drawer Closed                                                                                                 | Drawer Open                                                                                               |
+| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| ![Category Detail New - Medium Closed](./navigation-screenshots/medium/category-detail-new-medium-closed.png) | ![Category Detail New - Medium Open](./navigation-screenshots/medium/category-detail-new-medium-open.png) |
 
 #### Navigation Elements
 
@@ -550,13 +462,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Sign In | No          | No             |
 | Medium     | Sign In | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                                                    |
-| ---------- | ----------- | ----------------------------------------------------------- |
-| Large      | Permanent   | Always visible with limited items (Sign in, Sign up, About) |
-| Medium     | Collapsible | Toggle via hamburger menu                                   |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -565,13 +470,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Sign In - Medium Closed](./navigation-screenshots/medium/sign-in-medium-closed.png)
-
-**Drawer Open:**
-
-![Sign In - Medium Open](./navigation-screenshots/medium/sign-in-medium-open.png)
+| Drawer Closed                                                                         | Drawer Open                                                                       |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ![Sign In - Medium Closed](./navigation-screenshots/medium/sign-in-medium-closed.png) | ![Sign In - Medium Open](./navigation-screenshots/medium/sign-in-medium-open.png) |
 
 #### Navigation Elements
 
@@ -604,13 +505,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | About | No          | No             |
 | Medium     | About | No          | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                                    |
-| ---------- | ----------- | ------------------------------------------- |
-| Large      | Permanent   | Always visible (items depend on auth state) |
-| Medium     | Collapsible | Toggle via hamburger menu                   |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -619,13 +513,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![About - Medium Closed](./navigation-screenshots/medium/about-medium-closed.png)
-
-**Drawer Open:**
-
-![About - Medium Open](./navigation-screenshots/medium/about-medium-open.png)
+| Drawer Closed                                                                     | Drawer Open                                                                   |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| ![About - Medium Closed](./navigation-screenshots/medium/about-medium-closed.png) | ![About - Medium Open](./navigation-screenshots/medium/about-medium-open.png) |
 
 #### Navigation Elements
 
@@ -658,13 +548,6 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 | Large      | Support | Yes         | No             |
 | Medium     | Support | Yes         | Yes            |
 
-#### Drawer Behavior
-
-| Breakpoint | Type        | Behavior                                    |
-| ---------- | ----------- | ------------------------------------------- |
-| Large      | Permanent   | Always visible (items depend on auth state) |
-| Medium     | Collapsible | Toggle via hamburger menu                   |
-
 #### Screenshots
 
 ##### Large Breakpoint (≥ 600px)
@@ -673,13 +556,9 @@ Each screen displays a header bar (see `src/components/NavigationBar.js`) with:
 
 ##### Medium Breakpoint (< 600px)
 
-**Drawer Closed:**
-
-![Support - Medium Closed](./navigation-screenshots/medium/support-medium-closed.png)
-
-**Drawer Open:**
-
-![Support - Medium Open](./navigation-screenshots/medium/support-medium-open.png)
+| Drawer Closed                                                                         | Drawer Open                                                                       |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ![Support - Medium Closed](./navigation-screenshots/medium/support-medium-closed.png) | ![Support - Medium Open](./navigation-screenshots/medium/support-medium-open.png) |
 
 #### Navigation Elements
 
