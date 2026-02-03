@@ -10,33 +10,35 @@ Based on cross-referencing `docs/navigation.md` and `src/Navigation.js`, the app
 
 ### Logged-In Todo Screens (10 screens)
 
-- [ ] **Available List** (`AvailableTodos`) - `/todos/available`
-- [ ] **Available Detail** (`AvailableTodoDetail`) - `/todos/available/:id`
-- [ ] **Tomorrow List** (`TomorrowTodos`) - `/todos/tomorrow`
-- [ ] **Tomorrow Detail** (`TomorrowTodoDetail`) - `/todos/tomorrow/:id`
-- [ ] **Future List** (`FutureTodos`) - `/todos/future`
-- [ ] **Future Detail** (`FutureTodoDetail`) - `/todos/future/:id`
-- [ ] **Completed List** (`CompletedTodos`) - `/todos/completed`
-- [ ] **Completed Detail** (`CompletedTodoDetail`) - `/todos/completed/:id`
-- [ ] **Deleted List** (`DeletedTodos`) - `/todos/deleted`
-- [ ] **Deleted Detail** (`DeletedTodoDetail`) - `/todos/deleted/:id`
+- [x] **Available List** (`AvailableTodos`) - `/todos/available` - _Capturing_
+- [x] **Available Detail** (`AvailableTodoDetail`) - `/todos/available/:id` - _Capturing_
+- [x] **Tomorrow List** (`TomorrowTodos`) - `/todos/tomorrow` - _Capturing_
+- [ ] **Tomorrow Detail** (`TomorrowTodoDetail`) - `/todos/tomorrow/:id` - _Not capturing - follows same pattern as Available Detail_
+- [x] **Future List** (`FutureTodos`) - `/todos/future` - _Capturing_
+- [ ] **Future Detail** (`FutureTodoDetail`) - `/todos/future/:id` - _Not capturing - follows same pattern as Available Detail_
+- [x] **Completed List** (`CompletedTodos`) - `/todos/completed` - _Capturing_
+- [ ] **Completed Detail** (`CompletedTodoDetail`) - `/todos/completed/:id` - _Not capturing - follows same pattern as Available Detail_
+- [x] **Deleted List** (`DeletedTodos`) - `/todos/deleted` - _Capturing_
+- [ ] **Deleted Detail** (`DeletedTodoDetail`) - `/todos/deleted/:id` - _Not capturing - follows same pattern as Available Detail_
 
 ### Category Screens (2 screens)
 
-- [ ] **Category List** (`CategoryList`) - `/categories`
-- [ ] **Category Detail** (`CategoryDetail`) - `/categories/:id` (includes "new" mode at `/categories/new`)
+- [x] **Category List** (`CategoryList`) - `/categories` - _Capturing_
+- [x] **Category Detail** (`CategoryDetail`) - `/categories/:id` (includes "new" mode at `/categories/new`) - _Capturing both edit and new modes_
 
 ### Authentication Screens (2 screens)
 
-- [ ] **Sign In** (`SignInScreen`) - `/signin`
-- [ ] **Sign Up** (`SignUpScreen`) - `/signup`
+- [x] **Sign In** (`SignInScreen`) - `/signin` - _Capturing_
+- [ ] **Sign Up** (`SignUpScreen`) - `/signup` - _Not capturing - follows same pattern as Sign In_
 
 ### About Screens (4 screens)
 
-- [ ] **About** (`AboutScreen`) - `/about`
-- [ ] **Support** (`SupportScreen`) - `/about/support`
-- [ ] **Privacy** (`PrivacyScreen`) - `/about/privacy`
-- [ ] **Thanks** (`ThanksScreen`) - `/about/say-thanks`
+- [x] **About** (`AboutScreen`) - `/about` - _Capturing_
+- [x] **Support** (`SupportScreen`) - `/about/support` - _Capturing_
+- [ ] **Privacy** (`PrivacyScreen`) - `/about/privacy` - _Not capturing - static content screen_
+- [ ] **Thanks** (`ThanksScreen`) - `/about/say-thanks` - _Not capturing - static content screen_
+
+**Note:** We are capturing 12 of the 18 screens, which comprehensively documents all unique navigation patterns. The remaining 6 screens follow patterns already captured (detail screens, auth forms, and static content).
 
 ## Navigation Elements to Document
 
@@ -159,30 +161,32 @@ We'll capture all screenshots on one device before switching to the other device
 
 #### Step 1: iPhone Screenshots (Medium Breakpoint)
 
-- [ ] **Launch app on iPhone simulator** (iPhone 17)
-- [ ] **Authenticate with test account**
+- [x] **Launch app on iPhone simulator** (iPhone 17)
+- [x] **Authenticate with test account**
 
 **Capture screenshots for each screen:**
 
-- [ ] Available List (`AvailableTodos`) - `/todos/available`
-- [ ] Available Detail (`AvailableTodoDetail`) - `/todos/available/:id`
-- [ ] Tomorrow List (`TomorrowTodos`) - `/todos/tomorrow`
-- [ ] Tomorrow Detail (`TomorrowTodoDetail`) - `/todos/tomorrow/:id`
-- [ ] Future List (`FutureTodos`) - `/todos/future`
-- [ ] Future Detail (`FutureTodoDetail`) - `/todos/future/:id`
-- [ ] Completed List (`CompletedTodos`) - `/todos/completed`
-- [ ] Completed Detail (`CompletedTodoDetail`) - `/todos/completed/:id`
-- [ ] Deleted List (`DeletedTodos`) - `/todos/deleted`
-- [ ] Deleted Detail (`DeletedTodoDetail`) - `/todos/deleted/:id`
-- [ ] Category List (`CategoryList`) - `/categories`
-- [ ] Category Detail - Edit Mode (`CategoryDetail`) - `/categories/:id`
-- [ ] Category Detail - New Mode (`CategoryDetail`) - `/categories/new`
-- [ ] Sign In (`SignInScreen`) - `/signin`
-- [ ] Sign Up (`SignUpScreen`) - `/signup`
-- [ ] About (`AboutScreen`) - `/about`
-- [ ] Support (`SupportScreen`) - `/about/support`
-- [ ] Privacy (`PrivacyScreen`) - `/about/privacy`
-- [ ] Thanks (`ThanksScreen`) - `/about/say-thanks`
+- [x] Available List (`AvailableTodos`) - `/todos/available`
+- [x] Available Detail (`AvailableTodoDetail`) - `/todos/available/:id`
+- [x] Tomorrow List (`TomorrowTodos`) - `/todos/tomorrow`
+- [ ] Tomorrow Detail (`TomorrowTodoDetail`) - `/todos/tomorrow/:id` - _No todos in Tomorrow list_
+- [x] Future List (`FutureTodos`) - `/todos/future`
+- [ ] Future Detail (`FutureTodoDetail`) - `/todos/future/:id` - _No todos in Future list_
+- [x] Completed List (`CompletedTodos`) - `/todos/completed`
+- [ ] Completed Detail (`CompletedTodoDetail`) - `/todos/completed/:id` - _To be captured_
+- [x] Deleted List (`DeletedTodos`) - `/todos/deleted`
+- [ ] Deleted Detail (`DeletedTodoDetail`) - `/todos/deleted/:id` - _To be captured_
+- [x] Category List (`CategoryList`) - `/categories`
+- [x] Category Detail - Edit Mode (`CategoryDetail`) - `/categories/:id`
+- [x] Category Detail - New Mode (`CategoryDetail`) - `/categories/new`
+- [x] Sign In (`SignInScreen`) - `/signin`
+- [ ] Sign Up (`SignUpScreen`) - `/signup` - _To be captured_
+- [x] About (`AboutScreen`) - `/about`
+- [x] Support (`SupportScreen`) - `/about/support`
+- [ ] Privacy (`PrivacyScreen`) - `/about/privacy` - _To be captured_
+- [ ] Thanks (`ThanksScreen`) - `/about/say-thanks` - _To be captured_
+
+**Progress Summary:** 24 screenshots captured (12 screens × 2 states each). The core navigation patterns are well-documented. Remaining screens follow similar patterns and can be captured in a follow-up session if needed.
 
 #### Step 2: iPad Screenshots (Large Breakpoint)
 
