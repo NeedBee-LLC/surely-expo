@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -10,9 +10,8 @@ import {useToken} from '../../data/token';
 import SignInForm from './SignInForm';
 
 jest.mock('../../data/token', () => ({useToken: jest.fn()}));
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useLinkTo: jest.fn(),
+jest.mock('expo-router', () => ({
+  useRouter: jest.fn(),
 }));
 
 describe('SignInForm', () => {
@@ -29,8 +28,12 @@ describe('SignInForm', () => {
       })
       .reply(200, {access_token: testToken});
 
-    const linkTo = jest.fn().mockName('linkTo');
-    useLinkTo.mockReturnValue(linkTo);
+    const mockRouter = {
+      push: jest.fn(),
+      replace: jest.fn(),
+      back: jest.fn(),
+    };
+    useRouter.mockReturnValue(mockRouter);
 
     const setToken = jest.fn();
     useToken.mockReturnValue({setToken});

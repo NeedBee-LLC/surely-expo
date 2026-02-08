@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -9,14 +9,18 @@ import nock from 'nock';
 import {TokenProvider} from '../../data/token';
 import SignUpForm from './SignUpForm';
 
-jest.mock('@react-navigation/native', () => ({
-  useLinkTo: jest.fn(),
+jest.mock('expo-router', () => ({
+  useRouter: jest.fn(),
 }));
 
 describe('SignUpForm', () => {
   function setUp() {
-    const linkTo = jest.fn();
-    useLinkTo.mockReturnValue(linkTo);
+    const mockRouter = {
+      push: jest.fn(),
+      replace: jest.fn(),
+      back: jest.fn(),
+    };
+    useRouter.mockReturnValue(mockRouter);
 
     render(
       <TokenProvider loadToken={false}>
@@ -25,7 +29,7 @@ describe('SignUpForm', () => {
     );
 
     return {
-      linkTo,
+      router: mockRouter,
     };
   }
 
@@ -37,7 +41,7 @@ describe('SignUpForm', () => {
       .post('/users?', {data: {type: 'users', attributes: {email, password}}})
       .reply(200, {data: {}});
 
-    const {linkTo} = setUp();
+    const {router} = setUp();
 
     fireEvent.changeText(screen.getByLabelText('Email'), email);
     fireEvent.changeText(screen.getByLabelText('Password'), password);
@@ -50,7 +54,7 @@ describe('SignUpForm', () => {
 
     fireEvent.press(screen.getByText('Go to sign in'));
 
-    expect(linkTo).toHaveBeenCalledWith('/signin');
+    expect(router.push).toHaveBeenCalledWith('/signin');
 
     mockedServer.done();
   });
@@ -83,12 +87,12 @@ describe('SignUpForm', () => {
   });
 
   it('allows cancelling signup', async () => {
-    const {linkTo} = setUp();
+    const {router} = setUp();
 
     fireEvent.press(screen.getByText('Cancel'));
 
     await waitFor(() => {
-      expect(linkTo).toHaveBeenCalledWith('/signin');
+      expect(router.push).toHaveBeenCalledWith('/signin');
     });
   });
 });

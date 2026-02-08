@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -11,9 +11,9 @@ import {TokenProvider} from '../data/token';
 import {mockUseFocusEffect, safeAreaMetrics} from '../testUtils';
 import CategoryList from './CategoryList';
 
-jest.mock('@react-navigation/native', () => ({
+jest.mock('expo-router', () => ({
   useFocusEffect: jest.fn(),
-  useLinkTo: jest.fn(),
+  useRouter: jest.fn(),
 }));
 
 describe('CategoryList', () => {

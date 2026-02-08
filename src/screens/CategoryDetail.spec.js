@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -9,9 +9,12 @@ import nock from 'nock';
 import {TokenProvider} from '../data/token';
 import CategoryDetail from './CategoryDetail';
 
-jest.mock('@react-navigation/native', () => ({
-  useLinkTo: jest.fn(),
+jest.mock('expo-router', () => ({
+  useRouter: jest.fn(),
+  useLocalSearchParams: jest.fn(),
 }));
+
+const {useRouter, useLocalSearchParams} = require('expo-router');
 
 describe('CategoryDetail', () => {
   function providers(children) {
@@ -22,13 +25,17 @@ describe('CategoryDetail', () => {
     const name = 'New Category';
 
     function setUp() {
-      const linkTo = jest.fn();
-      useLinkTo.mockReturnValue(linkTo);
+      const mockRouter = {
+        push: jest.fn(),
+        replace: jest.fn(),
+        back: jest.fn(),
+      };
+      useRouter.mockReturnValue(mockRouter);
+      useLocalSearchParams.mockReturnValue({id: 'new'});
 
-      const route = {params: {id: 'new'}};
-      render(providers(<CategoryDetail route={route} />));
+      render(providers(<CategoryDetail />));
 
-      return {linkTo};
+      return {router: mockRouter};
     }
 
     it('allows creating the category', async () => {
@@ -59,7 +66,7 @@ describe('CategoryDetail', () => {
         })
         .reply(200, response);
 
-      const {linkTo} = setUp({
+      const {router} = setUp({
         response,
       });
 
@@ -67,20 +74,20 @@ describe('CategoryDetail', () => {
       fireEvent.press(screen.getByText('Save'));
 
       await waitFor(() => {
-        expect(linkTo).toHaveBeenCalledWith('/categories');
+        expect(router.push).toHaveBeenCalledWith('/categories');
       });
 
       mockedServer.done();
     });
 
     it('allows cancelling creation', async () => {
-      const {linkTo} = setUp();
+      const {router} = setUp();
 
       fireEvent.changeText(screen.getByLabelText('Category name'), name);
       fireEvent.press(screen.getByText('Cancel'));
 
       await waitFor(() => {
-        expect(linkTo).toHaveBeenCalledWith('/categories');
+        expect(router.push).toHaveBeenCalledWith('/categories');
       });
     });
   });
@@ -96,8 +103,8 @@ describe('CategoryDetail', () => {
     };
 
     function setUp({response, deleteError = null, saveError = null} = {}) {
-      const linkTo = jest.fn();
-      useLinkTo.mockReturnValue(linkTo);
+      const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()}; useRouter.mockReturnValue(mockRouter);
+      useRouter.mockReturnValue(linkTo);
 
       const mockedServer = nock('http://localhost:3000')
         .get(`/categories/${category.id}?`)
@@ -124,12 +131,12 @@ describe('CategoryDetail', () => {
       //   client.delete.mockResolvedValue();
       // }
 
-      const route = {params: {id: category.id}};
-      render(providers(<CategoryDetail route={route} />));
+      useLocalSearchParams.mockReturnValue({id: category.id});
+      render(providers(<CategoryDetail />));
 
       return {
         mockedServer,
-        linkTo,
+        router: mockRouter,
       };
     }
 
@@ -146,7 +153,7 @@ describe('CategoryDetail', () => {
     it('allows editing the category', async () => {
       const updatedName = 'Updated Name';
 
-      const {linkTo, mockedServer} = setUp();
+      const {router: mockRouter, mockedServer} = setUp();
 
       mockedServer
         .patch('/categories/cat1?', {
@@ -164,7 +171,7 @@ describe('CategoryDetail', () => {
       fireEvent.press(screen.getByText('Save'));
 
       await waitFor(() => {
-        expect(linkTo).toHaveBeenCalledWith('/categories');
+        expect(router.push).toHaveBeenCalledWith('/categories');
       });
 
       mockedServer.done();
@@ -174,7 +181,7 @@ describe('CategoryDetail', () => {
       const saveError = 'saveError';
       const updatedName = 'Updated Name';
 
-      const {linkTo, mockedServer} = setUp();
+      const {router: mockRouter, mockedServer} = setUp();
 
       mockedServer.patch('/categories/cat1?').reply(500, saveError);
 
@@ -183,18 +190,18 @@ describe('CategoryDetail', () => {
       fireEvent.press(saveButton);
 
       await screen.findByText('An error occurred saving the category.');
-      expect(linkTo).not.toHaveBeenCalled();
+      expect(router.push).not.toHaveBeenCalled();
     });
 
     it('allows deleting the category', async () => {
-      const {linkTo, mockedServer} = setUp();
+      const {router: mockRouter, mockedServer} = setUp();
 
       mockedServer.delete('/categories/cat1?').reply(200, {});
 
       fireEvent.press(await screen.findByText('Delete'));
 
       await waitFor(() => {
-        expect(linkTo).toHaveBeenCalledWith('/categories');
+        expect(router.push).toHaveBeenCalledWith('/categories');
       });
 
       mockedServer.done();
@@ -203,7 +210,7 @@ describe('CategoryDetail', () => {
     it('shows a message upon error deleting the category', async () => {
       const deleteError = 'deleteError';
 
-      const {linkTo, mockedServer} = setUp({
+      const {router: mockRouter, mockedServer} = setUp({
         deleteError,
       });
 
@@ -212,7 +219,7 @@ describe('CategoryDetail', () => {
       fireEvent.press(await screen.findByText('Delete'));
 
       await screen.findByText('An error occurred deleting the category.');
-      expect(linkTo).not.toHaveBeenCalled();
+      expect(router.push).not.toHaveBeenCalled();
     });
   });
 });

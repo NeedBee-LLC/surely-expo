@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -11,9 +11,9 @@ import {TokenProvider} from '../../data/token';
 import {mockUseFocusEffect, safeAreaMetrics} from '../../testUtils';
 import Future from './Future';
 
-jest.mock('@react-navigation/native', () => ({
+jest.mock('expo-router', () => ({
   useFocusEffect: jest.fn(),
-  useLinkTo: jest.fn(),
+  useRouter: jest.fn(),
 }));
 
 describe('Future', () => {
@@ -76,13 +76,13 @@ describe('Future', () => {
 
     it('allows navigating to a todo detail', async () => {
       const linkTo = jest.fn().mockName('linkTo');
-      useLinkTo.mockReturnValue(linkTo);
+      useRouter.mockReturnValue(mockRouter);
 
       renderComponent();
 
       fireEvent.press(await screen.findByText('Todo 1'));
 
-      expect(linkTo).toHaveBeenCalledWith('/todos/future/abc123');
+      expect(router.push).toHaveBeenCalledWith('/todos/future/abc123');
     });
 
     it('allows searching for todos', async () => {

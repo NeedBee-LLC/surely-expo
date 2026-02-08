@@ -482,52 +482,52 @@ Verify all URL paths work correctly (per navigation-screenshots.md Quick Referen
 
 ### Component Tests
 
-- [ ] Update `src/components/NavigationBar.spec.js`:
+- [x] Update `src/components/NavigationBar.spec.js`:
 
   - Mock `useRouter()` instead of `navigation` prop
   - Test `router.back()` call instead of `navigation.goBack()`
   - Test drawer toggle functionality
 
-- [ ] Update `src/components/NavigationDrawer.spec.js`:
+- [x] Update `src/components/NavigationDrawer.spec.js`:
   - Mock `useRouter()` instead of `useLinkTo()`
   - Verify URL navigation with `router.push()`
   - Test sign-out flow
 
 ### Screen Tests
 
-- [ ] Update `src/screens/TodoList/Available.spec.js`:
+- [x] Update `src/screens/TodoList/Available.spec.js`:
 
   - Mock `useRouter()` instead of `useLinkTo()`
   - Verify navigation paths
 
-- [ ] Update `src/screens/TodoList/Tomorrow.spec.js`
+- [x] Update `src/screens/TodoList/Tomorrow.spec.js`
 
-- [ ] Update `src/screens/TodoList/Future.spec.js`
+- [x] Update `src/screens/TodoList/Future.spec.js`
 
-- [ ] Update `src/screens/TodoList/Completed.spec.js`
+- [x] Update `src/screens/TodoList/Completed.spec.js`
 
-- [ ] Update `src/screens/TodoList/Deleted.spec.js`
+- [x] Update `src/screens/TodoList/Deleted.spec.js`
 
-- [ ] Update `src/screens/CategoryList.spec.js`:
+- [x] Update `src/screens/CategoryList.spec.js`:
 
   - Mock `useRouter()` and `useFocusEffect` from `expo-router`
   - Verify navigation to `/categories/:id` and `/categories/new`
 
-- [ ] Update `src/screens/CategoryDetail.spec.js`:
+- [x] Update `src/screens/CategoryDetail.spec.js`:
 
   - Mock `useRouter()` and `useLocalSearchParams()` from `expo-router`
   - Verify navigation to `/categories`
 
-- [ ] Update `src/screens/TodoDetail/index.spec.js`:
+- [x] Update `src/screens/TodoDetail/index.spec.js`:
 
   - Mock `useRouter()` and `useLocalSearchParams()` from `expo-router`
   - Verify `router.back()` is called after complete/delete/defer flows
 
-- [ ] Update `src/screens/Login/SignInForm.spec.js`:
+- [x] Update `src/screens/Login/SignInForm.spec.js`:
 
   - Mock `useRouter()` instead of `useLinkTo()`
 
-- [ ] Update `src/screens/Login/SignUpForm.spec.js`:
+- [x] Update `src/screens/Login/SignUpForm.spec.js`:
   - Mock `useRouter()` instead of `useLinkTo()`
 
 ---
