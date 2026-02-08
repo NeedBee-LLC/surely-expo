@@ -1,4 +1,3 @@
-import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -10,6 +9,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {TokenProvider} from '../data/token';
 import {mockUseFocusEffect, safeAreaMetrics} from '../testUtils';
 import CategoryList from './CategoryList';
+
+const {useRouter} = require('expo-router');
 
 jest.mock('expo-router', () => ({
   useFocusEffect: jest.fn(),
@@ -82,26 +83,26 @@ describe('CategoryList', () => {
     });
 
     it('allows navigating to create a category', async () => {
-      const linkTo = jest.fn().mockName('linkTo');
-      useLinkTo.mockReturnValue(linkTo);
+      const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
+      useRouter.mockReturnValue(mockRouter);
 
       renderComponent();
 
       await screen.findByText('Category A');
 
       fireEvent.press(screen.getByText('Add'));
-      expect(linkTo).toHaveBeenCalledWith('/categories/new');
+      expect(mockRouter.push).toHaveBeenCalledWith('/categories/new');
     });
 
     it('allows navigating to a category detail', async () => {
-      const linkTo = jest.fn().mockName('linkTo');
-      useLinkTo.mockReturnValue(linkTo);
+      const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
+      useRouter.mockReturnValue(mockRouter);
 
       renderComponent();
 
       fireEvent.press(await screen.findByText('Category A'));
 
-      expect(linkTo).toHaveBeenCalledWith('/categories/cat3');
+      expect(mockRouter.push).toHaveBeenCalledWith('/categories/cat3');
     });
 
     function mockSortCall({mockedServer, cat, sortOrder}) {

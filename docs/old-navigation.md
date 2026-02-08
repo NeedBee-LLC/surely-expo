@@ -1,7 +1,8 @@
-# Navigation behavior (React Navigation)
+# Navigation behavior (React Navigation - LEGACY)
 
-This document captures the current navigation behavior to support a future
-reimplementation. It summarizes how React Navigation is configured, how routes
+> **Note**: This document describes the old React Navigation implementation. The app has been migrated to Expo Router. See `navigation-migration.md` for details on the new implementation.
+
+This document captures the original navigation behavior to support understanding of the migration. It summarizes how React Navigation is configured, how routes
 map to URLs, and how screens trigger navigation. References are included for
 both production code and tests.
 

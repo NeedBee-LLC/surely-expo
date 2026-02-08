@@ -1,4 +1,3 @@
-import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -9,12 +8,12 @@ import nock from 'nock';
 import {TokenProvider} from '../data/token';
 import CategoryDetail from './CategoryDetail';
 
+const {useRouter, useLocalSearchParams} = require('expo-router');
+
 jest.mock('expo-router', () => ({
   useRouter: jest.fn(),
   useLocalSearchParams: jest.fn(),
 }));
-
-const {useRouter, useLocalSearchParams} = require('expo-router');
 
 describe('CategoryDetail', () => {
   function providers(children) {
@@ -103,8 +102,8 @@ describe('CategoryDetail', () => {
     };
 
     function setUp({response, deleteError = null, saveError = null} = {}) {
-      const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()}; useRouter.mockReturnValue(mockRouter);
-      useRouter.mockReturnValue(linkTo);
+      const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
+      useRouter.mockReturnValue(mockRouter);
 
       const mockedServer = nock('http://localhost:3000')
         .get(`/categories/${category.id}?`)
@@ -153,7 +152,7 @@ describe('CategoryDetail', () => {
     it('allows editing the category', async () => {
       const updatedName = 'Updated Name';
 
-      const {router: mockRouter, mockedServer} = setUp();
+      const {router, mockedServer} = setUp();
 
       mockedServer
         .patch('/categories/cat1?', {
@@ -181,7 +180,7 @@ describe('CategoryDetail', () => {
       const saveError = 'saveError';
       const updatedName = 'Updated Name';
 
-      const {router: mockRouter, mockedServer} = setUp();
+      const {router, mockedServer} = setUp();
 
       mockedServer.patch('/categories/cat1?').reply(500, saveError);
 
@@ -194,7 +193,7 @@ describe('CategoryDetail', () => {
     });
 
     it('allows deleting the category', async () => {
-      const {router: mockRouter, mockedServer} = setUp();
+      const {router, mockedServer} = setUp();
 
       mockedServer.delete('/categories/cat1?').reply(200, {});
 
@@ -210,7 +209,7 @@ describe('CategoryDetail', () => {
     it('shows a message upon error deleting the category', async () => {
       const deleteError = 'deleteError';
 
-      const {router: mockRouter, mockedServer} = setUp({
+      const {router, mockedServer} = setUp({
         deleteError,
       });
 

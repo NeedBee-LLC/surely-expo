@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import {useFocusEffect} from 'expo-router';
 
 export const safeAreaMetrics = {

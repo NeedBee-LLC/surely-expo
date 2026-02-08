@@ -1,6 +1,5 @@
-import {DrawerContentScrollView} from '@react-navigation/drawer';
-import {useRouter, usePathname} from 'expo-router';
-import {Platform, StyleSheet, View} from 'react-native';
+import {usePathname, useRouter} from 'expo-router';
+import {Platform, ScrollView, StyleSheet, View} from 'react-native';
 import {Drawer, withTheme} from 'react-native-paper';
 import {useToken} from '../data/token';
 import DownloadOnTheAppStoreButton from './DownloadOnTheAppStoreButton';
@@ -77,7 +76,7 @@ function CustomDrawerContent({theme, ...props}) {
   };
 
   return (
-    <DrawerContentScrollView style={scrollViewStyle} {...props}>
+    <ScrollView style={scrollViewStyle} {...props}>
       {routes.map(routeName => (
         <Drawer.Item
           testID={`${routeName.toLowerCase()}-nav-button`}
@@ -102,7 +101,7 @@ function CustomDrawerContent({theme, ...props}) {
           <DownloadOnTheAppStoreButton />
         </View>
       )}
-    </DrawerContentScrollView>
+    </ScrollView>
   );
 }
 

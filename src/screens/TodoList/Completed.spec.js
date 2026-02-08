@@ -1,4 +1,3 @@
-import {useRouter} from 'expo-router';
 import {
   fireEvent,
   render,
@@ -10,6 +9,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {TokenProvider} from '../../data/token';
 import {mockUseFocusEffect, safeAreaMetrics} from '../../testUtils';
 import Completed from './Completed';
+
+const {useRouter} = require('expo-router');
 
 jest.mock('expo-router', () => ({
   useFocusEffect: jest.fn(),
@@ -111,14 +112,14 @@ describe('Completed', () => {
     });
 
     it('allows navigating to a todo detail', async () => {
-      const linkTo = jest.fn().mockName('linkTo');
+      const mockRouter = {push: jest.fn(), replace: jest.fn(), back: jest.fn()};
       useRouter.mockReturnValue(mockRouter);
 
       renderComponent();
 
       fireEvent.press(await screen.findByText('Todo 1'));
 
-      expect(router.push).toHaveBeenCalledWith('/todos/completed/abc123');
+      expect(mockRouter.push).toHaveBeenCalledWith('/todos/completed/abc123');
     });
 
     describe('searching', () => {

@@ -47,15 +47,30 @@ Install requirements and dependencies: `bin/setup` or `yarn install`
 
 ### Navigation Structure
 
-The app uses React Navigation with a **drawer + stack navigation pattern**:
+The app uses **Expo Router** with file-based routing and a **drawer + stack navigation pattern**:
 
-- **Drawer Navigator** (root) - Contains main sections, switches between persistent (large screens) and collapsible (small screens) via breakpoint system
-- **Stack Navigators** (per section) - Each drawer section (Available, Tomorrow, Future, etc.) has its own stack with list + detail screens
-- **Web URL Support** - Full deep linking configured in [src/Navigation.js](src/Navigation.js) with paths like `/todos/available`, `/categories/:id`
+- **Root Layout** (`app/_layout.js`) - Contains all providers and drawer navigation at root level
+- **Drawer Navigator** - Switches between permanent (large screens ≥600px) and collapsible (small screens <600px) via breakpoint system
+- **Auth Routes** (`app/(auth)/`) - Sign in and sign up screens, protected by auth guards
+- **Main Routes** (`app/(main)/`) - Todo sections and categories, requires authentication
+- **About Routes** (`app/about/`) - About, support, privacy screens, accessible to all
+- **Stack Navigators** - Each section has its own stack layout with list + detail screens
+- **File-Based Routing** - Routes are automatically configured based on file structure in `app/` directory
 
-Navigation is defined in [src/Navigation.js](src/Navigation.js). Each main section (Available, Tomorrow, Future, Completed, Deleted, Categories) contains a stack with a list screen and a detail screen.
+Navigation structure:
+- `app/(auth)/` - Auth screens (signin, signup)
+- `app/(main)/todos/` - Five todo sections (available, tomorrow, future, completed, deleted), each with list and detail screens
+- `app/(main)/categories/` - Category list and detail screens
+- `app/about/` - About section with sub-screens
 
-**Important:** The `NavigationContainer` must not rerender frequently due to Safari/Firefox limits on history API calls (100 calls per 30 seconds). Hooks are placed in `NavigationContents` to prevent parent rerenders.
+**Key Features:**
+- **Deep Linking** - Full URL support with scheme `surely://`
+- **Auth Guards** - Automatic redirects based on authentication state
+- **Custom Header** - NavigationBarExpoRouter component with back button and drawer toggle
+- **Responsive Drawer** - Adapts to screen size automatically
+- **URL Preservation** - All routes maintain URL paths like `/todos/available`, `/categories/:id`
+
+See [docs/navigation-migration.md](docs/navigation-migration.md) for migration details.
 
 ### State Management
 
