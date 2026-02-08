@@ -1,3 +1,4 @@
+import {useLocalSearchParams, useRouter} from 'expo-router';
 import {useCallback, useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {Button} from 'react-native-paper';
@@ -11,8 +12,10 @@ import useIsMounted from '../../utils/useIsMounted';
 import DetailDisplay from './DetailDisplay';
 import DetailForm from './DetailForm';
 
-export default function TodoDetail({navigation, route}) {
+export default function TodoDetail() {
   const isMounted = useIsMounted();
+  const router = useRouter();
+  const {id} = useLocalSearchParams();
 
   const todoClient = useTodos();
 
@@ -20,8 +23,6 @@ export default function TodoDetail({navigation, route}) {
   const [category, setCategory] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
-
-  const {id} = route.params;
 
   const storeResponse = useCallback(
     response => {
@@ -70,7 +71,7 @@ export default function TodoDetail({navigation, route}) {
         }
       });
 
-  const goBack = () => navigation.goBack();
+  const goBack = () => router.back();
 
   function contents() {
     if (errorMessage) {

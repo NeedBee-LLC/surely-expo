@@ -306,66 +306,66 @@ Replace React Navigation hooks with Expo Router equivalents:
 
 ### Files to Update
 
-- [ ] `src/components/NavigationBar.js`:
+- [x] `src/components/NavigationBar.js`:
 
   - Replace `navigation.goBack()` with `router.back()`
   - Replace `navigation.toggleDrawer()` with Expo Router drawer toggle
 
-- [ ] `src/components/NavigationDrawer.js`:
+- [x] `src/components/NavigationDrawer.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
   - Update route path navigation
 
-- [ ] `src/screens/TodoList/Available.js`:
+- [x] `src/screens/TodoList/Available.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
   - Update: `linkTo('/todos/available/:id')` → `router.push('/todos/available/:id')`
 
-- [ ] `src/screens/TodoList/Tomorrow.js`:
+- [x] `src/screens/TodoList/Tomorrow.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
 
-- [ ] `src/screens/TodoList/Future.js`:
+- [x] `src/screens/TodoList/Future.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
 
-- [ ] `src/screens/TodoList/Completed.js`:
+- [x] `src/screens/TodoList/Completed.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
 
-- [ ] `src/screens/TodoList/Deleted.js`:
+- [x] `src/screens/TodoList/Deleted.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
 
-- [ ] `src/screens/TodoList/TodoListScreen.js`:
+- [x] `src/screens/TodoList/TodoListScreen.js`:
 
   - Replace `useFocusEffect` import from `@react-navigation/native` to `expo-router`
 
-- [ ] `src/screens/TodoDetail/index.js`:
+- [x] `src/screens/TodoDetail/index.js`:
 
   - Replace `navigation.goBack()` with `router.back()`
   - Replace `route.params` with `useLocalSearchParams()`
 
-- [ ] `src/screens/CategoryList.js`:
+- [x] `src/screens/CategoryList.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
   - Replace `useFocusEffect` import
 
-- [ ] `src/screens/CategoryDetail.js`:
+- [x] `src/screens/CategoryDetail.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
   - Replace `route.params` with `useLocalSearchParams()`
   - Preserve `id === 'new'` sentinel behavior for category creation
 
-- [ ] `src/screens/Login/SignInForm.js`:
+- [x] `src/screens/Login/SignInForm.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
 
-- [ ] `src/screens/Login/SignUpForm.js`:
+- [x] `src/screens/Login/SignUpForm.js`:
 
   - Replace `useLinkTo()` with `useRouter()`
 
-- [ ] `src/screens/About/AboutScreen.js`:
+- [x] `src/screens/About/AboutScreen.js`:
   - Replace `useLinkTo()` with `useRouter()`
 
 ---

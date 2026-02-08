@@ -1,4 +1,4 @@
-import {useLinkTo} from '@react-navigation/native';
+import {useRouter} from 'expo-router';
 import {useCallback} from 'react';
 import {useTodos} from '../../data/todos';
 import {groupByCategory} from '../../utils/grouping';
@@ -6,7 +6,7 @@ import TodoListScreen from './TodoListScreen';
 
 export default function AvailableTodos() {
   const todoClient = useTodos();
-  const linkTo = useLinkTo();
+  const router = useRouter();
   const loadAvailableTodos = useCallback(
     () =>
       todoClient
@@ -20,7 +20,7 @@ export default function AvailableTodos() {
 
   const createAvailableTodo = name => todoClient.create({attributes: {name}});
 
-  const goToAvailableTodo = todo => linkTo(`/todos/available/${todo.id}`);
+  const goToAvailableTodo = todo => router.push(`/todos/available/${todo.id}`);
 
   return (
     <TodoListScreen
