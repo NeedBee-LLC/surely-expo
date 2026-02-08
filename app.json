@@ -1,7 +1,7 @@
 {
   "expo": {
     "ios": {
-      "buildNumber": "87",
+      "buildNumber": "88",
       "appStoreUrl": "https://apps.apple.com/us/app/surely/id1586633713",
       "bundleIdentifier": "com.surelytodo",
       "supportsTablet": true,
@@ -9,7 +9,7 @@
         "usesNonExemptEncryption": false
       }
     },
-    "version": "1.1.7",
+    "version": "1.1.8",
     "name": "Surely",
     "slug": "surely",
     "orientation": "portrait",
