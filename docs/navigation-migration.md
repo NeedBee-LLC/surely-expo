@@ -32,19 +32,19 @@ Expo Router uses:
 
 ### Install and Configure Expo Router
 
-- [ ] Install Expo Router and dependencies:
+- [x] Install Expo Router and dependencies:
 
   ```bash
   npx expo install expo-router expo-linking expo-constants
   ```
 
-- [ ] Update `package.json` main entry point:
+- [x] Update `package.json` main entry point:
 
   ```json
   "main": "expo-router/entry"
   ```
 
-- [ ] Update `app.json` to add the `scheme` for deep linking:
+- [x] Update `app.json` to add the `scheme` for deep linking:
 
   ```json
   {
@@ -54,11 +54,11 @@ Expo Router uses:
   }
   ```
 
-- [ ] Configure Metro bundler in `metro.config.js` for Expo Router (if needed)
+- [x] Configure Metro bundler in `metro.config.js` for Expo Router (if needed)
 
-- [ ] Create the `app/` directory structure for file-based routing
+- [x] Create the `app/` directory structure for file-based routing
 
-- [ ] Move or update `App.js` to work with Expo Router's entry point
+- [x] Move or update `App.js` to work with Expo Router's entry point
   - Provider hierarchy needs to be preserved in a root layout
 
 ### Remove React Navigation Dependencies (after migration complete)

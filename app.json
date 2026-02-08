@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "surely",
     "ios": {
       "buildNumber": "87",
       "appStoreUrl": "https://apps.apple.com/us/app/surely/id1586633713",
@@ -40,7 +41,8 @@
       }
     },
     "plugins": [
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-router"
     ],
     "android": {
       "package": "com.surelytodo"
