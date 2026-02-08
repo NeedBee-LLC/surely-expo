@@ -1,7 +1,7 @@
 import {Stack} from 'expo-router';
 
-// Main layout - will be converted to Drawer in Phase 3
-// For now using Stack as placeholder
+// Main layout - contains logged-in routes (todos and categories)
+// Drawer is now at root level
 export default function MainLayout() {
   return (
     <Stack

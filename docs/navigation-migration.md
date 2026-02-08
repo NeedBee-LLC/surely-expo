@@ -189,14 +189,14 @@ app/
 
 ### Configure Drawer Layout
 
-- [ ] Implement drawer in `app/(main)/_layout.js`:
+- [x] Implement drawer in `app/(main)/_layout.js`:
 
   - Use Expo Router's Drawer component or custom drawer implementation
   - Configure `drawerType` to switch between `permanent` (≥600px) and `back` (<600px) based on breakpoint
   - Set `drawerStyle.width` to `220`
   - Set `headerShown: false` at drawer level
 
-- [ ] Create custom drawer content component (migrate from `CustomNavigationDrawer`):
+- [x] Create custom drawer content component (migrate from `CustomNavigationDrawer`):
 
   - **Logged-in items (in order)**: Available, Tomorrow, Future, Completed, Deleted, Categories, About, Sign out
   - **Logged-out items (in order)**: Sign in, Sign up, About
@@ -205,14 +205,14 @@ app/
   - Preserve test IDs: `${route.name.toLowerCase()}-nav-button`, `sign-out-button`
   - Highlight active route
 
-- [ ] Ensure drawer items navigate to list-level paths (not preserving detail screen state)
+- [x] Ensure drawer items navigate to list-level paths (not preserving detail screen state)
 
-- [ ] Implement drawer item tap behavior (medium breakpoint):
+- [x] Implement drawer item tap behavior (medium breakpoint):
   - Navigating to a different section: Navigate to that section's initial route (list screen) and dismiss the drawer
   - Tapping the current section while on its initial route (list screen): Dismiss the drawer only; screen does not change
   - Tapping the current section while on a detail/sub-screen: Pop the stack back to the section's initial route (list screen) and dismiss the drawer
 
-- [ ] Verify drawer behavior at each breakpoint:
+- [x] Verify drawer behavior at each breakpoint:
   - Large (≥600px): Permanent sidebar, always visible
   - Medium (<600px): Collapsible, overlays content, closes on item selection
 

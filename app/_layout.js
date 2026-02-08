@@ -1,5 +1,5 @@
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {Slot} from 'expo-router';
+import {Drawer} from 'expo-router/drawer';
 import {StatusBar} from 'expo-status-bar';
 // for some reason PaperProvider errors without the React import
 // eslint-disable-next-line no-unused-vars
@@ -9,6 +9,8 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import {en, registerTranslation} from 'react-native-paper-dates';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import iconFont from '../assets/MaterialCommunityIcons.ttf';
+import {large, useBreakpoint} from '../src/breakpoints';
+import CustomDrawerContent from '../src/components/CustomDrawerContent';
 import ScreenBackground from '../src/components/ScreenBackground';
 import TokenLoadBuffer from '../src/components/TokenLoadBuffer';
 import {TokenProvider} from '../src/data/token';
@@ -41,7 +43,30 @@ if (Platform.OS === 'web') {
 
 registerTranslation('en', en);
 
-// Root layout with all providers from App.js
+const getDrawerTypeForBreakpoint = breakpoint =>
+  breakpoint === large ? 'permanent' : 'back';
+
+// Root layout with providers and drawer navigation
+function RootLayoutNav() {
+  const breakpoint = useBreakpoint();
+  const drawerType = getDrawerTypeForBreakpoint(breakpoint);
+
+  return (
+    <Drawer
+      drawerContent={props => <CustomDrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerType,
+        drawerStyle: {width: 220},
+      }}>
+      <Drawer.Screen name="index" options={{drawerItemStyle: {display: 'none'}}} />
+      <Drawer.Screen name="(auth)" options={{drawerItemStyle: {display: 'none'}}} />
+      <Drawer.Screen name="(main)" options={{drawerItemStyle: {display: 'none'}}} />
+      <Drawer.Screen name="about" options={{drawerItemStyle: {display: 'none'}}} />
+    </Drawer>
+  );
+}
+
 export default function RootLayout() {
   const theme = useTheme();
   return (
@@ -52,7 +77,7 @@ export default function RootLayout() {
             <StatusBar style="auto" />
             <SafeAreaProvider>
               <ScreenBackground>
-                <Slot />
+                <RootLayoutNav />
               </ScreenBackground>
             </SafeAreaProvider>
           </PaperProvider>
