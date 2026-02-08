@@ -374,26 +374,26 @@ Replace React Navigation hooks with Expo Router equivalents:
 
 ### Implement Auth Guards
 
-- [ ] Configure root redirect in `app/index.js`:
+- [x] Configure root redirect in `app/index.js`:
 
   - If logged in: redirect to `/todos/available`
   - If logged out: redirect to `/signin`
 
-- [ ] Implement auth protection for `(main)` group:
+- [x] Implement auth protection for `(main)` group:
 
   - Redirect to `/signin` if not logged in
   - Can use `Redirect` component or `router.replace()` in layout
 
-- [ ] Implement redirect from auth routes when logged in:
+- [x] Implement redirect from auth routes when logged in:
 
   - If already logged in and on `/signin` or `/signup`, redirect to `/todos/available`
 
-- [ ] Sign out flow:
+- [x] Sign out flow:
 
   - Call `clearToken()`
   - Navigate to `/signin` using `router.replace()`
 
-- [ ] Sign in flow:
+- [x] Sign in flow:
   - Call `setToken()` on success
   - Router should automatically redirect due to auth state change
 

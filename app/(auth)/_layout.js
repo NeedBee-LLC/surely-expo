@@ -1,8 +1,17 @@
-import {Stack} from 'expo-router';
+import {Redirect, Stack} from 'expo-router';
 import NavigationBar from '../../src/components/NavigationBarExpoRouter';
+import {useToken} from '../../src/data/token';
 
 // Auth stack layout - Sign In is initial route (no back button)
+// Redirects to /todos/available if already logged in
 export default function AuthLayout() {
+  const {token} = useToken();
+
+  // If already logged in, redirect to available todos
+  if (token) {
+    return <Redirect href="/todos/available" />;
+  }
+
   return (
     <Stack
       screenOptions={{
