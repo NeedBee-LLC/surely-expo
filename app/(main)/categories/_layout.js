@@ -1,5 +1,5 @@
 import {Stack} from 'expo-router';
-import NavigationBar from '../../../../src/components/NavigationBarExpoRouter';
+import NavigationBar from '../../../src/components/NavigationBarExpoRouter';
 
 // Categories stack layout
 export default function CategoriesLayout() {
