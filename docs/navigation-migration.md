@@ -246,12 +246,12 @@ Preserve the following URL mappings:
 
 For each section, create a `_layout.js` with stack configuration:
 
-- [ ] Implement stack layout pattern with:
+- [x] Implement stack layout pattern with:
 
   - Custom header component (migrate from `CustomNavigationBar`)
   - Proper screen options and titles
 
-- [ ] Migrate `CustomNavigationBar` to work with Expo Router:
+- [x] Migrate `CustomNavigationBar` to work with Expo Router:
   - Back button should use `router.back()` instead of `navigation.goBack()`
   - Back button visibility: Show only when NOT on initial route in stack
   - Drawer toggle (hamburger menu) should work with Expo Router drawer

@@ -1,11 +1,17 @@
 import {Stack} from 'expo-router';
+import NavigationBar from '../../../../../src/components/NavigationBarExpoRouter';
 
 // Available todos stack layout
 export default function AvailableLayout() {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
+        header: ({options, route, navigation}) => (
+          <NavigationBar
+            title={options.title || route.name}
+            canGoBack={navigation.canGoBack()}
+          />
+        ),
       }}>
       <Stack.Screen
         name="index"
@@ -16,7 +22,7 @@ export default function AvailableLayout() {
       <Stack.Screen
         name="[id]"
         options={{
-          title: 'Todo', // Will be dynamic in Phase 4
+          title: 'Todo', // Will be made dynamic in screen component
         }}
       />
     </Stack>
