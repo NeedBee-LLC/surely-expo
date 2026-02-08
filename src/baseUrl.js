@@ -16,7 +16,7 @@ function getBaseUrl() {
       return 'http://localhost:3000';
     }
   } else {
-    return 'https://api.surelytodo.com';
+    return 'https://beta.api.surelytodo.com';
   }
 }
 
