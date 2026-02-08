@@ -207,6 +207,11 @@ app/
 
 - [ ] Ensure drawer items navigate to list-level paths (not preserving detail screen state)
 
+- [ ] Implement drawer item tap behavior (medium breakpoint):
+  - Navigating to a different section: Navigate to that section's initial route (list screen) and dismiss the drawer
+  - Tapping the current section while on its initial route (list screen): Dismiss the drawer only; screen does not change
+  - Tapping the current section while on a detail/sub-screen: Pop the stack back to the section's initial route (list screen) and dismiss the drawer
+
 - [ ] Verify drawer behavior at each breakpoint:
   - Large (≥600px): Permanent sidebar, always visible
   - Medium (<600px): Collapsible, overlays content, closes on item selection
@@ -578,6 +583,12 @@ Verify all URL paths work correctly (per navigation-screenshots.md Quick Referen
 - [ ] Logged in: Shows Available, Tomorrow, Future, Completed, Deleted, Categories, About, Sign out
 - [ ] Logged out: Shows Sign in, Sign up, About (no todo sections)
 
+**Drawer Item Tap Behavior (Medium Breakpoint):**
+
+- [ ] Tapping a different section navigates to that section's initial route and dismisses drawer
+- [ ] Tapping the current section while on its initial route dismisses drawer without changing screen
+- [ ] Tapping the current section while on a detail/sub-screen pops stack to initial route and dismisses drawer
+
 **Stack Reset Behavior:**
 
 - [ ] Switching sections via drawer resets stack to list screen (not detail)
@@ -719,6 +730,9 @@ Verify header elements match the specification in the Behavioral Specifications 
   - [ ] Overlays content when open
   - [ ] Closes when item is selected
   - [ ] Active route is highlighted
+  - [ ] Tapping a different section navigates to initial route and dismisses drawer
+  - [ ] Tapping current section on initial route dismisses drawer without navigation
+  - [ ] Tapping current section on detail/sub-screen pops to initial route and dismisses drawer
 
 ### Functional Verification Checklist
 
@@ -845,6 +859,12 @@ Each screen has specific header configuration based on breakpoint:
 | ---------------- | ----------- | ----------------------------------------- |
 | Large (≥ 600px)  | Permanent   | Always visible as sidebar                 |
 | Medium (< 600px) | Collapsible | Slides in from left, toggle via hamburger |
+
+**Drawer Item Tap Behavior (Medium Breakpoint):**
+
+1. **Navigating to a different section**: The app navigates to that section's initial route (list screen) and the drawer is dismissed.
+2. **Tapping the current section while on its initial route (list screen)**: The drawer is dismissed. The screen does not change — the user remains on the same list screen.
+3. **Tapping the current section while on a detail/sub-screen**: The stack is popped back to the section's initial route (list screen) and the drawer is dismissed. For example, tapping "Available" while viewing a todo detail returns to the Available list; tapping "About" while on the Support sub-screen returns to the About screen.
 
 **Drawer Items (Logged In):**
 
