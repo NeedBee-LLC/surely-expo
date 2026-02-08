@@ -467,13 +467,13 @@ Verify all URL paths work correctly (per navigation-screenshots.md Quick Referen
 
 ### Jest Test Utilities
 
-- [ ] Update `src/testUtils.js`:
+- [x] Update `src/testUtils.js`:
 
   - Update `mockUseFocusEffect()` to mock Expo Router's `useFocusEffect`
   - Add mock for `useRouter()` if needed
   - Add mock for `useLocalSearchParams()` if needed
 
-- [ ] Update jest mocks in test files:
+- [x] Update jest mocks in test files:
   - Change `jest.mock('@react-navigation/native', ...)` to mock `expo-router`
 
 ---
