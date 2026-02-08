@@ -441,25 +441,25 @@ Verify all URL paths work correctly (per navigation-screenshots.md Quick Referen
 
 ### Deep Link Verification Checklist
 
-- [ ] `/todos/available` - Available todos list
-- [ ] `/todos/available/:id` - Available todo detail (back button present)
-- [ ] `/todos/tomorrow` - Tomorrow todos list
-- [ ] `/todos/tomorrow/:id` - Tomorrow todo detail (back button present)
-- [ ] `/todos/future` - Future todos list
-- [ ] `/todos/future/:id` - Future todo detail (back button present)
-- [ ] `/todos/completed` - Completed todos list
-- [ ] `/todos/completed/:id` - Completed todo detail (back button present)
-- [ ] `/todos/deleted` - Deleted todos list
-- [ ] `/todos/deleted/:id` - Deleted todo detail (back button present)
-- [ ] `/categories` - Category list
-- [ ] `/categories/:id` - Category detail (back button present, title "Edit Category")
-- [ ] `/categories/new` - New category (back button present, title "New Category")
-- [ ] `/about` - About screen
-- [ ] `/about/support` - Support screen (back button present)
-- [ ] `/about/privacy` - Privacy policy screen (back button present)
-- [ ] `/about/say-thanks` - Thanks screen (back button present)
-- [ ] `/signin` - Sign in screen
-- [ ] `/signup` - Sign up screen (back button present)
+- [x] `/todos/available` - Available todos list
+- [x] `/todos/available/:id` - Available todo detail (back button present)
+- [x] `/todos/tomorrow` - Tomorrow todos list
+- [x] `/todos/tomorrow/:id` - Tomorrow todo detail (back button present)
+- [x] `/todos/future` - Future todos list
+- [x] `/todos/future/:id` - Future todo detail (back button present)
+- [x] `/todos/completed` - Completed todos list
+- [x] `/todos/completed/:id` - Completed todo detail (back button present)
+- [x] `/todos/deleted` - Deleted todos list
+- [x] `/todos/deleted/:id` - Deleted todo detail (back button present)
+- [x] `/categories` - Category list
+- [x] `/categories/:id` - Category detail (back button present, title "Edit Category")
+- [x] `/categories/new` - New category (back button present, title "New Category")
+- [x] `/about` - About screen
+- [x] `/about/support` - Support screen (back button present)
+- [x] `/about/privacy` - Privacy policy screen (back button present)
+- [x] `/about/say-thanks` - Thanks screen (back button present)
+- [x] `/signin` - Sign in screen
+- [x] `/signup` - Sign up screen (back button present)
 
 ---
 
