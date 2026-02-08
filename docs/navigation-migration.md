@@ -536,18 +536,18 @@ Verify all URL paths work correctly (per navigation-screenshots.md Quick Referen
 
 ### Run All Cypress Tests
 
-- [ ] Run `yarn cypress:open` and verify all tests pass
+- [x] Run `yarn cypress:open` and verify all tests pass
 
 ### Test Files to Verify
 
-- [ ] `cypress/e2e/smoke.cy.js`:
+- [x] `cypress/e2e/smoke.cy.js`:
 
   - Signs in at `/`
   - Adds a todo
   - Navigates to detail
   - Completes todo
 
-- [ ] `cypress/e2e/navigation.cy.js`:
+- [x] `cypress/e2e/navigation.cy.js`:
 
   - Navigates from sign in to sign up (`/` → `/signup`)
   - Returns to todo list using back button (`/todos/available/:id` → `/todos/available`)
@@ -556,7 +556,7 @@ Verify all URL paths work correctly (per navigation-screenshots.md Quick Referen
   - Returns to list when switching away from detail via drawer
   - Navigates to support and back from about screen (`/about` → `/about/support` → `/about`)
 
-- [ ] `cypress/e2e/todo-detail-available.cy.js`:
+- [x] `cypress/e2e/todo-detail-available.cy.js`:
   - Deep links to `/todos/available/:id`
   - Exercises editing flows on detail screen
   - Tests error handling
@@ -565,53 +565,53 @@ Verify all URL paths work correctly (per navigation-screenshots.md Quick Referen
 
 **Back Button Behavior:**
 
-- [ ] Back button calls `router.back()` and navigates correctly
-- [ ] Back button visible on all detail/child screens
-- [ ] Back button NOT visible on initial route screens (list screens, Sign In, About)
-- [ ] Sign Up screen shows back button (returns to Sign In)
+- [x] Back button calls `router.back()` and navigates correctly
+- [x] Back button visible on all detail/child screens
+- [x] Back button NOT visible on initial route screens (list screens, Sign In, About)
+- [x] Sign Up screen shows back button (returns to Sign In)
 
 **Drawer Behavior:**
 
-- [ ] Drawer toggle shows/hides drawer on medium screens (<600px)
-- [ ] Drawer is permanent on large screens (≥600px)
-- [ ] Drawer width is 220px
-- [ ] Hamburger menu visible on ALL screens at medium breakpoint
-- [ ] Hamburger menu NOT visible at large breakpoint
+- [x] Drawer toggle shows/hides drawer on medium screens (<600px)
+- [x] Drawer is permanent on large screens (≥600px)
+- [x] Drawer width is 220px
+- [x] Hamburger menu visible on ALL screens at medium breakpoint
+- [x] Hamburger menu NOT visible at large breakpoint
 
 **Drawer Items:**
 
-- [ ] Logged in: Shows Available, Tomorrow, Future, Completed, Deleted, Categories, About, Sign out
-- [ ] Logged out: Shows Sign in, Sign up, About (no todo sections)
+- [x] Logged in: Shows Available, Tomorrow, Future, Completed, Deleted, Categories, About, Sign out
+- [x] Logged out: Shows Sign in, Sign up, About (no todo sections)
 
 **Drawer Item Tap Behavior (Medium Breakpoint):**
 
-- [ ] Tapping a different section navigates to that section's initial route and dismisses drawer
-- [ ] Tapping the current section while on its initial route dismisses drawer without changing screen
-- [ ] Tapping the current section while on a detail/sub-screen pops stack to initial route and dismisses drawer
+- [x] Tapping a different section navigates to that section's initial route and dismisses drawer
+- [x] Tapping the current section while on its initial route dismisses drawer without changing screen
+- [x] Tapping the current section while on a detail/sub-screen pops stack to initial route and dismisses drawer
 
 **Stack Reset Behavior:**
 
-- [ ] Switching sections via drawer resets stack to list screen (not detail)
-- [ ] Navigating away from detail screen resets that stack
+- [x] Switching sections via drawer resets stack to list screen (not detail)
+- [x] Navigating away from detail screen resets that stack
 
 **Auth Navigation:**
 
-- [ ] Sign out navigates to `/signin`
-- [ ] Sign in redirects to `/todos/available` on success
-- [ ] "Don't have an account?" link navigates to Sign Up with back button
+- [x] Sign out navigates to `/signin`
+- [x] Sign in redirects to `/todos/available` on success
+- [x] "Don't have an account?" link navigates to Sign Up with back button
 
 **Cross-Stack Navigation:**
 
-- [ ] Completing a todo navigates to Completed section
-- [ ] Deleting a todo navigates to Deleted section
-- [ ] Deferring a todo navigates to Tomorrow or Future section
-- [ ] Restoring a todo from Deleted navigates to Available section
+- [x] Completing a todo navigates to Completed section
+- [x] Deleting a todo navigates to Deleted section
+- [x] Deferring a todo navigates to Tomorrow or Future section
+- [x] Restoring a todo from Deleted navigates to Available section
 
 **Header Titles:**
 
-- [ ] Todo detail screens show todo's name (not static "Todo")
-- [ ] Category edit shows "Edit Category"
-- [ ] Category new shows "New Category"
+- [x] Todo detail screens show todo's name (not static "Todo")
+- [x] Category edit shows "Edit Category"
+- [x] Category new shows "New Category"
 
 ---
 
