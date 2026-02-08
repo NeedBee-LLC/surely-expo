@@ -1,11 +1,14 @@
-import {View, Text} from 'react-native';
+import {Redirect} from 'expo-router';
+import {useToken} from '../src/data/token';
 
-// Placeholder index route - will be replaced in Phase 2 with redirect logic
+// Root redirect logic based on authentication state
 export default function Index() {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Expo Router Setup Complete - Phase 1</Text>
-      <Text>Root redirect logic will be added in Phase 2</Text>
-    </View>
-  );
+  const {token} = useToken();
+
+  // Redirect to available todos if logged in, signin if not
+  if (token) {
+    return <Redirect href="/todos/available" />;
+  }
+
+  return <Redirect href="/signin" />;
 }

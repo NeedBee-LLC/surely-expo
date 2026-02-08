@@ -120,7 +120,7 @@ app/
 
 ### Route File Tasks
 
-- [ ] Create `app/_layout.js` with root providers:
+- [x] Create `app/_layout.js` with root providers:
 
   - QueryClientProvider
   - TokenProvider
@@ -130,58 +130,58 @@ app/
   - SafeAreaProvider
   - ScreenBackground
 
-- [ ] Create `app/index.js` with root redirect logic based on auth state
+- [x] Create `app/index.js` with root redirect logic based on auth state
 
-- [ ] Create `app/(auth)/_layout.js` for auth stack:
+- [x] Create `app/(auth)/_layout.js` for auth stack:
 
   - Configure as stack navigator
   - Sign In is initial route (no back button)
   - Sign Up is child route (shows back button)
 
-- [ ] Create `app/(auth)/index.js` (or `signin.js` with linking config) - move content from `src/screens/Login/SignInForm.js`:
+- [x] Create `app/(auth)/index.js` (or `signin.js` with linking config) - move content from `src/screens/Login/SignInForm.js`:
 
   - URL: `/signin`
   - Initial route in auth stack
   - No back button shown
 
-- [ ] Create `app/(auth)/signup.js` - move content from `src/screens/Login/SignUpForm.js`:
+- [x] Create `app/(auth)/signup.js` - move content from `src/screens/Login/SignUpForm.js`:
 
   - URL: `/signup`
   - Shows back button to return to Sign In
   - Navigated to via "Don't have an account?" link
 
-- [ ] Create `app/(main)/_layout.js` with drawer navigator configuration
+- [x] Create `app/(main)/_layout.js` with drawer navigator configuration
 
-- [ ] Create todo list route files (5 sections: available, tomorrow, future, completed, deleted):
+- [x] Create todo list route files (5 sections: available, tomorrow, future, completed, deleted):
 
-  - [ ] `app/(main)/todos/available/_layout.js`
-  - [ ] `app/(main)/todos/available/index.js`
-  - [ ] `app/(main)/todos/available/[id].js`
-  - [ ] `app/(main)/todos/tomorrow/_layout.js`
-  - [ ] `app/(main)/todos/tomorrow/index.js`
-  - [ ] `app/(main)/todos/tomorrow/[id].js`
-  - [ ] `app/(main)/todos/future/_layout.js`
-  - [ ] `app/(main)/todos/future/index.js`
-  - [ ] `app/(main)/todos/future/[id].js`
-  - [ ] `app/(main)/todos/completed/_layout.js`
-  - [ ] `app/(main)/todos/completed/index.js`
-  - [ ] `app/(main)/todos/completed/[id].js`
-  - [ ] `app/(main)/todos/deleted/_layout.js`
-  - [ ] `app/(main)/todos/deleted/index.js`
-  - [ ] `app/(main)/todos/deleted/[id].js`
+  - [x] `app/(main)/todos/available/_layout.js`
+  - [x] `app/(main)/todos/available/index.js`
+  - [x] `app/(main)/todos/available/[id].js`
+  - [x] `app/(main)/todos/tomorrow/_layout.js`
+  - [x] `app/(main)/todos/tomorrow/index.js`
+  - [x] `app/(main)/todos/tomorrow/[id].js`
+  - [x] `app/(main)/todos/future/_layout.js`
+  - [x] `app/(main)/todos/future/index.js`
+  - [x] `app/(main)/todos/future/[id].js`
+  - [x] `app/(main)/todos/completed/_layout.js`
+  - [x] `app/(main)/todos/completed/index.js`
+  - [x] `app/(main)/todos/completed/[id].js`
+  - [x] `app/(main)/todos/deleted/_layout.js`
+  - [x] `app/(main)/todos/deleted/index.js`
+  - [x] `app/(main)/todos/deleted/[id].js`
 
-- [ ] Create category route files:
+- [x] Create category route files:
 
-  - [ ] `app/(main)/categories/_layout.js`
-  - [ ] `app/(main)/categories/index.js`
-  - [ ] `app/(main)/categories/[id].js`
+  - [x] `app/(main)/categories/_layout.js`
+  - [x] `app/(main)/categories/index.js`
+  - [x] `app/(main)/categories/[id].js`
 
-- [ ] Create about route files:
-  - [ ] `app/about/_layout.js`
-  - [ ] `app/about/index.js`
-  - [ ] `app/about/support.js`
-  - [ ] `app/about/privacy.js`
-  - [ ] `app/about/say-thanks.js`
+- [x] Create about route files:
+  - [x] `app/about/_layout.js`
+  - [x] `app/about/index.js`
+  - [x] `app/about/support.js`
+  - [x] `app/about/privacy.js`
+  - [x] `app/about/say-thanks.js`
 
 ---
 
