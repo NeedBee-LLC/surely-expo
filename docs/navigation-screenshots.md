@@ -65,6 +65,14 @@ The drawer behavior is consistent across all screens in the app:
 
 **Note:** The drawer items shown depend on authentication state (see "Drawer Items" section above).
 
+#### Drawer Item Tap Behavior (Medium Breakpoint)
+
+When a drawer navigation item is tapped on the medium breakpoint:
+
+1. **Navigating to a different section**: The app navigates to that section's initial route (list screen) and the drawer is dismissed.
+2. **Tapping the current section while on its initial route (list screen)**: The drawer is dismissed. The screen does not change — the user remains on the same list screen.
+3. **Tapping the current section while on a detail/sub-screen**: The stack is popped back to the section's initial route (list screen) and the drawer is dismissed. For example, tapping "Available" while viewing a todo detail returns to the Available list; tapping "About" while on the Support sub-screen returns to the About screen.
+
 ### Screenshot Devices
 
 - **Large Breakpoint**: iPad Pro 11-inch (M5) - iOS 18.2
