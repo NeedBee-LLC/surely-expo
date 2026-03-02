@@ -20,10 +20,7 @@
       "resizeMode": "cover",
       "backgroundColor": "#4caf50"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
+"assetBundlePatterns": [
       "**/*"
     ],
     "web": {
