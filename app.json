@@ -20,7 +20,7 @@
       "resizeMode": "cover",
       "backgroundColor": "#4caf50"
     },
-"assetBundlePatterns": [
+    "assetBundlePatterns": [
       "**/*"
     ],
     "web": {
