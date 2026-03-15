@@ -11,9 +11,6 @@
     "web": "expo start --web",
     "test": "jest src --watchAll",
     "test:coverage": "jest src --coverage",
-    "maestro:ios": "MAESTRO_APP_ID=com.surelytodo MAESTRO_IS_DEV=true maestro test maestro/LaunchTest.yaml",
-    "maestro:ios:ci": "MAESTRO_APP_ID=com.surelytodo maestro test maestro/LaunchTest.yaml",
-    "maestro:web": "MAESTRO_APP_ID=http://localhost:8081 maestro -p web test maestro/LaunchTest.yaml",
     "cypress:open": "cypress open",
     "lint": "eslint cypress src \"*.js\"",
     "serve:web": "serve -p 8081 dist",
@@ -66,11 +63,9 @@
     "@testing-library/react-native": "^13.2.2",
     "babel-jest": "^29.2.2",
     "cypress": "^15.11.0",
-    "detox": "^20.47.0",
     "eslint": "^8.46.0",
     "eslint-config-expo": "~10.0.0",
     "eslint-plugin-cypress": "^3.3.0",
-    "eslint-plugin-detox": "^1.0.0",
     "eslint-plugin-ft-flow": "^3.0.11",
     "eslint-plugin-import": "~2.32.0",
     "eslint-plugin-testing-library": "^7.16.0",
@@ -85,10 +80,7 @@
   "jest": {
     "preset": "jest-expo",
     "testTimeout": 10000,
-    "modulePathIgnorePatterns": [
-      "e2e"
-    ],
-    "setupFiles": [
+"setupFiles": [
       "./jest-setup.js"
     ]
   },

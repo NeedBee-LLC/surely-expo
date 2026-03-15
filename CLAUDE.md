@@ -13,7 +13,6 @@ Surely is a cross-platform todo app built with Expo React Native that deploys to
 - Expo CLI
 - EAS CLI (for builds)
 - Cocoapods (for iOS)
-- Detox CLI (for end-to-end tests)
 
 Install requirements and dependencies: `bin/setup` or `yarn install`
 
@@ -32,8 +31,6 @@ Install requirements and dependencies: `bin/setup` or `yarn install`
 - `yarn test:coverage` - Run tests with coverage report
 - `yarn lint` - Run ESLint on source files
 - `yarn cypress:open` - Open Cypress for e2e web tests (requires `yarn start` running first)
-- `yarn maestro:ios` - Run Maestro tests on iOS
-- `yarn maestro:web` - Run Maestro tests on web
 
 ### Building & Deployment
 - `yarn build:web` - Build for web (outputs to `dist/`)
@@ -120,7 +117,6 @@ API base URL logic in [src/baseUrl.js](src/baseUrl.js):
 - **Unit Tests** - Jest with React Native Testing Library, files use `.spec.js` extension
 - **Test Utils** - [src/testUtils.js](src/testUtils.js) provides mocks for common dependencies (safe area, navigation)
 - **E2E Web Tests** - Cypress (config: [cypress.config.js](cypress.config.js))
-- **E2E Mobile Tests** - Maestro (in `maestro/` directory)
 - **Mock API Mode** - Set `MOCK_API=true` env var to use mock data layer
 
 To run a single test file: `yarn test <path/to/file.spec.js>`
