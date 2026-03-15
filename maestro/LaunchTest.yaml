@@ -1,5 +1,0 @@
-appId: ${MAESTRO_APP_ID}
----
-- runFlow: ./subflows/OpenApp.yaml
-
-- assertVisible: 'Sign in'

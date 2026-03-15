@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: ['expo', '@react-native', 'eslint:recommended'],
-  plugins: ['import', 'cypress', 'detox'],
+  plugins: ['import', 'cypress'],
   env: {
     'cypress/globals': true,
   },
@@ -21,14 +21,6 @@ module.exports = {
     {
       files: ['src/**/*.spec.js'],
       extends: ['plugin:testing-library/react'],
-    },
-    {
-      files: ['e2e/**/*.test.js'],
-      env: {
-        'detox/detox': true,
-        jest: true,
-        'jest/globals': true,
-      },
     },
   ],
 };
