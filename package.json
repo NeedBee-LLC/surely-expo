@@ -3,7 +3,6 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
-    "start:mock": "MOCK_API=true expo start",
     "android": "expo run:android",
     "clean": "expo prebuild --clean && expo start --clear",
     "prebuild": "expo prebuild -p ios",
