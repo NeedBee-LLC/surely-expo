@@ -20,7 +20,6 @@ Install requirements and dependencies: `bin/setup` or `yarn install`
 
 ### Development
 - `yarn start` - Start Expo dev server (press `i` for iOS simulator, `w` for web)
-- `yarn start:mock` - Start with mock API enabled
 - `yarn ios` - Build and run native dev client on iOS simulator
 - `yarn web` - Start web version
 - `yarn clean` - Clean prebuild and restart with cleared cache
@@ -67,7 +66,6 @@ The app uses **JSON:API** via the `@codingitwrong/jsonapi-client` library for al
 - **Resource Clients** - Created per resource type (todos, categories, users)
 - **Custom HTTP Client** - [src/data/authenticatedHttpClient.js](src/data/authenticatedHttpClient.js) creates Axios instances with Bearer token auth
 - **Hooks Pattern** - Each resource has a hook (e.g., `useTodos()`) that returns a configured resource client
-- **Mock Mode** - Mock implementations (e.g., [src/data/authenticatedHttpClient.mock.js](src/data/authenticatedHttpClient.mock.js)) for development without backend
 
 ### Storage Abstraction
 
@@ -117,7 +115,6 @@ API base URL logic in [src/baseUrl.js](src/baseUrl.js):
 - **Unit Tests** - Jest with React Native Testing Library, files use `.spec.js` extension
 - **Test Utils** - [src/testUtils.js](src/testUtils.js) provides mocks for common dependencies (safe area, navigation)
 - **E2E Web Tests** - Cypress (config: [cypress.config.js](cypress.config.js))
-- **Mock API Mode** - Set `MOCK_API=true` env var to use mock data layer
 
 To run a single test file: `yarn test <path/to/file.spec.js>`
 

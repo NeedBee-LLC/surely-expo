@@ -420,17 +420,6 @@ Resource objects follow this format:
 
 ---
 
-## Mock API Mode
-
-For development without a backend, the app supports mock mode via the `MOCK_API=true` environment variable:
-
-- **Mock Implementation**: [src/data/authenticatedHttpClient.mock.js](../src/data/authenticatedHttpClient.mock.js)
-- **Start Command**: `yarn start:mock`
-- **Capabilities**: Returns mock todo data based on status and date filters
-- **Usage**: Useful for UI development, testing, and demonstrations
-
----
-
 ## Summary
 
 ### Total Endpoints: 11
