@@ -14,8 +14,7 @@
     "lint": "eslint cypress src \"*.js\"",
     "serve:web": "serve -p 8081 dist",
     "serve:web:wait": "wait-on http://localhost:8081 --timeout 10000",
-    "deploy:web": "netlify deploy --prod",
-    "build:web": "expo export --platform web && cp _redirects dist",
+    "build:web": "expo export --platform web && cp dist/index.html dist/404.html",
     "build:ios": "eas build --platform ios --local",
     "build:ios:remote": "eas build --platform ios"
   },
@@ -37,7 +36,7 @@
     "expo-splash-screen": "~31.0.13",
     "expo-status-bar": "~3.0.9",
     "expo-store-review": "~9.0.9",
-"lodash": "^4.17.23",
+    "lodash": "^4.17.23",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-native": "0.81.5",
@@ -79,7 +78,7 @@
   "jest": {
     "preset": "jest-expo",
     "testTimeout": 10000,
-"setupFiles": [
+    "setupFiles": [
       "./jest-setup.js"
     ]
   },

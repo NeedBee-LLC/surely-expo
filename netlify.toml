@@ -1,5 +1,0 @@
-[build]
-  command = "yarn build:web"
-
-[context.production]
-  publish = "dist/"
