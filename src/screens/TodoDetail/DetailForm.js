@@ -32,6 +32,7 @@ export default function DetailForm({todo, onSave, onCancel}) {
   const [categoryId, setCategoryId] = useState(
     todo.relationships.category.data?.id,
   );
+  const [url, setUrl] = useState(todo.attributes.url ?? '');
   const [notes, setNotes] = useState(todo.attributes.notes ?? '');
   const [deferredUntil, setDeferredUntil] = useState(
     todo.attributes['deferred-until'],
@@ -51,7 +52,7 @@ export default function DetailForm({todo, onSave, onCancel}) {
   }
 
   async function handlePressSave() {
-    const attributes = {name, notes, 'deferred-until': deferredUntil};
+    const attributes = {name, url, notes, 'deferred-until': deferredUntil};
     const categoryReference = category ? pick(category, ['type', 'id']) : null;
     const relationships = {category: {data: categoryReference}};
     setIsLoading(true);
@@ -109,6 +110,17 @@ export default function DetailForm({todo, onSave, onCancel}) {
           onDismiss={() => setIsDeferredUntilModalOpen(false)}
         />
         <TextInput
+          testID="url-field"
+          label="URL"
+          accessibilityLabel="URL"
+          value={url}
+          onChangeText={setUrl}
+          mode="outlined"
+          style={styles.urlInput}
+          autoCapitalize="none"
+          keyboardType="url"
+        />
+        <TextInput
           testID="notes-field"
           label="Notes"
           accessibilityLabel="Notes"
@@ -153,6 +165,9 @@ const styles = StyleSheet.create({
   },
   nameInput: {
     fontSize: 20,
+  },
+  urlInput: {
+    marginTop: 10,
   },
   notesInput: {
     marginTop: 10,
