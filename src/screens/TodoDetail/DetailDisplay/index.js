@@ -78,5 +78,6 @@ const styles = StyleSheet.create({
   },
   link: {
     textDecorationLine: 'underline',
+    paddingVertical: 8,
   },
 });
