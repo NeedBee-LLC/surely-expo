@@ -1,4 +1,4 @@
-import {Linking, Pressable, ScrollView, StyleSheet, View} from 'react-native';
+import {Linking, Pressable, ScrollView, StyleSheet, View, useColorScheme} from 'react-native';
 import {IconButton, Text, Title} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import sharedStyles from '../../../sharedStyles';
@@ -12,6 +12,9 @@ export default function DetailDisplay({
   onUpdate,
   onGoBack,
 }) {
+  const colorScheme = useColorScheme();
+  const linkColor = colorScheme === 'dark' ? '#4caf50' : '#2e7d32';
+
   return (
     <SafeAreaView
       edges={['left', 'right', 'bottom']}
@@ -32,7 +35,7 @@ export default function DetailDisplay({
         <Pressable onPress={onEdit}>
           {todo.attributes.url ? (
             <Text
-              style={[styles.sectionSpacing, styles.link]}
+              style={[styles.sectionSpacing, styles.link, {color: linkColor}]}
               onPress={e => {
                 e.stopPropagation?.();
                 Linking.openURL(todo.attributes.url);
@@ -74,7 +77,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   link: {
-    color: '#1976d2',
     textDecorationLine: 'underline',
   },
 });
