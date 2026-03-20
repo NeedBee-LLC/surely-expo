@@ -1,4 +1,4 @@
-import {Linking, Platform, Pressable, ScrollView, StyleSheet, View} from 'react-native';
+import {Linking, Pressable, ScrollView, StyleSheet, View} from 'react-native';
 import {IconButton, Text, Title} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import sharedStyles from '../../../sharedStyles';
@@ -35,11 +35,7 @@ export default function DetailDisplay({
               style={[styles.sectionSpacing, styles.link]}
               onPress={e => {
                 e.stopPropagation?.();
-                if (Platform.OS === 'web') {
-                  window.open(todo.attributes.url, '_blank');
-                } else {
-                  Linking.openURL(todo.attributes.url);
-                }
+                Linking.openURL(todo.attributes.url);
               }}
               accessibilityRole="link"
             >
