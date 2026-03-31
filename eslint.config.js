@@ -1,34 +1,12 @@
-const reactNativeConfig = require('@react-native/eslint-config/flat');
 const {defineConfig} = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
 const cypressPlugin = require('eslint-plugin-cypress/flat');
+const jestPlugin = require('eslint-plugin-jest');
 const testingLibraryPlugin = require('eslint-plugin-testing-library');
-
-// eslint-config-expo and @react-native/eslint-config both define react/react-hooks plugins
-// but as different instances. Remap @react-native config to reuse expo's plugin instances.
-const expoPlugins = Object.fromEntries(
-  expoConfig.flatMap(c => (c.plugins ? Object.entries(c.plugins) : [])),
-);
-const remappedReactNativeConfig = reactNativeConfig.map(c => {
-  if (!c.plugins) return c;
-  const remappedPlugins = {};
-  for (const [name, plugin] of Object.entries(c.plugins)) {
-    remappedPlugins[name] = expoPlugins[name] ?? plugin;
-  }
-  return {...c, plugins: remappedPlugins};
-});
+const globals = require('globals');
 
 module.exports = defineConfig([
   ...expoConfig,
-  ...remappedReactNativeConfig,
-  {
-    // ft-flow plugin is not compatible with ESLint 9 (uses removed context.getAllComments API).
-    // This project uses TypeScript, not Flow, so these rules are disabled.
-    rules: {
-      'ft-flow/define-flow-type': 'off',
-      'ft-flow/use-flow-type': 'off',
-    },
-  },
   {
     rules: {
       // eslint-config-expo/flat newly enables this; was not active in legacy config
@@ -55,8 +33,26 @@ module.exports = defineConfig([
       ],
     },
   },
-  // Add cypress globals (matching the original env: { 'cypress/globals': true })
-  cypressPlugin.configs.globals,
+  {
+    files: [
+      '**/*.{spec,test}.{js,ts,tsx}',
+      '**/__{mocks,tests}__/**/*.{js,ts,tsx}',
+    ],
+    plugins: {jest: jestPlugin},
+    languageOptions: {
+      globals: globals.jest,
+    },
+    rules: {
+      'jest/no-disabled-tests': 'warn',
+      'jest/no-focused-tests': 'warn',
+      'jest/no-identical-title': 'warn',
+      'jest/valid-expect': 'warn',
+    },
+  },
+  {
+    files: ['cypress/**/*.js'],
+    ...cypressPlugin.configs.globals,
+  },
   {
     files: ['src/**/*.spec.js'],
     plugins: {
