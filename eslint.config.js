@@ -24,11 +24,8 @@ module.exports = defineConfig([
     },
   },
   {
-    files: [
-      '**/*.{spec,test}.{js,ts,tsx}',
-      '**/__{mocks,tests}__/**/*.{js,ts,tsx}',
-    ],
-    plugins: {jest: jestPlugin},
+    files: ['**/*.spec.js'],
+    plugins: {jest: jestPlugin, 'testing-library': testingLibraryPlugin},
     languageOptions: {
       globals: globals.jest,
     },
@@ -37,19 +34,11 @@ module.exports = defineConfig([
       'jest/no-focused-tests': 'warn',
       'jest/no-identical-title': 'warn',
       'jest/valid-expect': 'warn',
+      ...testingLibraryPlugin.configs.react.rules,
     },
   },
   {
     files: ['cypress/**/*.js'],
     ...cypressPlugin.configs.globals,
-  },
-  {
-    files: ['src/**/*.spec.js'],
-    plugins: {
-      'testing-library': testingLibraryPlugin,
-    },
-    rules: {
-      ...testingLibraryPlugin.configs.react.rules,
-    },
   },
 ]);
