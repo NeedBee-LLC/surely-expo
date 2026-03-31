@@ -11,16 +11,6 @@ module.exports = defineConfig([
     rules: {
       // eslint-config-expo/flat newly enables this; was not active in legacy config
       'react/no-unescaped-entities': 'off',
-      // eslint-config-expo/flat sets caughtErrors:'all'; old config defaulted to 'none'
-      'no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          args: 'none',
-          ignoreRestSiblings: true,
-          caughtErrors: 'none',
-        },
-      ],
       'import/order': ['warn', {alphabetize: {order: 'asc'}}],
       'no-duplicate-imports': 'error',
       quotes: ['error', 'single', {avoidEscape: true}],

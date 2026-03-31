@@ -74,7 +74,7 @@ export default function CategoryList() {
     );
     try {
       await updateCategorySortOrder(categoriesAfterMove);
-    } catch (error) {
+    } catch (_error) {
       setErrorMessage('An error occurred moving category up.');
     }
   }
@@ -87,7 +87,7 @@ export default function CategoryList() {
     );
     try {
       await updateCategorySortOrder(categoriesAfterMove);
-    } catch (error) {
+    } catch (_error) {
       setErrorMessage('An error occurred moving category down.');
     }
   }

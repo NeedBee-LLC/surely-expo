@@ -42,7 +42,7 @@ export default function TodoDetail({navigation, route}) {
           options: {include: 'category'},
         });
         storeResponse(response);
-      } catch (error) {
+      } catch (_error) {
         setErrorMessage('An error occurred loading the todo.');
       }
     },
