@@ -43,7 +43,7 @@
     "react-native-gesture-handler": "~2.31.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-paper": "^5.15.0",
-    "react-native-paper-dates": "^0.22.51",
+    "react-native-paper-dates": "^0.23.5",
     "react-native-reanimated": "~4.3.0",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.24.0",
@@ -83,7 +83,10 @@
     ],
     "moduleNameMapper": {
       "^react-native-worklets$": "<rootDir>/node_modules/react-native-worklets/lib/module/mock.js"
-    }
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|color|color-string|color-convert|color-name))"
+    ]
   },
   "private": true,
   "license": "MIT"
