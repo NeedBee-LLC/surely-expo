@@ -44,13 +44,13 @@
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-paper": "^5.15.0",
     "react-native-paper-dates": "^0.22.51",
-    "react-native-reanimated": "~4.1.1",
+    "react-native-reanimated": "~4.3.0",
     "react-native-safe-area-context": "~5.6.0",
     "react-native-screens": "~4.24.0",
     "react-native-style-queries": "^0.1.1",
     "react-native-vector-icons": "^10.3.0",
     "react-native-web": "^0.21.0",
-    "react-native-worklets": "0.5.1",
+    "react-native-worklets": "0.8.1",
     "typescript": "~5.9.3"
   },
   "devDependencies": {
@@ -80,7 +80,10 @@
     "testTimeout": 10000,
     "setupFiles": [
       "./jest-setup.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "^react-native-worklets$": "<rootDir>/node_modules/react-native-worklets/lib/module/mock.js"
+    }
   },
   "private": true,
   "license": "MIT"
