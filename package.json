@@ -71,7 +71,7 @@
     "jest-circus": "^29.7.0",
     "jest-expo": "~54.0.17",
     "nock": "^14.0.5",
-    "prettier": "^3.5.3",
+    "prettier": "^3.8.3",
     "serve": "^14.2.5",
     "wait-on": "^9.0.4"
   },
