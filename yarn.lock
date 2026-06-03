@@ -1473,6 +1473,11 @@
   resolved "https://registry.yarnpkg.com/@expo/dom-webview/-/dom-webview-55.0.5.tgz#00628e9e5e5116b8f5c92840bed0a5a06e3ccc77"
   integrity sha512-lt3uxYOCk3wmWvtOOvsC35CKGbDAOx5C2EaY8SH1JVSfBzqmF8Cs0Xp1MPxncDPMyxpMiWx5SvvV/iLF1rJU4A==
 
+"@expo/dom-webview@^56.0.4":
+  version "56.0.5"
+  resolved "https://registry.yarnpkg.com/@expo/dom-webview/-/dom-webview-56.0.5.tgz#2a09924714d7419f24c7f573c00bba0b55e1eb38"
+  integrity sha512-UIEJxkLg6cHqofKrpWpkn9E6ApxVRtCgZhZkARPr9VV7rBVloJgeroTHs31YgU/JpbI5lLQOnfOlGo54W6C2Ew==
+
 "@expo/env@^2.0.11", "@expo/env@~2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@expo/env/-/env-2.1.1.tgz#95c047b69dee14a6ebaaa0415c4896ac69f1bf0d"
@@ -1537,6 +1542,15 @@
     anser "^1.4.9"
     stacktrace-parser "^0.1.10"
 
+"@expo/log-box@56.0.4":
+  version "56.0.4"
+  resolved "https://registry.yarnpkg.com/@expo/log-box/-/log-box-56.0.4.tgz#b6b37338fb25043fbaf8169b5ec2df7ef7e07afe"
+  integrity sha512-1KN5JWZ67stO/5geWsXXYb2/7sLcvRbXzaYHIHgnlEQ4hGdQ6KcD1A9sBT/4CTlqq0yNbExW9IoekDzVUWt7ow==
+  dependencies:
+    "@expo/dom-webview" "^56.0.4"
+    anser "^1.4.9"
+    stacktrace-parser "^0.1.10"
+
 "@expo/metro-config@55.0.18", "@expo/metro-config@~55.0.18":
   version "55.0.18"
   resolved "https://registry.yarnpkg.com/@expo/metro-config/-/metro-config-55.0.18.tgz#905a96e06406c785f9940101cd07a6f3a47cf145"
@@ -1562,12 +1576,12 @@
     postcss "~8.4.32"
     resolve-from "^5.0.0"
 
-"@expo/metro-runtime@~55.0.9":
-  version "55.0.10"
-  resolved "https://registry.yarnpkg.com/@expo/metro-runtime/-/metro-runtime-55.0.10.tgz#8bbb827d0936100e21a67dfc288da57ffa150845"
-  integrity sha512-7v+ldTvMWRa1ml83Jel9W2f8qT/NZZWrlHaEjf29nb72JTEO50+Xac9PWLo+X3LCDAAuyYuBGKYXOJwfqxV0fQ==
+"@expo/metro-runtime@~56.0.4":
+  version "56.0.4"
+  resolved "https://registry.yarnpkg.com/@expo/metro-runtime/-/metro-runtime-56.0.4.tgz#6c1cf80f6e4221c5eb6b5920f4d39dc5d7f3d23e"
+  integrity sha512-JP20fYYeU4+nv47v0UV0PMsXbeLrXdO/0A5Z5Idr4kqcl8PTEbbICwD1dGv8kFogFkKeNYsyKkB0J8d6hkmRBg==
   dependencies:
-    "@expo/log-box" "55.0.11"
+    "@expo/log-box" "56.0.4"
     anser "^1.4.9"
     pretty-format "^29.7.0"
     stacktrace-parser "^0.1.10"
