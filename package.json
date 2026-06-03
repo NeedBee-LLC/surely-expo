@@ -30,7 +30,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "expo": "^55.0.15",
     "expo-constants": "~55.0.14",
-    "expo-dev-client": "~55.0.27",
+    "expo-dev-client": "~56.0.18",
     "expo-linking": "~55.0.13",
     "expo-secure-store": "~55.0.13",
     "expo-splash-screen": "~55.0.18",
