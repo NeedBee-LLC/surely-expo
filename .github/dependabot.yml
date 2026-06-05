@@ -17,7 +17,9 @@ updates:
       - dependency-name: "babel-core"
       - dependency-name: "babel-jest"
       # - dependency-name: "expo" # commented to get notification
+      - dependency-name: "@expo/metro-runtime"
       - dependency-name: "expo-constants"
+      - dependency-name: "expo-dev-client"
       - dependency-name: "expo-linking"
       - dependency-name: "expo-secure-store"
       - dependency-name: "expo-splash-screen"
