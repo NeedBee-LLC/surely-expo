@@ -25,7 +25,7 @@
     "@react-navigation/native": "^7.2.2",
     "@react-navigation/native-stack": "^7.14.12",
     "@tanstack/react-query": "^5.96.1",
-    "axios": "1.16.0",
+    "axios": "1.17.0",
     "date-fns": "4.1.0",
     "eslint-plugin-prettier": "^5.5.5",
     "expo": "^55.0.15",
