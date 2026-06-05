@@ -1,6 +1,6 @@
 const {defineConfig} = require('eslint/config');
 const expoConfig = require('eslint-config-expo/flat');
-const cypressPlugin = require('eslint-plugin-cypress/flat');
+const cypressPlugin = require('eslint-plugin-cypress');
 const jestPlugin = require('eslint-plugin-jest');
 const testingLibraryPlugin = require('eslint-plugin-testing-library');
 const globals = require('globals');
