@@ -72,7 +72,7 @@
     "nock": "^14.0.14",
     "prettier": "^3.8.3",
     "serve": "^14.2.6",
-    "wait-on": "^9.0.5"
+    "wait-on": "^9.0.10"
   },
   "jest": {
     "preset": "jest-expo",
