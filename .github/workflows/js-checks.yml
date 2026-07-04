@@ -25,5 +25,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Unit Tests
         run: yarn test --watchAll=false
-      - name: ESLint
+      - name: Lint
         run: yarn lint
+      - name: Format Check
+        run: yarn format:check

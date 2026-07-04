@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "jest"],
+  "jsPlugins": ["eslint-plugin-expo"],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "expo/use-dom-exports": "error",
+    "expo/no-env-var-destructuring": "error",
+    "expo/no-dynamic-env-var": "error",
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "warn",
+    "jest/no-identical-title": "warn",
+    "jest/expect-expect": "off"
+  },
+  "env": {
+    "builtin": true
+  }
+}
