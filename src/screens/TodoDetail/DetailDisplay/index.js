@@ -1,4 +1,11 @@
-import {Linking, Pressable, ScrollView, StyleSheet, View, useColorScheme} from 'react-native';
+import {
+  Linking,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  View,
+  useColorScheme,
+} from 'react-native';
 import {IconButton, Text, Title} from 'react-native-paper';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import sharedStyles from '../../../sharedStyles';

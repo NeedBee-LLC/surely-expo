@@ -22,7 +22,7 @@ describe('NavigationDrawer', () => {
   it('allows navigating to the passed-in routes', () => {
     const linkTo = jest.fn().mockName('linkTo');
     useLinkTo.mockReturnValue(linkTo);
-    
+
     const route = {
       name: 'Available',
       key: '123',
@@ -36,10 +36,7 @@ describe('NavigationDrawer', () => {
 
     render(
       <SafeAreaProvider initialMetrics={safeAreaMetrics}>
-        <NavigationDrawer
-          iconByRoute={ICON_BY_ROUTE}
-          state={state}
-        />
+        <NavigationDrawer iconByRoute={ICON_BY_ROUTE} state={state} />
       </SafeAreaProvider>,
     );
 
@@ -52,7 +49,7 @@ describe('NavigationDrawer', () => {
     it('allows signing out', async () => {
       const linkTo = jest.fn().mockName('linkTo');
       useLinkTo.mockReturnValue(linkTo);
-      
+
       const state = {
         routes: [],
       };
@@ -64,10 +61,7 @@ describe('NavigationDrawer', () => {
 
       render(
         <SafeAreaProvider initialMetrics={safeAreaMetrics}>
-          <NavigationDrawer
-            iconByRoute={ICON_BY_ROUTE}
-            state={state}
-          />
+          <NavigationDrawer iconByRoute={ICON_BY_ROUTE} state={state} />
         </SafeAreaProvider>,
       );
 
@@ -75,9 +69,7 @@ describe('NavigationDrawer', () => {
 
       expect(clearToken).toHaveBeenCalledWith();
 
-      await waitFor(() =>
-        expect(linkTo).toHaveBeenCalledWith('/signin'),
-      );
+      await waitFor(() => expect(linkTo).toHaveBeenCalledWith('/signin'));
     });
   });
 });
