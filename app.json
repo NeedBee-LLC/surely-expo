@@ -15,11 +15,6 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#4caf50"
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -37,7 +32,16 @@
       }
     },
     "plugins": [
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "cover",
+          "backgroundColor": "#4caf50"
+        }
+      ],
+      "expo-status-bar"
     ],
     "android": {
       "package": "com.surelytodo"
