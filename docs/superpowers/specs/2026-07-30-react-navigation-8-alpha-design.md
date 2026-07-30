@@ -4,7 +4,9 @@
 **Status:** Approved for implementation
 **Goal:** Gain access to `UNSTABLE_CornerInset` so Surely's navigation chrome avoids the
 iPadOS windowed-mode traffic light buttons.
-**Outcome:** A branch experiment. Merge is an explicit later decision, not part of this work.
+**Outcome:** A throwaway spike. **This branch will NOT be merged**, and **no test work will
+be done on it.** React Navigation 8 is alpha software; the branch exists to answer one
+question — does the corner inset actually work in Surely — and to produce screenshots.
 
 ## Motivation
 
@@ -139,20 +141,23 @@ Surely imports gesture-handler nowhere in `src/` or `App.js` — no `GestureHand
 no `gestureHandlerRootHOC`. Check GH3's migration guide for whether a root view is now
 mandatory at app root, and add one to `App.js` only if it is.
 
-### Phase 4 — v8 API audit
+### Phase 4 — Sanity check only
 
-Three items need runtime verification (static analysis already cleared the rest):
+Static analysis already cleared every navigation option Surely uses against the alpha's
+type definitions. Given this is a throwaway spike, the original full audit is reduced to
+clicking around for a minute: open a list, a detail screen, and a couple of drawer
+sections, and confirm nothing crashes and the drawer lists the expected items.
 
-1. **`state.routes` in `CustomNavigationDrawer`.** v8 changed navigation state so that
-   preloaded routes appear in `routes` after `state.index`. The drawer maps `state.routes`
-   directly to `Drawer.Item`s and derives selection from the index. If the drawer navigator
-   preloads, this yields phantom or misordered items. Verify visually; if affected, slice
-   to `state.routes.slice(0, state.index + 1)` or filter explicitly.
-2. **Linking.** Deep linking is enabled by default in v8 and `prefixes` is now optional.
-   Re-verify `/todos/available`, `/todos/available/:id`, `/about/privacy`, `/signin`.
-3. **Web `inert`.** Unfocused screens now use the HTML `inert` attribute instead of
-   `aria-hidden`, which blocks interaction more aggressively. This is the most likely
-   cause of Cypress breakage in `navigation.cy.js`.
+Three v8 behavior changes are known and worth *noticing* if they bite, but are not swept
+for systematically:
+
+1. **`state.routes` in `CustomNavigationDrawer`.** v8 puts preloaded routes in `routes`
+   after `state.index`, and the drawer maps `state.routes` straight to `Drawer.Item`s. If
+   phantom or misordered items appear, that is why; `state.routes.slice(0, state.index + 1)`
+   is the fix.
+2. **Linking.** Deep linking is on by default and `prefixes` is now optional.
+3. **Web `inert`.** Unfocused screens use `inert` instead of `aria-hidden`, which blocks
+   interaction more aggressively.
 
 ### Phase 5 — Add the corner insets
 
@@ -191,27 +196,22 @@ setting in `app.json` constrains iPhone only.
 **If the insets do not work here, stop.** Nothing downstream matters and the branch gets
 parked.
 
-### Phase 7 — Tests
+### Phase 7 — No test work
 
-Deliberately sequenced after iPad verification: there is no point spending effort on the
-JS test environment before knowing the feature works at all.
+**Deliberately not done.** Repairing test suites for a branch that will not merge is
+wasted effort on alpha software.
 
-**Unit tests.** `CornerInset.ios.js` imports a codegen'd Fabric component and
-`codegenNativeCommands`, and jest-expo runs specs with `Platform.OS === 'ios'`. This may
-break `NavigationBar.spec.js` and `NavigationDrawer.spec.js` at import time. Mitigation
-ladder, in order: try it unmodified; add a `moduleNameMapper` entry for the native
-component; as a last resort mock `UNSTABLE_CornerInset` in those two specs. Then run all
-21 spec files.
+Expect `npx jest src` to go red once Phase 5 lands: `CornerInset.ios.js` imports a
+codegen'd Fabric component and jest-expo runs specs with `Platform.OS === 'ios'`, which
+will likely break `NavigationBar.spec.js` and `NavigationDrawer.spec.js` at import time.
+That is a JS test-environment artifact, not a native regression, and it is left alone.
 
-`transformIgnorePatterns` already covers `@react-navigation`, and covers gesture-handler
-via the unanchored `react-native` alternative. No change expected.
+Separately, `src/utils/grouping.spec.js` already fails 2 tests on `main` when the machine
+is in a US Pacific timezone — the `groupByDate` fixtures are timezone-sensitive. It passes
+under `TZ=UTC` and `TZ=America/New_York`. Pre-existing and unrelated; noted here only so
+it is not mistaken for upgrade fallout.
 
-**Cypress.** `yarn build:web`, `yarn serve:web`, then the full suite, watching
-`navigation.cy.js` for `inert` fallout.
-
-**Note:** if the Fabric import does break jest, `yarn test` will fail from the moment
-Phase 5 lands and will stay red until Phase 7. That is expected. It is a JS test
-environment problem, not a native regression, and it does not block the iPad build.
+If this work is ever revived for real, test repair becomes a required phase.
 
 ### Phase 8 — Decide
 
@@ -222,9 +222,11 @@ Rollback is branch delete, `yarn install`, `yarn prebuild --clean`.
 
 ## Out of Scope
 
-Merging to `main`. Shipping to the App Store. Bumping `ios.buildNumber`. Migrating to the
-static navigation API. Adopting any other v8 feature (loaders, `retain()`, `pushParams`,
-liquid glass headers, Material themes). Converting the project to TypeScript.
+Merging to `main` — this branch is throwaway. Pushing, or opening a PR. Shipping to the
+App Store. Bumping `ios.buildNumber`. **All test work**: the Jest suite, the Cypress suite,
+and test configuration. Deep-link regression sweeps. Migrating to the static navigation
+API. Adopting any other v8 feature (loaders, `retain()`, `pushParams`, liquid glass
+headers, Material themes). Converting the project to TypeScript.
 
 ## Risks
 
