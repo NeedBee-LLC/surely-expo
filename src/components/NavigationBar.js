@@ -1,3 +1,4 @@
+import {UNSTABLE_CornerInset} from '@react-navigation/native';
 import {useColorScheme} from 'react-native';
 import {Appbar} from 'react-native-paper';
 import {large, useBreakpoint} from '../breakpoints';
@@ -17,6 +18,9 @@ export default function NavigationBar({navigation, options, back}) {
 
   return (
     <Appbar.Header style={headerStyle}>
+      {showDrawerToggle && (
+        <UNSTABLE_CornerInset direction="horizontal" edge="left" />
+      )}
       {back ? (
         <Appbar.BackAction
           testID="back-button"
