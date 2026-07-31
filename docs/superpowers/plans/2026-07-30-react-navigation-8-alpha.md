@@ -258,34 +258,25 @@ First child, so it pushes the back and menu buttons clear. The `showDrawerToggle
 the permanent drawer sits left of the header, so the header does not touch the window edge
 and must not be inset.
 
-- [ ] **Step 3: Drawer import**
+- [ ] **Step 3: Do NOT add an inset to the drawer**
 
-In `src/components/NavigationDrawer.js`, extend the existing first import — uppercase
-sorts first inside the braces:
+Originally planned, now cancelled — verified unnecessary on device 2026-07-30.
+`@react-navigation/drawer` already does it internally. From
+`node_modules/@react-navigation/drawer/lib/module/views/DrawerContentScrollView.js:47`:
 
 ```js
-import {UNSTABLE_CornerInset, useLinkTo} from '@react-navigation/native';
+Platform.OS === 'ios' && contentInsetAdjustmentBehavior !== 'never' &&
+  _jsx(UNSTABLE_CornerInset, {direction: "vertical", edge: "top"})
 ```
 
-- [ ] **Step 4: Render the drawer inset**
+Confirmed visually: in windowed mode the drawer items already start below the traffic
+lights with no app-side change. Adding our own would double the spacing.
 
-At `src/components/NavigationDrawer.js:40`, replace:
+`@react-navigation/elements` contains no `CornerInset` reference at all, which is why
+headers get nothing for free — and Surely's header is a custom Paper `Appbar.Header`
+rather than the elements one, so it needs the inset explicitly.
 
-```jsx
-    <DrawerContentScrollView style={scrollViewStyle} {...navProps}>
-      {state.routes.map((route, index) => (
-```
-
-with:
-
-```jsx
-    <DrawerContentScrollView style={scrollViewStyle} {...navProps}>
-      <UNSTABLE_CornerInset direction="vertical" edge="top" />
-      {state.routes.map((route, index) => (
-```
-
-Unconditional, unlike the header: the drawer occupies the window's top-left whenever
-visible, in both `permanent` and `back` modes.
+**Leave `src/components/NavigationDrawer.js` untouched.**
 
 - [ ] **Step 5: Lint and format**
 
