@@ -43,7 +43,7 @@
     "react-native": "0.86.0",
     "react-native-gesture-handler": "~2.32.0",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
-    "react-native-paper": "^5.15.0",
+    "react-native-paper": "^5.15.3",
     "react-native-paper-dates": "^0.23.9",
     "react-native-reanimated": "4.5.0",
     "react-native-safe-area-context": "~5.7.0",
