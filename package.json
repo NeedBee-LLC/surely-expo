@@ -85,5 +85,8 @@
     ]
   },
   "private": true,
-  "license": "MIT"
+  "license": "MIT",
+  "resolutions": {
+    "brace-expansion": "5.0.7"
+  }
 }
