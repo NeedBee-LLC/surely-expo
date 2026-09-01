@@ -2579,13 +2579,13 @@
   resolved "https://registry.yarnpkg.com/@react-native/gradle-plugin/-/gradle-plugin-0.86.0.tgz#a712a39ac1514e72740764440ecd763a17ef500f"
   integrity sha512-a1RcfaEDqWExCGfCwadIxt4l8FvKYgFqeMf2uzeKyAOnb+vTGNIeCvifFL2MqvgaeYxlER437HbMIajGcuJ1pQ==
 
-"@react-native/jest-preset@^0.86.0":
-  version "0.86.1"
-  resolved "https://registry.yarnpkg.com/@react-native/jest-preset/-/jest-preset-0.86.1.tgz#3c268ca25c146cdcc9b2aafd76bc54f4d5b79e76"
-  integrity sha512-++hlo+JcZQqrhdQQn4TY41WlptxVEdvMcMXXi9mQBh1O7yXVs1eNTfYEKkq04wpXwjYMpAsyDA/Ev/DDFsT1/w==
+"@react-native/jest-preset@^0.86.3":
+  version "0.86.3"
+  resolved "https://registry.yarnpkg.com/@react-native/jest-preset/-/jest-preset-0.86.3.tgz#164222da2070f7056a12c8e8f402fb06ef6f7f6b"
+  integrity sha512-oMmBwXUpTgJvGlcXQQPuiQLykoM8jsWYp6RwdJ2NWyIWzJcGp1rmSr3XV7istoIcUt0wdOVLtQs0A0nDm9ND+A==
   dependencies:
     "@jest/create-cache-key-function" "^29.7.0"
-    "@react-native/js-polyfills" "0.86.1"
+    "@react-native/js-polyfills" "0.86.3"
     babel-jest "^29.7.0"
     jest-environment-node "^29.7.0"
     regenerator-runtime "^0.13.2"
@@ -2595,10 +2595,10 @@
   resolved "https://registry.yarnpkg.com/@react-native/js-polyfills/-/js-polyfills-0.86.0.tgz#d289e1720f79c31291b1e27c39e9fa153309692a"
   integrity sha512-zYy/Cjd1VTnZ2iCNaG9bDF9C3l2ntESiPRscjIlI5FKugu6aeTwsDSv1aI8Bc4Kp3vEdoVg+UQhLAhE4svREaQ==
 
-"@react-native/js-polyfills@0.86.1":
-  version "0.86.1"
-  resolved "https://registry.yarnpkg.com/@react-native/js-polyfills/-/js-polyfills-0.86.1.tgz#8fed74afbfc2327d85f8e1c4c57bded0db595aa9"
-  integrity sha512-mQJcMQu5/bLdwFljF/zDjKpKH6/wzQ33FiewoGfcLC/QU0ke0vdUcJ4kBAB98Du1sT1ddAHUvhjnDRo7PFzzrQ==
+"@react-native/js-polyfills@0.86.3":
+  version "0.86.3"
+  resolved "https://registry.yarnpkg.com/@react-native/js-polyfills/-/js-polyfills-0.86.3.tgz#811f1d0bcb44325ed5969425420825a0fbfc3a27"
+  integrity sha512-eYIJ0es967+tePBFQDnl/gidVFxLns3fnbiK6rxscQrGodvuUO6hwxpQnfNynJ8MjbbndImXihXjcnJdc7SzJg==
 
 "@react-native/normalize-colors@0.86.0":
   version "0.86.0"
