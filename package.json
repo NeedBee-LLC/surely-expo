@@ -29,7 +29,7 @@
     "@tanstack/react-query": "^5.101.4",
     "axios": "1.18.0",
     "date-fns": "4.4.0",
-    "expo": "^57.0.8",
+    "expo": "^57.0.18",
     "expo-constants": "~57.0.7",
     "expo-dev-client": "~57.0.9",
     "expo-linking": "~57.0.4",
