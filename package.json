@@ -60,7 +60,7 @@
     "@react-native/jest-preset": "^0.86.3",
     "@testing-library/react-native": "^13.2.2",
     "babel-jest": "^29.2.2",
-    "cypress": "^15.11.0",
+    "cypress": "^16.1.0",
     "eslint-plugin-expo": "^1.1.0",
     "jest": "^29.7.0",
     "jest-circus": "^30.4.2",
